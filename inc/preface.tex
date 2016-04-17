@@ -1,0 +1,48 @@
+\cleardoublepage
+\thispagestyle{scrplain}
+\markboth{Vorwort}{Vorwort}
+\addcontentsline{toc}{chapter}{Vorwort}
+
+\vphantom{\fontsize{50}{0}\selectfont 1}
+\vphantom{\Huge A}
+\begin{flushright}\normalfont\sffamily\Huge\bfseries Vorwort\end{flushright}
+\vspace{1cm}
+\paragraph{\"Ubungszettel:}
+\begin{itemize}
+\item Immer Mittwochs, Abgabe: In der Vorlesung
+\item Keine Abgabepflicht, aber Bonussystem: 50\% der Punkte$ \Rightarrow 0.3$ Bonus, 75\% der Punkte$ \Rightarrow 2$ Notenschritte Bonus
+\item M\"undliche Pr\"ufung
+\end{itemize}
+\paragraph{Literatur:} Werner - Funktionalanalysis, Springer Verlag, ISBN 3-540-43586-7
+\paragraph{Motivation:}
+Die Funktionalanalysis besch\"aftigt sich mit unendlichdimensionalen Vektorr\"aumen (\"uber $ \R $ oder $ \C $), in denen der Konvergenzbegriff gegeben ist (Topologie), sowie den stetigen linearen Abbildungen (Operatoren) zwischen ihnen.
+\begin{itemize}
+\item Funktionen werden als Punkte bzw. als Elemente in Funktionenr\"aumen betrachtet ($ C([0,1]),\sL_1(\R) $).
+\item Es gibt vielf\"altige Anwendungen innerhalb der Analysis (Integralgleichungen, partielle Differentialgleichungen), sowie der Optimierung, Numerik, Quantenmechanik.
+\item Die historischen Wurzeln liegen in der Fouriertransformation sowie \"ahnlichen Transformationen.
+\end{itemize}
+Funktionale$ \hat{=} $stetige lineare Abbildungen von Funktionenr\"aumen nach $ \R $ oder $ \C $, d.h. Funktion von Funktion ($ \rightsquigarrow $Variationsrechnung).\\
+In unendlichdimensionalen Vektorr\"aumen gibt es viele im Vergleich zur Analysis im $ \R^n $ ungewohnte Effekte, z.B.:
+\begin{enumerate}
+\item Surjektive lineare Selbstabbildungen sind im Allgemein nicht injektiv.\\
+Sei $ V=\lbrace(x_n)_n\mid x_n\in\R\rbrace $ und $ A\colon V\longrightarrow V $ sei gegeben durch
+\[ A(x_n)_n=A(x_1,x_2,x_3,...)\coloneqq(x_2,x_3,x_4,...) \]
+$ AV=V $ ($ A $ ist surjektiv), aber $ A(x_1,0,0,...)=0$ ($ A $ ist nicht injektiv.
+\item Injektive lineare Selbstabbildungen sind im Allgemeinen nicht surjektiv.\\
+$ V $ wie oben.
+\[ A(x_n)_n=(0,x_1,x_2,x_3,...) \]
+\item Lineare Selbstabbildungen m\"ussen keine Eigenwerte haben.\\
+$ C([a,b])=\lbrace f\colon[a,b]\longrightarrow\C\mid f\text{ stetig}\rbrace $, $ A\colon C([a,b])\longrightarrow C([a,b]) $ sei gegeben durch ($ f\in C([a,b]) $, $ x\in[a,b] $):
+\[ (Af)(x)=(\sin x)f(x) \]
+$ A $ ist der Multiplikationsoperator mit $ \sin x $. $ A $ hat keine Eigenwerte. Andernfalls g\"abe es $ f\in C([a,b]) $, $ f\neq 0 $ und $ \lambda\in\C $ mit
+\[ (\sin x)f(x)=\lambda f(x)\forall x\in[a,b] \]
+Da $ f\neq 0 $ existiert ein $ x_0\in[a,b] $ und ein $ \e>0 $, so dass:
+\[ f(x)\neq 0\forall ]x_0-\e,x_0+\e[ \]
+Also:
+\[ \forall x\in]x_0-\e,x_0+\e[\colon \sin x=\lambda=\text{konstant}\lightning \]
+In der Funktionalanalysis untersucht man verschiedene Abschw\"achungen des Begriffs 'Eigenwert'.
+\item Lineare Abbildungen sind im Allgemeinen nicht stetig.\\
+$ V=\lbrace p\colon[-2,2]\longrightarrow\C\mid p\text{ Polynom}\rbrace $, versehen mit der gleichm\"assigen Konvergenz, d.h. \[(p_j)_j\to p  \text{ in }  V \Leftrightarrow \norm{p_j-p}_\infty\to 0\text{ f\"ur }j\to\infty\]
+Sei $ A\colon V\longrightarrow V $ definiert durch $ Ax^n=3^nx^n $ und sei $ p_j(x)=\frac{1}{(2.5)^j}x^j $. Dann $ \norm{p_j}_\infty\to 0 $ f\"ur $ j\to\infty $, d.h. $ p_j\to 0 $ in $ V $ f\"ur $ j\to\infty $, aber
+\[ \norm{Ap_j}_\infty=\sup_{x\in[-2,2]}\left|\frac{3^j}{2.5^j}x^j\right|=\frac{3^j2^j}{2.5^j}=\left(\frac{6}{2.5}\right)^j\to\infty \] f\"ur $ j\to\infty $, d.h. $ Ap_j\not\rightarrow 0=A0 $, d.h. $ A $ ist insbesondere nicht stetig.
+\end{enumerate}

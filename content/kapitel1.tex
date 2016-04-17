@@ -1,0 +1,52 @@
+\chapter{Beispiele normierter R\"aume}
+Vektorr\"aume \"uber $ \K=\R $ oder $ \K=\C $. Den trivialen Vektorraum $ \lbrace 0\rbrace $ schlie\ss en wir aus.
+\begin{definition}
+Sei $ X $ ein $ \K- $Vektorraum. Eine Abbildung $ p\colon X\longrightarrow[0,\infty[ $ hei\ss t \deftxt{Halbnorm}, falls
+\begin{enumerate}
+\item[a)] $ p(\lambda x)=|\lambda|p(x)\forall\lambda\in\K\forall x\in X $
+\item[b)] $ p(x+y)\leq p(x)+p(y)\forall x,y\in X $ (Dreiecksungleichung)
+\end{enumerate}
+Gilt zus\"atzlich c) $ p(x)=0\Rightarrow x=0 $, so hei\ss t $ p $ eine \deftxt{Norm}. Das Paar $ (X,p) $ hei\ss t \deftxt{(halb-)normierter Raum}.\\
+Ist $ p $ bekannt, so hei\ss t $ X $ \deftxt{(halb-)normierter Raum}. Normen werden mit $ \norm{\cdot} $ (statt $ p $) bezeichnet.
+\end{definition}
+\begin{bemerkung*}
+\begin{enumerate}
+\item[]
+\item Aus a) folgt $ p(0)=0 $ (w\"ahle $ \lambda=0 $).
+\item Sei $ (X,\norm{\cdot}) $ ein normierter Raum. Dann ist $ d(x,y)\coloneqq\norm{x-y}\forall x,y\in X $ eine \deftxt{Metrik auf $ X $}.
+\end{enumerate}
+\end{bemerkung*}
+\newpage
+\begin{definition}
+Sei $ X $ ein normierter Raum.
+\begin{enumerate}
+\item[a)] $ (x_n)_{n\in\N})\subseteq X $ ist eine \deftxt{Cauchyfolge}, falls:
+\[ \forall\e>0\exists N\in\N\forall n,m\geq N\colon\norm{x_n-x_m}<\e \]
+\item[b)] $ (x_n)_{n\in\N} $ konvergiert gegen $ x\in X $, falls:
+\[ \forall\e>0\exists N\in\N\forall n\geq N\colon\norm{x_n-x}<\e \]
+\item[c)] $ X $ ist ein \deftxt{Banachraum}, wenn jede Cauchyfolge in $ X $ konvergiert.
+\end{enumerate}
+\end{definition}
+\begin{bemerkung*}
+In normierten R\"aumen ist jede konvergente Folge eine Cauchyfolge.
+\end{bemerkung*}
+\begin{beispiel*}
+$ \K^n $ ist ein Banachraum mit jeder der folgenden Normen ($ x=(x_1,...,x_n) $):
+\[ \norm{x}_1=\sum_{j=1}^{n} |x_j| \]
+\[ \norm{x}_2=\sqrt{\sum_{j=1}^{n}|x_j|^2} \]
+\[ \norm{x}_\infty=\max_{j=1,...,n}|x_j| \]
+\end{beispiel*}
+\begin{proposition}
+In einem endlichdimensionalen Vektorraum $ X $ sind alle Normen \"aquivalent, d.h. zu je zwei Normen $ \norm{\cdot} $, $ \vertiii{\cdot}$ auf $ X $ gibt es eine Konstante $ c>0 $, so dass
+\[ \frac{1}{c}\norm{x}\leq\vertiii{x}\leq c\norm{x}\forall x\in X \]
+\end{proposition}
+\newpage
+\begin{beweis}
+O.B.d.A. $ X=\K^n $.
+\[ \norm{(x_1,...,x_n)}_1=\sum_{j=1}^{n}|x_j| \]
+ist eine Norm auf $ X $. Sei $ \norm{\cdot} $ eine weitere Norm auf $ X $ und $ e_j\coloneqq (0,...,0,1_j,0,...,0) $, $ 1\leq j\leq n $.
+\[ \norm{x}=\norm{\sum_{j=1}^{n}x_je_j}\leq\sum_{j=1}^{n}|x_j|\norm{e_j}\leq\underbrace{\left(\max_{j=1,...,n}\norm{e_j}\right)}_{\eqqcolon c}\sum_{j=1}^{n}|x_j|=c\norm{x}_1 \]
+Also: $ \norm{x}\leq c\norm{x}_1 $ f\"ur ein $ c>0 $ und alle $ x\in X $ und $ \norm{\cdot}\colon (X,\norm{\cdot}_1)\longrightarrow[0,\infty] $ ist stetig.\\
+$ S=\lbrace x\in X\mid\norm{x}_1=1\rbrace $ kompakt ($ \Leftrightarrow $beschr\"ankt und abgeschlossen). Dann folgt: $ \min_{x\in S}\norm{x}=\delta>0 $ mit $ \delta=\norm{\tilde{x}} $ mit $ \norm{\tilde{x}}_1=1 $.
+\[ \norm{x}_1=\frac{1}{\delta}\min_{\tilde{x}\in S}\norm{\tilde{x}}\norm{x}_1\leq\frac{1}{\delta}\norm{\frac{x}{\norm{x}_1}}\norm{x}_1=\frac{1}{\delta}\norm{x}_1 \]
+\end{beweis}
