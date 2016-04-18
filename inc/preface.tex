@@ -25,14 +25,14 @@ Funktionale$ \hat{=} $stetige lineare Abbildungen von Funktionenr\"aumen nach $ 
 In unendlichdimensionalen Vektorr\"aumen gibt es viele im Vergleich zur Analysis im $ \R^n $ ungewohnte Effekte, z.B.:
 \begin{enumerate}
 \item Surjektive lineare Selbstabbildungen sind im Allgemein nicht injektiv.\\
-Sei $ V=\lbrace(x_n)_n\mid x_n\in\R\rbrace $ und $ A\colon V\longrightarrow V $ sei gegeben durch
+Sei $ V=\lbrace(x_n)_n\mid x_n\in\R\rbrace $ und $ A\colon V\rightarrow V $ sei gegeben durch
 \[ A(x_n)_n=A(x_1,x_2,x_3,...)\coloneqq(x_2,x_3,x_4,...) \]
 $ AV=V $ ($ A $ ist surjektiv), aber $ A(x_1,0,0,...)=0$ ($ A $ ist nicht injektiv.
 \item Injektive lineare Selbstabbildungen sind im Allgemeinen nicht surjektiv.\\
 $ V $ wie oben.
 \[ A(x_n)_n=(0,x_1,x_2,x_3,...) \]
 \item Lineare Selbstabbildungen m\"ussen keine Eigenwerte haben.\\
-$ C([a,b])=\lbrace f\colon[a,b]\longrightarrow\C\mid f\text{ stetig}\rbrace $, $ A\colon C([a,b])\longrightarrow C([a,b]) $ sei gegeben durch ($ f\in C([a,b]) $, $ x\in[a,b] $):
+$ C([a,b])=\lbrace f\colon[a,b]\rightarrow\C\mid f\text{ stetig}\rbrace $, $ A\colon C([a,b])\rightarrow C([a,b]) $ sei gegeben durch ($ f\in C([a,b]) $, $ x\in[a,b] $):
 \[ (Af)(x)=(\sin x)f(x) \]
 $ A $ ist der Multiplikationsoperator mit $ \sin x $. $ A $ hat keine Eigenwerte. Andernfalls g\"abe es $ f\in C([a,b]) $, $ f\neq 0 $ und $ \lambda\in\C $ mit
 \[ (\sin x)f(x)=\lambda f(x)\forall x\in[a,b] \]
@@ -42,7 +42,7 @@ Also:
 \[ \forall x\in]x_0-\e,x_0+\e[\colon \sin x=\lambda=\text{konstant}\lightning \]
 In der Funktionalanalysis untersucht man verschiedene Abschw\"achungen des Begriffs 'Eigenwert'.
 \item Lineare Abbildungen sind im Allgemeinen nicht stetig.\\
-$ V=\lbrace p\colon[-2,2]\longrightarrow\C\mid p\text{ Polynom}\rbrace $, versehen mit der gleichm\"assigen Konvergenz, d.h. \[(p_j)_j\to p  \text{ in }  V \Leftrightarrow \norm{p_j-p}_\infty\to 0\text{ f\"ur }j\to\infty\]
-Sei $ A\colon V\longrightarrow V $ definiert durch $ Ax^n=3^nx^n $ und sei $ p_j(x)=\frac{1}{(2.5)^j}x^j $. Dann $ \norm{p_j}_\infty\to 0 $ f\"ur $ j\to\infty $, d.h. $ p_j\to 0 $ in $ V $ f\"ur $ j\to\infty $, aber
+$ V=\lbrace p\colon[-2,2]\rightarrow\C\mid p\text{ Polynom}\rbrace $, versehen mit der gleichm\"assigen Konvergenz, d.h. \[(p_j)_j\to p  \text{ in }  V \Leftrightarrow \norm{p_j-p}_\infty\to 0\text{ f\"ur }j\to\infty\]
+Sei $ A\colon V\rightarrow V $ definiert durch $ Ax^n=3^nx^n $ und sei $ p_j(x)=\frac{1}{(2.5)^j}x^j $. Dann $ \norm{p_j}_\infty\to 0 $ f\"ur $ j\to\infty $, d.h. $ p_j\to 0 $ in $ V $ f\"ur $ j\to\infty $, aber
 \[ \norm{Ap_j}_\infty=\sup_{x\in[-2,2]}\left|\frac{3^j}{2.5^j}x^j\right|=\frac{3^j2^j}{2.5^j}=\left(\frac{6}{2.5}\right)^j\to\infty \] f\"ur $ j\to\infty $, d.h. $ Ap_j\not\rightarrow 0=A0 $, d.h. $ A $ ist insbesondere nicht stetig.
 \end{enumerate}

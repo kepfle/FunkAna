@@ -1,7 +1,7 @@
 \chapter{Beispiele normierter R\"aume}
 Vektorr\"aume \"uber $ \K=\R $ oder $ \K=\C $. Den trivialen Vektorraum $ \lbrace 0\rbrace $ schlie\ss en wir aus.
 \begin{definition}
-Sei $ X $ ein $ \K- $Vektorraum. Eine Abbildung $ p\colon X\longrightarrow[0,\infty[ $ hei\ss t \deftxt{Halbnorm}, falls
+Sei $ X $ ein $ \K- $Vektorraum. Eine Abbildung $ p\colon X\rightarrow[0,\infty[ $ hei\ss t \deftxt{Halbnorm}, falls
 \begin{enumerate}
 \item[a)] $ p(\lambda x)=|\lambda|p(x)\forall\lambda\in\K\forall x\in X $
 \item[b)] $ p(x+y)\leq p(x)+p(y)\forall x,y\in X $ (Dreiecksungleichung)
@@ -46,7 +46,7 @@ O.B.d.A. $ X=\K^n $.
 \[ \norm{(x_1,...,x_n)}_1=\sum_{j=1}^{n}|x_j| \]
 ist eine Norm auf $ X $. Sei $ \norm{\cdot} $ eine weitere Norm auf $ X $ und $ e_j\coloneqq (0,...,0,1_j,0,...,0) $, $ 1\leq j\leq n $.
 \[ \norm{x}=\norm{\sum_{j=1}^{n}x_je_j}\leq\sum_{j=1}^{n}|x_j|\norm{e_j}\leq\underbrace{\left(\max_{j=1,...,n}\norm{e_j}\right)}_{\eqqcolon c}\sum_{j=1}^{n}|x_j|=c\norm{x}_1 \]
-Also: $ \norm{x}\leq c\norm{x}_1 $ f\"ur ein $ c>0 $ und alle $ x\in X $ und $ \norm{\cdot}\colon (X,\norm{\cdot}_1)\longrightarrow[0,\infty] $ ist stetig.\\
+Also: $ \norm{x}\leq c\norm{x}_1 $ f\"ur ein $ c>0 $ und alle $ x\in X $ und $ \norm{\cdot}\colon (X,\norm{\cdot}_1)\rightarrow[0,\infty] $ ist stetig.\\
 $ S=\lbrace x\in X\mid\norm{x}_1=1\rbrace $ kompakt ($ \Leftrightarrow $beschr\"ankt und abgeschlossen). Dann folgt: $ \min_{x\in S}\norm{x}=\delta>0 $ mit $ \delta=\norm{\tilde{x}} $ mit $ \norm{\tilde{x}}_1=1 $.
 \[ \norm{x}_1=\frac{1}{\delta}\min_{\tilde{x}\in S}\norm{\tilde{x}}\norm{x}_1\leq\frac{1}{\delta}\norm{\frac{x}{\norm{x}_1}}\norm{x}_1=\frac{1}{\delta}\norm{x}_1 \]
 \end{beweis}
