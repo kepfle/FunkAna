@@ -85,3 +85,6 @@
 \renewcommand{\div}{\operatorname{div}}
 \newcommand{\supp}{\operatorname{supp}}
 \newcommand{\rot}{\operatorname{rot}}
+\newenvironment{frcseries}{\fontfamily{frc}\selectfont}{}
+\newcommand{\textfrc}[1]{{\frcseries#1}}
+\newcommand{\mathfrc}[1]{\text{\textfrc{#1}}}

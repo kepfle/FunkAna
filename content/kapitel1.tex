@@ -50,3 +50,78 @@ Also: $ \norm{x}\leq c\norm{x}_1 $ f\"ur ein $ c>0 $ und alle $ x\in X $ und $ \
 $ S=\lbrace x\in X\mid\norm{x}_1=1\rbrace $ kompakt ($ \Leftrightarrow $beschr\"ankt und abgeschlossen). Dann folgt: $ \min_{x\in S}\norm{x}=\delta>0 $ mit $ \delta=\norm{\tilde{x}} $ mit $ \norm{\tilde{x}}_1=1 $.
 \[ \norm{x}_1=\frac{1}{\delta}\min_{\tilde{x}\in S}\norm{\tilde{x}}\norm{x}_1\leq\frac{1}{\delta}\norm{\frac{x}{\norm{x}_1}}\norm{x}_1=\frac{1}{\delta}\norm{x}_1 \]
 \end{beweis}
+%Vorlesung nachtragen
+\begin{satz}[Minkowskische Ungleichung, Version f\"ur Folgen]
+F\"ur $ x,y\in \ell^p $, $ 1\leq p<\infty $, gilt $ \norm{x+y}\leq\norm{x}_p+\norm{y}_p $.
+\end{satz}
+\begin{beweis}
+$ p=1.\surd $ Sei also $ p>1$. Wir zeigen die \"aquivalente Ungleichung
+\[ \norm{x+y}_p^p\leq(\norm{x}_p+\norm{y}_p)\norm{x+y}^{p-1}_p \]
+Sei $ x=(x_n)_n $ und $ y=(y_n)_n $. Dann mit $ \frac{1}{p}+\frac{1}{q}=1 $ nach der H\"olderschen Ungleichung:
+\begin{align*} \norm{x+y}_p^p&=\sum_{n\in\N}|x_n+y_n|^p\\&=\sum_{n\in\N}|x_n+y_n||x_n+y_n|^{p-1}\\&\leq\sum_{n\in\N}|x_n||x_n+y_n|^{p-1}+\sum_{n\in\N}|y_n||x_n+y_n|^{p-1}\\&\leq\left(\sum_{n\in\N}|x_n|^p\right)^\frac{1}{p}\left(\sum_{n\in\N}(|x_n+y_n|^{p-1})^q\right)^\frac{1}{q}+\left(\sum_{n\in\N}|y_n|^p\right)^\frac{1}{p}\left(\sum_{n\in\N}(|x_n+y_n|^{p-1})^q\right)^\frac{1}{q}\\&=\norm{x}_p\norm{x+y}_p^{\sfrac{p}{q}}+\norm{y}_p\norm{x+y}_p^{\sfrac{p}{q}}\\&=(\norm{x}_p+\norm{y}_p)\norm{x+y}_p^{p-1} \end{align*}
+Da au\ss erdem gilt: $ \norm{\lambda x}_p=|\lambda|\norm{x}_p $ f\"ur $ \lambda\in\K $ und $ x\in\ell^p $ und $ \norm{x}_p=0\Leftrightarrow x=0 $, ist $ (\ell^p,\norm{\cdot}_p) $ ein normierter Raum.\\
+Behauptung: $ (\ell^p,\norm{\cdot}_p) $ f\"ur $ 1\leq p<\infty $ ist vollst\"andig, d.h. ein Banachraum.
+\begin{beweis}
+Sei $ (x_n) $ eine Cauchyfolge in $ \ell^p $. Wir schreiben $ (x_n)=(x_m^{(n)})_{m\in\N} $, $ x_m^{(n)}\in\K $. F\"ur alle $ y=(y_m)_{m\in\N} $ und alle $ m\in\N $ gilt: $ |y_m|\leq\norm{y}_p $.
+\[ (x_n)_n\text{ Cauchyfolge}\Leftrightarrow\forall\e>0\exists N\in\N\forall n,k\geq N:\norm{x_n-x_k}_p<\e \]
+Aus
+\[ |x_m^{(n)}-x_m^{(k)}|\leq\norm{x_n-x_k}_p \]
+folgt: F\"ur beliebige $ m\in\N $ ist $ (x_m^{(n)})_{n\in\N} $ eine Cauchyfolge in $ \K $ ($ \K $ ist vollst\"andig).\\
+Sei $ x_m\coloneqq\lim_{n\to\infty}x_m^{(n)} $ und $ x=(x_m)_{m\in\N} $. Es bleibt zu zeigen: $ x\in\ell^p $ und $ \norm{x_n-x}_p\xrightarrow{n\to\infty}0 $. Sei $ \e>0 $ beliebig. Dann existiert $ N\in\N:\norm{x_n-x_k}_p<\e\forall n,k\geq N $. Insbesondere gilt f\"ur $ M\in\N: $
+\[ \left(\sum_{m=1}^M|x_m^{(n)}-x_m^{(k)}|^p\right)^\frac{1}{p}\leq\norm{x_n-x_k}_p<\e\forall n,k\geq N \]
+Mit $ k\to\infty $ gilt $ \forall M\in\N\forall n\geq N $:
+\[ \left(\sum_{m=1}^{M}|x_m^{(n)}-x_m|^p\right)^\frac{1}{p}\leq\e \]
+$ M $ war beliebig und somit folgt:
+\[ \left(\sum_{m=1}^{\infty}|x_m^{(n)}-x_m|^p\right)^\frac{1}{p}\leq\e\forall n\geq N \]
+Somit ist $ x_N-x\in\ell^p $ und $ x=x-x_N+x_N\in\ell^p $ und $ \norm{x_n-x}_p\xrightarrow{n\to\infty}0 $.
+\end{beweis} 
+\end{beweis}
+\begin{satz}
+Sei $ (X,\norm{\cdot}^\ast) $ ein halbnormierter Raum.
+\begin{enumerate}
+\item[a)] $ N\coloneqq\lbrace x\in X\mid \norm{x}^\ast=0\rbrace $ ist ein Untervektorraum von $ X $.
+\item[b)] $ \norm{[x]}\coloneqq\norm{x}^\ast $ definiert eine Norm auf $ X/N $.
+\item[c)] Ist $ X $ vollst\"andig, d.h. in $ X $ konvergiert jede Cauchyfolge, so ist $ X/N $ ein Banachraum.
+\end{enumerate}
+\end{satz}
+\begin{beweis}
+\begin{enumerate}
+\item[a)] $ \surd $
+\item[b)] $ \norm{\cdot} $ ist wohldefiniert, d.h. unabh\"angig vom Repr\"asentanten der \"Aquivalenzklasse: Seien $ x,y\in X $ mit $ [x]=[y] $. Zu zeigen: $ \norm{x}^\ast=\norm{y}^\ast $.
+\[ [x]=[y]\Leftrightarrow x\sim y\Leftrightarrow x-y\in N\Leftrightarrow\norm{x-y}^\ast=0 \]
+Die umgekehrte Dreiecksungleichung \[ |\norm{x}^\ast-\norm{y}^\ast|\leq\norm{x-y}^\ast \] zeigt $ \norm{x}^\ast=\norm{y}^\ast $. Homogenit\"at und Dreiecksungleichung folgen nun direkt aus den entsprechenden Eigenschaften von $ \norm{\cdot}^\ast $.
+\[ \norm{[x]}=0\Leftrightarrow\norm{x}^\ast=0\Leftrightarrow x\in N\Leftrightarrow x\sim 0\Leftrightarrow[x]=[0] \]
+\item[c)] Folgt aus: 
+\[ ([x_n])_{n\in\N}\text{ Cauchyfolge in }X/N\Leftrightarrow([x_n])_{n\in\N}\text{ Cauchyfolge in }X \]
+\end{enumerate}
+\end{beweis}
+\begin{beispiel*}[Die $ L^p-$R\"aume]
+Sei $ I $ ein Intervall, dann ist $ (I,B(I),\lambda_1) $ ein Ma\ss raum (gleiche \"Uberlegungen f\"ur einen Ma\ss raum $ (X,\sA,\mu) $). Sei $ \sL^\infty(I)\coloneqq\lbrace f\colon I\rightarrow\K\mid f\text{ messbar}, \exists N\in B(I)\text{ mit }\lambda_1(N)=0, f|_{I\setminus N} \text{ ist beschr\"ankt}\rbrace $.
+\[ \norm{f}^\ast_{L^\infty}\coloneqq\inf_{\substack{N\in B(I)\\\lambda_1(N)=0}}\sup_{t\in I\setminus N}|f(t)|=\inf_{\substack{N\in B(I)\\\lambda_1(N)=0}}\norm{f|_{I\setminus N}}_\infty \]
+Es gilt:
+\begin{enumerate}
+\item $ f\in\sL^\infty(I)\Rightarrow\norm{f}^\ast_{L^\infty}<\infty $
+\item Zu $ f\in\sL^\infty(I) $ gibt es eine messbare Nullmenge $ N $ mit $ \norm{f}^\ast_{L^\infty}\coloneqq\norm{f|_{I\setminus N}}_\infty $.
+\begin{beweis}
+Zu $ r\in\N $ w\"ahlen wir eine messbare Nullmenge $ N_r $ mit $ \norm{f|_{I\setminus N_r}}_\infty\leq\norm{f}^\ast_{L^\infty}+\frac{1}{r} $. Dann ist $ N\coloneqq\bigcup_{r\in\N}N_r $ auch eine messbare Nullmenge und es gilt:
+\[ \norm{f}_{L^\infty}^\ast\leq \norm{f|_{I\setminus N}}_\infty\leq\norm{f|_{I\setminus N_r}}_\infty\leq\norm{f}_{L^\infty}^\ast+\frac{1}{r}\forall r\in\N \]
+Da $ r $ beliebig ist, folgt die Behauptung.
+\end{beweis}
+\item $ (\sL^\infty(I),\norm{\cdot}^\ast_{L^\infty}) $ ist ein halbnormierter Vektorraum.
+\begin{beweis}
+Wir zeigen nur die Dreiecksungleichung, alle weiteren Eigenschaften folgen direkt. Seien $ f_1, f_2\in\sL^\infty(I) $ und $ N_1, N_2 $ messbare Nullmengen gem\"a\ss\ ii).
+\begin{align*} \norm{f_1+f_2}^\ast_{L^\infty}&=\inf_{\substack{N\in B(I)\\\lambda_1(N)=0}}\norm{(f_1+f_2)_{I\setminus N}}_\infty\\&\leq\norm{(f1+f_2)|_{I\setminus(N_1\cup N_2)}}_\infty\\&\leq\norm{f_1|_{I\setminus(N_1\cup N_2)}}_\infty+\norm{f_2|_{I\setminus(N_1\cup N_2)}}_\infty\\&\leq\norm{f_1|_{I\setminus N_1}}\infty+\norm{f_2|_{I\setminus N_2}}_\infty\\&=\norm{f_1}^\ast_{L^\infty}+\norm{f_2}^\ast_{L^\infty} \end{align*}
+\end{beweis}
+\item $ (\sL^\infty(I),\norm{\cdot}^\ast_{L^\infty}) $ ist vollst\"andig, d.h. jede Cauchyfolge ist konvergent.
+\begin{beweis}
+Sei $ (f_n)_n $ eine Cauchyfolge in $ \sL^\infty(I) $. Nach ii) existieren messbare Nullmengen $ N_{n,m} $ mit
+\[ \norm{f_n-f_m}_{L^\infty}^\ast=\norm{(f_n-f_m)|_{I\setminus N_{n,m}}}_\infty \]
+Sei $ N=\bigcup_{n,m\in\N} N_{n,m} $ (abz\"ahlbare Vereinigung). Dies ist auch eine messbare Nullmenge und es gilt:
+\[ \norm{f_n-f_m}^\ast_{L^\infty}=\norm{(f_n-f_m)|_{I\setminus N}}_\infty \]
+Also ist $ (f_n|_{I\setminus N})_{n\in\N} $ eine Cauchyfolge im Banachraum $ (\ell^\infty(I\setminus N),\norm{\cdot}_\infty) $. Daher existiert $ g\in\ell^\infty(I\setminus N) $ und $ f_n|_{I\setminus N}\xrightarrow{n\to\infty}g $ in $ \ell^\infty(I\setminus N) $. Setze $ f(t)= \begin{cases}
+g(t)&t\in I\setminus N\\0&t\in N
+\end{cases} $. Dann ist $ f $ beschr\"ankt und als punktweiser Limes der messbaren Funktionenfolge $ (f_n\chi_{I\setminus N})_{n\in\N} $ wieder messbar. Daraus folgt:
+\[ \norm{f_n-f}^\ast_{L^\infty}\leq\norm{(f_n-f)_{I\setminus N}}_\infty\xrightarrow{n\to\infty}0 \]
+\end{beweis}
+\end{enumerate}
+\end{beispiel*}
