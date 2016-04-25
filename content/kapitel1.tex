@@ -125,3 +125,92 @@ g(t)&t\in I\setminus N\\0&t\in N
 \end{beweis}
 \end{enumerate}
 \end{beispiel*}
+%Vorlesung nachtragen
+Sei $ N_p\coloneqq\lbrace f\in\sL^p(I)\mid\norm{f}_p^ast=0\rbrace =\lbrace f\colon I\rightarrow\K\mid f\text{ messbar und } f=0\text{ fast \"uberall}\rbrace $, $ L^p(I)=\sL^p(I)/N_p $, $ \norm{[f]}_p=\norm{f}_p^\ast $. Dann ist $ (L^p(I), \norm{\cdot}_p) $ ein Banachraum.
+\begin{bemerkung*}
+EIn nicht vollst\"andiger Raum $ X $ kann stets in einen Banachraum 'eingebettet' werden. Sei $ CF(X)\coloneqq\lbrace (x_n)_n\subset X\mid (x_n)_n\text{ ist eine Cauchyfolge}\rbrace $. Auf $ CF(X) $ definieren wir die \"Aquivalenzrelation
+\[ (x_n)_n\sim(y_n)_n\Leftrightarrow\lim_{n\to\infty}\norm{x_n-y_n}=0 \]
+Sei $ \hat X\coloneqq\lbrace [(x_n)]\mid (x_n)_n\subseteq CF(X)\rbrace $ mit $ \norm{[(x_n)_n]}=\lim_{n\to\infty}\norm{x_n} $. Dann gilt: $ (\hat X,\norm{\cdot}) $ ist ein Banachraum und indem man $ X $ mit den konstanten Folgen in $ \hat X $ identifiziert, wird $ X $ in nat\"urlicher Weise in $ \hat X $ dicht eingebettet (d.h. $ X\subset \hat X $ und $ \bar X=\hat X $).\\
+$ \hat X $ nennt man auch die \deftxt{Vervollst\"andigung von $ X $}.
+\end{bemerkung*}
+\newpage
+\begin{satz}
+Sei $ X $ ein normierter Raum.
+\begin{enumerate}
+\item Aus $ x_n\rightarrow x $ in $ X $ und $ y_n\rightarrow y $ in $ X $ folgt $ x_n+y_n\rightarrow x+y $.
+\item Aus $ \lambda_n\rightarrow\lambda $ in $ \K $ und $ x_n\rightarrow x $ in $ X $ folgt $ \lambda_nx_n\rightarrow \lambda x $.
+\item Aus $ x_n\rightarrow x $ folgt $ \norm{x_n}\rightarrow \norm{x} $.
+\end{enumerate}
+\end{satz}
+\begin{bemerkung*}
+Aus iii) folgt: Konvergente Folgen in $ X $ sind beschr\"ankt.
+\end{bemerkung*}
+\begin{beweis}
+\begin{enumerate}
+\item folgt aus \[ \norm{x_n+y_n-(x+y)}\leq\norm{x_n-x}+\norm{y_n-y}\rightarrow 0 \]
+\item 
+\[ \norm{\lambda_nx_n-\lambda x}=\norm{\lambda_n(x_n-x)+(\lambda_n-\lambda)x}\leq|\lambda_n|\norm{x_n-x}+|\lambda_n-\lambda|\norm{x} \]
+\item folgt aus
+\[ 0\leq|\norm{x_n}-\norm{x}|\leq\norm{x_n-x}\rightarrow 0 \]
+\end{enumerate}
+\end{beweis}
+\begin{satz}
+Ist $ U $ ein Untervektorraum des normierten Raumes $ X $, so ist sein Abschluss $ \bar U $ ebenfalls ein Untervektorraum.
+\end{satz}
+\begin{beweis}
+Seien $ x,y\in\bar U $. Dann existieren Folgen $ (x_n)_n $, $ (y_n) $ in $ U $ mit $ x_n\rightarrow x $ und $ y_n\rightarrow y $. Also:
+\[ x_n+y_n\rightarrow x+y\Rightarrow x+y\in\bar U \]
+Sei $ \lambda\in\K $ und $ x\in \bar U$. Dann existiert eine Folge $ (x_n)_n $ in $ U $ mit $ x_n\rightarrow x $. Es folgt:
+\[ \lambda x_n\rightarrow \lambda x\Rightarrow \lambda x\in\bar U \]
+\end{beweis}
+\newpage
+\begin{bemerkung*}
+Ist $ \dim U<\infty $, dann ist $ U $ abgeschlossen. Im Allgemeinen ist ein Untervektorraum nicht abgeschlossen.
+\end{bemerkung*}
+\begin{satz}
+Seien $ \norm{\cdot} $ und $ \vertiii{\cdot} $ zwei Normen auf $ X $. Dann sind \"aquivalent:
+\begin{enumerate}
+\item $ \norm{\cdot} $ und $ \vertiii{\cdot} $ sind \"aquivalent, d.h. $ \exists c_1,c_2>0:c_1\norm{x}\leq\vertiii{x}\leq c_2\norm{x}\forall x\in X $.
+\item Eine Folge ist bez\"uglich $ \norm{\cdot} $ konvergent genau dann, wenn sie bez\"uglich $ \vertiii{\cdot} $ konvergent ist.
+\item Eine Folge ist eine $ \norm{\cdot}- $Nullfolge genau dann, wenn sie eine $ \vertiii{\cdot}- $Nullfolge ist.
+\end{enumerate}
+\end{satz}
+\begin{beweis}
+i)$ \Rightarrow $ii)$ \Rightarrow $iii) klar. Es bleibt zu zeigen: iii)$ \Rightarrow $i).\\
+Angenommen es gibt kein $ c_2>0 $, so dass die Ungleichung $ \vertiii{x}\leq c_2\norm{x}\forall x\in X $. Dann gilt f\"ur alle $ n\in\N $: $ \exists x_n\in X:\vertiii{x_n}>n\norm{x_n} $. Setze $ y_n\coloneqq\frac{1}{n}\frac{x_n}{\norm{x_n}} $. Dann folgt:
+\[ \norm{y_n}=\norm{\frac{1}{n}\frac{x_n}{\norm{x_n}}}=\frac{1}{n}\rightarrow 0 \]
+Also ist $ (y_n)_n $ eine $ \norm{\cdot}- $Nullfolge und mit iii) somit auch eine $ \vertiii{\cdot}- $Nullfolge. Aber \[ \vertiii{y_n}=\vertiii{\frac{1}{n}\frac{x_n}{\norm{x_n}}}=\frac{1}{n\norm{x_n}}\vertiii{x_n}>\frac{n\norm{x_n}}{n\norm{x_n}}=1\lightning \]
+Die Existenz von $ c_1>0:c_1\norm{x}\leq\vertiii{x} \forall x\in X$ l\"asst sich analog zeigen. 
+\end{beweis}
+\begin{bemerkung*}
+Zus\"atzliche \"Aquivalenz:
+\begin{enumerate}
+\item[iv)] $ (X,\norm{\cdot}) $ und $ (X,\vertiii{\cdot}) $ besitzen die selben Cauchyfolgen. Somit: $ (X,\norm{\cdot}) $ ist vollst\"andig$ \Leftrightarrow (X,\vertiii{\cdot})$ ist vollst\"andig.
+\end{enumerate}
+\begin{beispiel*}
+Aufgabe 3 zeigt, dass $ \norm{\cdot}_\infty $ und $ \norm{\cdot} $ auf $ C^1[a,b] $ nicht \"aquivalent sind.
+\end{beispiel*}
+\end{bemerkung*}
+\begin{lemma}[Rieszsches Lemma]
+Sei $ U $ ein abgeschlossener Unterraum des normierten Raums $ X $ mit $ U\neq X $. Ferner sei $ 0<\delta<1 $. Dann existiert ein $ x_\delta\in X $ mit $ \norm{x_\delta}=1 $ und
+\[ \forall u\in U:\norm{x_\delta-u}\geq 1-\delta \]
+\end{lemma}
+\begin{beweis}
+Sei $ x\in X\setminus U $.
+\[ d\coloneqq\inf\lbrace\norm{x-u}\mid u\in U\rbrace>0 \]
+Denn andernfalls g\"abe es eine Folge $ (u_n)_n\in U $ mit $ u_n\rightarrow x $ und $ x $ l\"age dann in $ \bar U=U $ (da $ U $ abgeschlossen). Es gilt: $ d<\frac{d}{1-\delta} $. Dann existiert ein $ u_\delta\in U $, f\"ur das gilt:
+$ \norm{x-u_\delta}<\frac{d}{1-\delta} $.\\
+Setze $ x_\delta\coloneqq\frac{x-u_\delta}{\norm{x-u_\delta}} $. Dann ist $ \norm{x_\delta}=1 $ und es gilt f\"ur $ u\in U $ beliebig:
+\[ \norm{x_\delta-u}=\norm{\frac{x-u_\delta}{\norm{x-u_\delta}}-u}=\frac{1}{\norm{x-u_\delta}}\norm{x-(u_\delta+\norm{x-u_\delta}u)}\geq\frac{1}{\norm{x-u_\delta}}d>1-\delta \]
+\end{beweis}
+\begin{bemerkung*}
+Das Rieszsche Lemma gilt nicht f\"ur $ \delta=0 $.
+\begin{beispiel*}
+Sei $ X=\lbrace x\in C[0,1]\mid x(1)=0\rbrace $. $ (X,\norm{\cdot}_\infty) $ ist ein normierter Raum. $ U=\left\lbrace x\in X\middle| \int_0^1x(t)\dd t=0\right\rbrace $ ist ein abgeschlossener Untervektorraum.\\
+Angenommen es gibt ein Element $ x\in X $ mit $ \norm{x-u}_\infty\geq 1=\norm{x}_\infty\forall u\in U $. Setze $ x_n(t)=1-t^n $. Dann sind $ x_n\in X $, $ \norm{x_n}_\infty=1 $ und $ \int_0^1x_n(t)\dd t=1-\frac{1}{n+1} $. Setze
+\[ \lambda_n=\frac{\int_0^1 x(t)\dd t}{1-\frac{1}{n+1}},\qquad u_n=x-\lambda_nx_n\in U \]
+Daraus folgt: $ \norm{x-u_n}_\infty\geq 1 $ und $ \norm{x-u_n}_\infty=\norm{\lambda_nx_n}_\infty=|\lambda_n|\geq 1 $.
+\[ \left|\int_0^1 x(t)\dd t\right|=|\lambda_n|\left|1-\frac{1}{n+1}\right|\geq\left|1-\frac{1}{n+1}\right|\geq 1 n\forall\in\N \]
+Aber $ x\colon[0,1]\rightarrow\K $ stetig, $ \norm{x}_\infty\leq 1 $ und $ x(1)=0 $.
+\end{beispiel*}
+\end{bemerkung*}
