@@ -285,5 +285,15 @@ $ C[a,b] $ ist separabel.
  Es gilt: \[ d(x,A)=0\Leftrightarrow x\in\bar A \]
 \end{bemerkung*}
 \begin{satz}
-	Sei $ X $ ein normierter Raum und $ U\subseteq X $ ein Untervektorraum. $ X/U $ bezeichnet die Menge der \"Aquivalenzklassen bez\"uglich der \"Aquivalenzrelation $ x\sim y\Leftrightarrow x-y\in U $.
+	Sei $ X $ ein normierter Raum und $ U\subseteq X $ ein Untervektorraum. $ X/U $ bezeichnet die Menge der \"Aquivalenzklassen bez\"uglich der \"Aquivalenzrelation $ x\sim y\Leftrightarrow x-y\in U $. F\"ur $ x\in X $ sei $ [x]=x+U\in X/U $ die zugeh\"orige \"Aquivalenzklasse. Es gilt:
+	\begin{enumerate}
+		\item $ \norm{x}=d(x,U) $ definiert eine Halbnorm auf $ X/U $.
+		\item Ist $ U $ abgeschlossen, so ist $ \norm{\cdot} $ eine Norm auf $ X/U $.
+		\item Ist $ X $ vollst\"andig und $ U $ abgeschlossen, so ist $ X/U $ ein Banachraum.
+	\end{enumerate}
 \end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item $ \norm{\cdot} $ ist wohldefiniert, denn: $ [x_1]=[x_2] $ impliziert $ x_1=x_2+u $ f\"ur ein $ u\in U $, also $ d(x_1,U)=d(x_2,U) $.
+	\end{enumerate}
+\end{beweis}

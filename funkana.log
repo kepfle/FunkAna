@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.1)  2 MAY 2016 13:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.1)  2 MAY 2016 13:28
 entering extended mode
 **./funkana.tex
 (funkana.tex
@@ -2014,7 +2014,20 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 281.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 281.
-[18])
+[18]
+Overfull \hbox (22.7064pt too wide) in paragraph at lines 297--298
+[]$[]$ \T1/fnc/m/n/12 (-20) ist wohl-de-fi-niert, denn: $[\FML/fncmi/m/it/12 x[
+]\T1/fnc/m/n/12 (-20) ] \FMS/fncm/m/n/12  \T1/fnc/m/n/12 (-20) [\FML/fncmi/m/i
+t/12 x[]\T1/fnc/m/n/12 (-20) ]$ im-pli-ziert $\FML/fncmi/m/it/12 x[] \FMS/fncm/
+m/n/12  \FML/fncmi/m/it/12 x[] \FMS/fncm/m/n/12 € \FML/fncmi/m/it/12 u$ \T1/fn
+c/m/n/12 (-20) für ein $\FML/fncmi/m/it/12 u \FMS/fncm/m/n/12 2 \FML/fncmi/m/it
+/12 U$\T1/fnc/m/n/12 (-20) , al-so $\FML/fncmi/m/it/12 d\T1/fnc/m/n/12 (-20) (\
+FML/fncmi/m/it/12 x[]; U\T1/fnc/m/n/12 (-20) ) \FMS/fncm/m/n/12  \FML/fncmi/m/
+it/12 d\T1/fnc/m/n/12 (-20) (\FML/fncmi/m/it/12 x[]; U\T1/fnc/m/n/12 (-20) )$. 
+
+ []
+
+)
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 42.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2026,8 +2039,7 @@ Package babel Info: Redefining ngerman shorthand "~
  [19]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
- (funkana.aux (inc/titlepage.aux) (inc/preface.aux)
-(content/kapitel1.aux))
+ (funkana.aux (inc/titlepage.aux) (inc/preface.aux) (content/kapitel1.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
 Package rerunfilecheck Info: File `funkana.out' has not changed.
@@ -2043,11 +2055,11 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 51.
  ) 
 Here is how much of TeX's memory you used:
- 31633 strings out of 493634
- 610634 string characters out of 3133608
+ 31640 strings out of 493634
+ 610686 string characters out of 3133608
  749340 words of memory out of 3000000
  34196 multiletter control sequences out of 15000+200000
- 117826 words of font info for 301 fonts, out of 3000000 for 9000
+ 117944 words of font info for 303 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  67i,19n,78p,10453b,629s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Sebastian/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/inconso
@@ -2070,9 +2082,9 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncb8a.pfb><C:/Use
 rs/Sebastian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncr8a.
 pfb><C:/Users/Sebastian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/ncntr
 sbk/uncri8a.pfb>
-Output written on funkana.pdf (19 pages, 188615 bytes).
+Output written on funkana.pdf (19 pages, 189780 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
- 86 named destinations out of 1000 (max. 500000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 90 named destinations out of 1000 (max. 500000)
  37405 words of extra memory for PDF output out of 42996 (max. 10000000)
 
