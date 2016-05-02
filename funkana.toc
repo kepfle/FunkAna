@@ -1,6 +1,3 @@
 \select@language {ngerman}
 \contentsline {chapter}{Vorwort}{5}{chapter*.1}
-\contentsline {paragraph}{\"Ubungszettel:}{5}{paragraph*.2}
-\contentsline {paragraph}{Literatur:}{5}{paragraph*.3}
-\contentsline {paragraph}{Motivation:}{5}{paragraph*.4}
 \contentsline {chapter}{\numberline {1}Beispiele normierter R\"aume}{7}{chapter.1}

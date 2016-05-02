@@ -22,6 +22,8 @@
 \ifthenelse{\equal{\sectioning}{1}}{}{\automark[chapter]{chapter}}%different headlines for chapter-only and sectioning
 
 %\includeonly{content/int1}											% while writing your book, compile only what you need
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
 \begin{document}
 \ifthenelse{\equal{\nulltesKapitelerzeugen}{1}}{\addtocounter{chapter}{-1}}{}
 \raggedbottom

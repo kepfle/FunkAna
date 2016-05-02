@@ -128,7 +128,7 @@ g(t)&t\in I\setminus N\\0&t\in N
 %Vorlesung nachtragen
 Sei $ N_p\coloneqq\lbrace f\in\sL^p(I)\mid\norm{f}_p^ast=0\rbrace =\lbrace f\colon I\rightarrow\K\mid f\text{ messbar und } f=0\text{ fast \"uberall}\rbrace $, $ L^p(I)=\sL^p(I)/N_p $, $ \norm{[f]}_p=\norm{f}_p^\ast $. Dann ist $ (L^p(I), \norm{\cdot}_p) $ ein Banachraum.
 \begin{bemerkung*}
-EIn nicht vollst\"andiger Raum $ X $ kann stets in einen Banachraum 'eingebettet' werden. Sei $ CF(X)\coloneqq\lbrace (x_n)_n\subset X\mid (x_n)_n\text{ ist eine Cauchyfolge}\rbrace $. Auf $ CF(X) $ definieren wir die \"Aquivalenzrelation
+Ein nicht vollst\"andiger Raum $ X $ kann stets in einen Banachraum 'eingebettet' werden. Sei $ CF(X)\coloneqq\lbrace (x_n)_n\subset X\mid (x_n)_n\text{ ist eine Cauchyfolge}\rbrace $. Auf $ CF(X) $ definieren wir die \"Aquivalenzrelation
 \[ (x_n)_n\sim(y_n)_n\Leftrightarrow\lim_{n\to\infty}\norm{x_n-y_n}=0 \]
 Sei $ \hat X\coloneqq\lbrace [(x_n)]\mid (x_n)_n\subseteq CF(X)\rbrace $ mit $ \norm{[(x_n)_n]}=\lim_{n\to\infty}\norm{x_n} $. Dann gilt: $ (\hat X,\norm{\cdot}) $ ist ein Banachraum und indem man $ X $ mit den konstanten Folgen in $ \hat X $ identifiziert, wird $ X $ in nat\"urlicher Weise in $ \hat X $ dicht eingebettet (d.h. $ X\subset \hat X $ und $ \bar X=\hat X $).\\
 $ \hat X $ nennt man auch die \deftxt{Vervollst\"andigung von $ X $}.
@@ -214,3 +214,76 @@ Daraus folgt: $ \norm{x-u_n}_\infty\geq 1 $ und $ \norm{x-u_n}_\infty=\norm{\lam
 Aber $ x\colon[0,1]\rightarrow\K $ stetig, $ \norm{x}_\infty\leq 1 $ und $ x(1)=0 $.
 \end{beispiel*}
 \end{bemerkung*}
+%Vorlesung nachtragen
+\begin{beweis}
+$ [a,b]=[0,1] $. Sei $ f\in C[0,1] $.
+\[ P_n(s)=B_n(s,f)\coloneqq\sum_{i=0}^{n}\binom{n}{i}s^i(1-s)^{n-i}f\left(\frac{i}{n}\right) \]
+Zu zeigen: $ \norm{P_n-f}_\infty\rightarrow 0 $. Da $ f $ gleichm\"assig stetig ist, existiert zu $ \e>0 $ ein $ \delta>0 $ mit $ |s-t|\leq\sqrt{\delta} $ und es folgt $ |f(s)-f(t)|\leq\e $.\\
+Es gilt f\"ur $ |s-t|>\delta $ mit $ \alpha=\frac{2\norm{f}_\infty}{\delta} $:
+\[ |f(s)-f(t)|\leq|f(s)|+|f(t)|\leq 2\norm{f}_\infty=\alpha\delta\leq\alpha(s-t)^2 \]
+Somit gilt f\"ur beliebige $ s,t\in[0,1] $:
+\[ |f(s)-f(t)|\leq\alpha(s-t)^2+\e \]
+Setze $ y_t(s)\coloneqq(t-s)^2 $. Dann folgt:
+\[ -\e-\alpha y_t(s)<f(s)-f(t)<\alpha y_t(s)+\e\forall s,t\in[0,1] \]
+Wir bestimmen nun die Bernstein-Polynome zu $ f_j(s)=s^j $ f\"ur $ j=0,1,2 $:
+\[ B_n(s,f_0)=\sum_{i=0}^{n}\binom{n}{i}s^i(1-s)^{n-i}=(s+(1-s))^n=1 \]
+\[ B_n(s,f_1)=\sum_{i=1}^{n}\binom{n}{i}s^i(1-s)^{n-i}\frac{i}{n}=\footnote{$ \binom{n}{i}\frac{i}{n}=\binom{n-1}{i-1} $}\sum_{i=0}^{n-1}\binom{n-1}{i}s^{i+1}(1-s)^{n-(i+1)}=s(s-(1-s))^{n-1}=s \]
+\begin{align*} B_n(s,f_2)&=\sum_{i=0}^{n}\binom{n}{i}s^i(1-s)^{n-1}\left(\frac{i}{n}\right)^2\\&=\sum_{i=1}^{n}\binom{n-1}{i-1}s^i(1-s)^{n-i}\frac{i}{n}\\&=\sum_{i=0}^{n-1}\binom{n-1}{i}s^{i+1}(1-s)^{n-(i+1)}\frac{i+1}{n}\\&=\frac{s}{n}+\sum_{i=0}^{n-1}\binom{n-1}{i}s^{i+1}(1-s)^{n-(i+1)}\frac{i}{n}\\&=\frac{s}{n}+s\frac{n-1}{n}\underbrace{\sum_{i=0}^{n-1}\binom{n-1}{s}s^i(1-s)^{(n-1)-i}\frac{i}{n-1}}_{B_{n-1}(s,f_1)}\\&=\frac{s}{n}+s^2\frac{n-1}{n}\\&=s^2+\frac{s}{n}-\frac{s^2}{n}\\&=s^2+\frac{s(1-s)}{n} \end{align*}
+Es folgt:
+\[ -B_n(s,\e+\alpha y_t)=B_n(s,-\e-\alpha y_t)\leq B_n(s,f-f(t))\leq B_n(s,\alpha y_t+\e) \]
+F\"ur alle $ s,t\in[0,1] $ gilt dann:
+\begin{align*} |P_n(s)-f(t)|&=|B_n(s,f)-f(t)B_n(s,f_0)|\\&=|B_n(s,f)-B_n(s,f(t))|\\&=|B_n(s,f-f(t))|\leq B_n(s,\alpha y-t+\e)\\&=B_n(s,\e+\alpha(t^2-2st+t^2))=B_n(s,\e)+\alpha B_n(s,t^2)-2\alpha B_n(s,st)+\alpha B_n(s,s^2)\\&=\e+\alpha t^2-2\alpha ts+\alpha\left(s^2+\frac{s(1-s)}{n}\right)  \end{align*}
+Mit $ s=t $ folgt dann:
+\[ |P_n(t)-f(t)|\leq\e+\alpha t^2-2\alpha t^2+\alpha\left(t^2+\frac{t(i-1)}{n}\right)\leq\e\frac{\alpha}{n} \]
+Also:
+\[ \norm{P_n-f}_\infty\leq\e+\frac{\alpha}{n} \]
+Hieraus folgt die gleichm\"assige Konvergenz.
+\end{beweis}
+\begin{korollar}
+$ C[a,b] $ ist separabel.
+\end{korollar}
+\begin{beweis}
+	Aus dem Approximationssatz folgt: $ C[a,b]=\overline{\text{lin}\lbrace x_n\mid n\in\N_0\rbrace} $ mit $ x_n(t)=t^n $.
+\end{beweis}
+\begin{satz}
+	Sei $ 1\leq p<\infty $. $ C[a,b] $ ist dicht in $ L^p[a,b] $.
+\end{satz}
+\begin{beweis}
+	Zu zeigen: $ \overline{C[a,b]}=L^p[a,b] $ (Abschluss bez\"uglich $ \norm{\cdot}_p $)\\
+	Sei $ B([a,b]) $ die $ \sigma- $Algebra der Borelmengen auf $ [a,b] $. Aus der Definition des Lebesgueintegrals folgt: $ \text{lin}\lbrace\chi_A\mid A\in B([a,b])\rbrace $, der Raum der Stufenfunktionen, liegt dicht in $ L^p[a,b] $. Das Lebesgzema\ss\ ist \deftxt{regul\"ar}, d.h.:
+	\[ \lambda(A)=\inf\lbrace\lambda(O)\mid A\subseteq O, O\text{ offen}\rbrace  \]
+	Daraus folgt f\"ur alle $ A\in B([a,b]) $, dass f\"ur alle $ \e>0 $ eine offene Menge $ O $ mit $ A\subseteq O $ existiert so dass:
+	\[ \norm{\chi_A-\chi_O}_p=\norm{\chi_{O\setminus A}}_p=\lambda(O\setminus A)^\frac{1}{p}<\e \]
+	Somit:
+	\[ \lbrace\chi_A\mid A\in B([a,b])\rbrace\subseteq\overline{\lbrace\chi_O\mid O\text{ offen}\rbrace} \]
+	\[ L^p[a,b]=\overline{\text{lin}\lbrace\chi_A\mid A\in B([a,b])\rbrace}=\overline{\text{lin}\lbrace\chi_O\mid O\text{ offen}\rbrace} \]
+	Jede offene Menge $ O $ ist eine abz\"ahlbare Vereinigung von paarweise disjunkten Intervallen $ I_j $. Aus $ \lambda(O)=\sum_{j=1}^{\infty}\lambda(I_j) $ folgt:
+	$\chi_O\in\overline{\text{lin}\lbrace\chi_I\mid I\text{ offenes Intervall}\rbrace}$. Hieraus folgt nun: \[ L^p[a,b]=\overline{\text{lin}\lbrace\chi_I\mid I\text{ offenes Intervall}\rbrace} \]
+	Es gen\"ugt zu zeigen: Zu jedem offenen Intervall $ I\subset[a,b] $ und jedem $ \e>0 $ existiert eine stetige Funktioen $ f $ mit $ \norm{f-\chi_I}_p<\e $. Sei $ \e>0 $ und $ a\leq a'<b'\leq b $. W\"ahle $ f(x) $ geeignet. Dann folgt, dass $ C[a,b] $ dicht in $ L^p[a,b] $ liegt.
+\end{beweis}
+\begin{korollar}
+	$ 1\leq p<\infty $. $ L^p $ ist separabel.
+\end{korollar}
+\begin{beweis}
+	Es gen\"ugt zu zeigen, dass die Polynome dicht in $ L^p[a,b] $ liegen. Sei $ f\in L^p[a,b] $. Nach \ref{satz1.21} existiert eine Folge $ (f_n)_n $ stetiger Funktionen mit $ \norm{f_n-f}_p\rightarrow 0 $. Nach dem Weierstra\ss schen Approximationssatz existieren Polynome $ P_n $ mit $ \norm{f_n-P_n}_\infty\leq\frac{1}{n} $. Wegen
+	\[ \norm{g}_p=\left(\int_a^b |g|^p\dd\lambda\right)^\frac{1}{p}\leq(b-a)^\frac{1}{p}\norm{g}_\infty \]
+	f\"ur $ g\in C[a,b] $ folgt $ \norm{f_n-P_n}_p\rightarrow 0 $ f\"ur $ n\rightarrow\infty $. Also folgt:
+	\[ \norm{P_n-f}_p\leq\norm{P_n-f_n}_p+\norm{f_n-f}_p\rightarrow 0 \]
+\end{beweis}
+\begin{bemerkung*}
+	Ohne Beweis sei noch erw\"ahnt:
+	\begin{enumerate}
+		\item $ T $ kompakter Raum$ \Rightarrow(C(T),\norm{\cdot}_\infty) $ ist separabel.
+		\item $ \Omega $ offene Menge (z.B. $ \R $). $ L^p(\Omega) $ ist separabel, $ 1\leq p<\infty $.
+	\end{enumerate}
+\end{bemerkung*}
+\begin{definition}
+	Sei $ X $ ein normierter Raum und $ A\subseteq X $. Der  \deftxt{Abstand} von $ x\in X $ zu $ A $ ist gegeben durch:
+	\[ d(x,A)\coloneqq\inf\lbrace\norm{x-a}\mid a\in A\rbrace \]
+\end{definition}
+\begin{bemerkung*}
+ Es gilt: \[ d(x,A)=0\Leftrightarrow x\in\bar A \]
+\end{bemerkung*}
+\begin{satz}
+	Sei $ X $ ein normierter Raum und $ U\subseteq X $ ein Untervektorraum. $ X/U $ bezeichnet die Menge der \"Aquivalenzklassen bez\"uglich der \"Aquivalenzrelation $ x\sim y\Leftrightarrow x-y\in U $.
+\end{satz}
