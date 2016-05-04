@@ -1,3 +1,4 @@
 \select@language {ngerman}
 \contentsline {chapter}{Vorwort}{5}{chapter*.1}
 \contentsline {chapter}{\numberline {1}Beispiele normierter R\"aume}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}Funktionale und Operatoren}{21}{chapter.2}

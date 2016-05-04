@@ -295,5 +295,22 @@ $ C[a,b] $ ist separabel.
 \begin{beweis}
 	\begin{enumerate}
 		\item $ \norm{\cdot} $ ist wohldefiniert, denn: $ [x_1]=[x_2] $ impliziert $ x_1=x_2+u $ f\"ur ein $ u\in U $, also $ d(x_1,U)=d(x_2,U) $.
+		\begin{align*} \norm{\lambda[x]}&=\norm{[\lambda x]}\\&=d(\lambda x, U)\\&=\inf\lbrace \norm{\lambda x-u}\mid u\in U\rbrace\\&=\inf\lbrace\norm{\lambda x-\lambda u}\mid u\in U\rbrace\\&=\inf\lbrace|\lambda|\norm{x-u}\mid u\in U\rbrace\\&=|\lambda|d(x,U)\\&=|\lambda|\norm{x} \end{align*}
+		Seien $ x_1,x_2\in X $, sei $ \e>0 $. Es existieren $ u_1,u_2\in U $ mit \[ \norm{x_i-u_i}\leq\norm{[x_i]}+\e, i=1,2 \]
+		\[ \norm{[x_1]+[x_2]}=\inf\lbrace\norm{x_1+x_2-u}\mid u\in U\rbrace\leq\norm{x_1+x_2-(u_1+u_2)}\leq\norm{x_i-u_i}+\norm{x_2-u_2}\leq\norm{[x_1]}+\norm{[x_2]}+2\e \]
+		Da $ \e>0 $ beliebig, gilt:
+		\[ \norm{[x_1]+[x_2]}\leq\norm{[x_1]}+\norm{[x_2]} \]
+		$ \norm{[0]}=d(0,U)=0 $, da $ 0\in U $.
+		\item \[ \norm{[0]}=0\Leftrightarrow d(x,U)=0\Leftrightarrow x\in\bar U=U\Leftrightarrow[x]=[0] \]
+		\item Wir benutzen \ref{lemma1.11}. Sei also $ (x_k)_k $ eine Folge in $ X $ mit $ \sum_{k=1}^{\infty}\norm{[x_k]}<\infty $. Zu zeigen: $ \sum_{k=1}^{\infty}[x_k] $ konvergiert in $ X/U $.\\
+		O.B.d.A.: $ \norm{x_k}\leq\norm{[x_k]}+2^{-k} $.
+		\[ \sum_{k=1}^{\infty}\norm{x_k}\leq\sum_{k=1}^{\infty}\norm{[x_k]}+\sum_{k=1}^{\infty}2^{-k}<\infty \]
+		Nun folgt, da $ X $ vollst\"andig ist, mit \ref[lemma1.11]:
+		\[ \exists x=\sum_{k=1}^{\infty}x_k\in X \]
+		\[ \norm{[x]-\sum_{k=1}^{n}[x_k]}=\norm{\left[x-\sum_{k=1}^{n}x_k\right]}\leq\norm{x-\sum_{k=1}^{n}x_k}\xrightarrow{n\to\infty}0 \]
+		Also: $ [x]=\sum_{k=1}^{\infty}[x_k] $
 	\end{enumerate}
 \end{beweis}
+\begin{beispiel*}
+	Sei $ D\subseteq[0,1] $ abgeschlossen. Wir betrachten den Quotienten $ C[0,1]/U $ mit $ U\coloneqq\lbrace x\in C[0,1]\mid x|_D=0\rbrace $. Die Quotientenabbildung ($ x\in C[0,1]\mapsto[x]\in C[0,1]/U $) identifiziert Funktionenm die auf $ D $ \"ubereinstimmen. Die Elemente von $ C[0,1]/U $ k\"onnen als Funktionen auf $ D $ angesehen werden.
+\end{beispiel*}
