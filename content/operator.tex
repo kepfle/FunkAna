@@ -1,0 +1,67 @@
+\chapter{Funktionale und Operatoren}
+\begin{definition}
+	Eine stetige lineare Abbildung zwischen normierten R\"aumen hei\ss t \deftxt{stetiger Operator}. Ist der Bildraum der Skalarenk\"orper $ \K $, so sagen wir \deftxt{Funktional} statt Operator
+\end{definition}
+Im Folgenden schreiben wir $ Tx $ statt $ T(X) $, wenn $ T\colon X\rightarrow Y $ ein stetiger Operator und $ x\in X $.\\
+\begin{satz}
+	Seien $ X $ und $ Y $ normierte R\"aume und sei $ T\colon X\rightarrow Y $ linear. Dann sind \"aquivalent:
+	\begin{enumerate}
+		\item $ T $ ist stetig.
+		\item $ T $ ist stetig in $ 0 $.
+		\item $ \exists M\geq 0:\norm{Tx}\leq M\norm{x} \forall x\in X$.
+		\item $ T $ ist gleichm\"a\ss ig stetig.
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	\begin{description}
+		\item[iii)$ \Rightarrow $iv)] Ist klar, da aus iii) Lipschitz-Stetigkeit folgt.
+		\item[iv)$ \Rightarrow $i)$ \Rightarrow $] Klar.
+		\item[ii)$ \Rightarrow $iii)] Angenommen, iii) ist falsch, d.h. $ \forall n\in\N\exists x_n\in X:\norm{Tx_n}>n\norm{x_n} $. Setze $ y_n\coloneqq \frac{x_n}{n\norm{x_n}} $. Hieraus folgt: $ \norm{y_n}=\frac{1}{n} $, aber \[ \norm{Ty_n}=\norm{\frac{1}{n\norm{x_n}Tx_n}}=\frac{1}{n\norm{x_n}}\norm{Tx_n}>1 \]
+		Somit ist $ (y_n)_n $ eine Nullfolge, aber $ Ty_n $ konvergiert nicht gegen $ 0 $, was ii) widerspricht.
+	\end{description}
+\end{beweis}
+\newpage
+\begin{definition}
+	Die kleinste in iii) vorkommende Zahl $ M $ wird mit $ \norm{T} $ bezeichhnet, d.h.
+	\[ \norm{T}=\inf\lbrace M\geq 0\mid\norm{Tx}\leq M\norm{x}\forall x\in X\rbrace \]
+\end{definition}
+\begin{satz}
+	Sei $ T\colon X\rightarrow Y $ ein stetiger Operator. Dann gilt:
+	\[ \norm{T}=\sup_{x\neq 0}\frac{\norm{Tx}}{\norm{x}}=\sup_{\norm{x}=1}\norm{Tx}=\sup_{\norm{x}\leq 1}\norm{Tx} \]
+	sowie
+	\[ \norm{Tx}\leq\norm{T}\norm{x}\forall x\in X \]
+\end{satz}
+\begin{beweis}
+	Klar:
+	\[ \sup_{\norm{x}\leq 1}\norm{Tx}\geq\sup_{\norm{x}=1}=\sup_{x\neq 0}\norm{T\frac{x}{\norm{x}}}=\sup_{x\neq 0}\frac{\norm{Tx}}{\norm{x}} \]
+	und
+	\[ \sup_{\norm{x}\leq 1}\norm{Tx}=\sup_{\substack{\norm{x}=1\\\alpha\in]0,1]}}\norm{T(\alpha x)}=\sup_{\substack{\norm{x}=1\\\alpha\in]0,1]}}|\alpha|\norm{Tx}=\sup_{\norm{x}=1}\norm{Tx} \]
+	Setze $ M_0=\sup_{x\neq 0}\frac{\norm{Tx}}{\norm{x}} $. Zeige: $ \norm{T}=M_0 $.\\
+	Aus $ \norm{Tx}\leq M_0\norm{x}\forall x\in X $ folgt schon $ \norm{T}\leq M_0 $.\\
+	Zu $ \e>0 $ w\"ahlen wir $ x_\e\neq 0 $, $ x_\e\in X $ mit \[ \frac{\norm{Tx_\e}}{\norm{x_\e}}\geq M_0(1-\e) \Leftrightarrow\norm{Tx_\e}\geq M_0(1-\e)\norm{x_\e} \]. Daraus folgt: $ \norm{T}\geq M_0(1-\e) $, also insgesamt $ \norm{T}=M_0 $. Aus dieser Gleichheit folgt dann auch $ \norm{Tx}\leq\norm{T}\norm{x}\forall x\in X $.
+\end{beweis}
+\begin{bemerkung*}
+	Da stetige Operatoren die Einheitskugel $ \lbrace x\in X\mid\norm{x}\leq 1\rbrace $ auf eine beschr\"ankte Menge abbildet, spricht man auch von \deftxt{beschr\"ankten Operatoren}.
+\end{bemerkung*}
+Sei $ L(X,Y)\coloneqq\lbrace T\colon X\rightarrow Y \mid T\text{ ist linear unabh\"angig und stetig}\rbrace$. $ L(X,Y) $ ist bez\"uglich der algebraischen Operationen $ (S+T)x=Sx+Tx $ und $ S(\alpha x)=\alpha Sx $ ein Vektorraum. Weiter ist $ L(X,Y)\neq\emptyset $, da der Nulloperator $ x\mapsto 0 $ in $ L(X,Y) $ liegt. Sei $ L(X)\coloneqq L(X,X) $.\\
+\begin{satz}
+	\bullshit
+	\begin{enumerate}
+		\item $ \norm{T}=\sup_{\norm{x}\leq 1}\norm{Tx} $ definiert eine Norm aus $ L(X,Y) $, die \deftxt{Operatornorm}.
+		\item Ist $ Y $ vollst\"andig, so ist auch $ L(X,Y) $ vollst\"andig.
+	\end{enumerate}
+\end{satz}
+\begin{beispiel*}
+	$ T\colon\ell^2\rightarrow\R $, $ T(x_n)_n=x_1 $, ist sicherlich linear. $ T $ ist stetig, da:\\
+	Zu zeigen: $ \exists M\geq 0:|T(x_n)_n|\leq M\norm{(x_n)}_{\ell^2}\forall (x_n)_\in\ell^2 $. Sei $ (x_n)_n\in\ell^2 $ beliebig. 
+	\[ |T(x_n)_n|=|x_1|\leq\left(\sum_{n=1}^{\infty}|x_n|^2\right)^\frac{1}{2}=\norm{(x_n)_n}_{\ell^2} \]
+	Also ist $ T $ stetig und $ \norm{T}\leq 1 $.\\
+	$ x=e_1\in\ell^2 $. $ |Te_1|=1=\norm{e_1}_{\ell^2} $. Hieraus folgt $ \norm{T}=1 $.
+\end{beispiel*}
+\begin{beweis}
+	\begin{enumerate}
+		\item $ \norm{\lambda T}=|\lambda|\norm{T} $ klar. $ \norm{T}=0\Leftrightarrow T=0 $ klar. Zur Dreiecksungleichung: Sei $ \norm{x}\leq 1 $.
+		\[ \norm{(S+T)(x)}=\norm{Sx+Tx}\leq\norm{Sx}+\norm{Tx}\leq\norm{S}+\norm{T} \]
+		\[ \norm{S+T}=\sup_{\norm{x}\leq 1}\norm{(S+T)(x)}\leq\norm{S}+\norm{T} \]
+	\end{enumerate}
+\end{beweis}
