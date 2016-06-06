@@ -33,7 +33,7 @@ Im Folgenden schreiben wir $ Tx $ statt $ T(X) $, wenn $ T\colon X\rightarrow Y 
 \end{satz}
 \begin{beweis}
 	Klar:
-	\[ \sup_{\norm{x}\leq 1}\norm{Tx}\geq\sup_{\norm{x}=1}=\sup_{x\neq 0}\norm{T\frac{x}{\norm{x}}}=\sup_{x\neq 0}\frac{\norm{Tx}}{\norm{x}} \]
+	\[ \sup_{\norm{x}\leq 1}\norm{Tx}\geq\sup_{\norm{x}=1}\norm{Tx}=\sup_{x\neq 0}\norm{T\frac{x}{\norm{x}}}=\sup_{x\neq 0}\frac{\norm{Tx}}{\norm{x}} \]
 	und
 	\[ \sup_{\norm{x}\leq 1}\norm{Tx}=\sup_{\substack{\norm{x}=1\\\alpha\in]0,1]}}\norm{T(\alpha x)}=\sup_{\substack{\norm{x}=1\\\alpha\in]0,1]}}|\alpha|\norm{Tx}=\sup_{\norm{x}=1}\norm{Tx} \]
 	Setze $ M_0=\sup_{x\neq 0}\frac{\norm{Tx}}{\norm{x}} $. Zeige: $ \norm{T}=M_0 $.\\
@@ -63,5 +63,170 @@ Sei $ L(X,Y)\coloneqq\lbrace T\colon X\rightarrow Y \mid T\text{ ist linear unab
 		\item $ \norm{\lambda T}=|\lambda|\norm{T} $ klar. $ \norm{T}=0\Leftrightarrow T=0 $ klar. Zur Dreiecksungleichung: Sei $ \norm{x}\leq 1 $.
 		\[ \norm{(S+T)(x)}=\norm{Sx+Tx}\leq\norm{Sx}+\norm{Tx}\leq\norm{S}+\norm{T} \]
 		\[ \norm{S+T}=\sup_{\norm{x}\leq 1}\norm{(S+T)(x)}\leq\norm{S}+\norm{T} \]
+		\item Sei $ (T_n) $ eine Cauchy-Folge in $ L(X,Y) $. Sei $ x\in X $ fest. $ (T_nx)\subseteq Y $ ist eine Cauchyfolge in $ Y $\footnote{$ \norm{T_nx-T_mx}_Y=\norm{(T_n-T_m)x}_Y\leq\norm{T_n-T_m}_{L(X,Y)}\norm{x}_X $}. Da $ Y $ vollst\"andig ist, existiert $ Tx\coloneqq\lim_{n\to\infty}T_nx\forall x\in X $. Die so definierte Abbildung $ T\colon X\rightarrow Y $ ist linear:
+		\[ T(\lambda x_1+\mu x_2)=\lim_{n\to\infty}T_n(\lambda x_1+\mu x_2)=\lim_{n\to\infty}\lambda T_n(x_1)+\mu T_n(x_2)=\lambda\lim_{n\to\infty}T_nx_1+\mu\lim_{n\to\infty}T_nx_2=\lambda Tx_1+\mu Tx_2 \]
+		Es bleibt zu zeigen: $ T\in L(X,Y) $  (d.h. $ \norm{T}<\infty $) und $ \norm{T_n-T}\rightarrow 0 $ f\"ur $ n\rightarrow\infty $.\\
+		Zu $ \e>0 $ beliebig wähle $ n_0\in\N $ mit $ \norm{T_n-T_m}\leq\e\forall n,m\geq n_0 $. Sei $ x\in X $ mit $ \norm{x}\leq 1 $. W\"ahle $ m_0=m_0(\e,x)\leq n_0 $ mit $ \norm{T_{m_0}x-Tx}\leq\e $.
+		\[ \forall n\geq n_0:\norm{T_nx-Tx}\leq\norm{T_nx-T_{m_0}x}+\norm{T_{m_0}x-Tx}\leq\norm{T_n-T_{m_0}}\norm{x}+\e\leq 2\e \]
+		Also: \[ \norm{T_n-T}=\sup_{\norm{x}\leq 1}\norm{T_nx-Tx}\leq 2\e \]
+		Also ist $ T_n-T\in L(X,Y) $ und $ \norm{T_n-T}\rightarrow 0$ f\"ur $ n\rightarrow\infty $ sowie $ T=T-T_n+T_n\in L(X,Y) $. 
+	\end{enumerate}\vspace{-22pt}
+\end{beweis}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[]
+		\item $ B_x\coloneqq\lbrace x\in X\mid\norm{x}\leq 1\rbrace $ Einheitskugel, $ S_x=\lbrace x\in X\mid\norm{x}=1\rbrace $ Einheitssph\"are. Somit: $ T_n\rightarrow T $ bez\"uglich der Operatornorm$ \Leftrightarrow T_nx\rightarrow Tx $ gleichm\"assig auf $ B_x $.
+		\item Konvergenz in der Operatornorm ist st\"arker als punktweise Konvergenz.\\
+		Seien $ X=C_0 $ und $ Y=\R $. $ T_nx=T_n(x_k)_{k\in\N} =x_n$ f\"ur $ x=(x_k)_k\in C_0 $, $ x=(x_1,x_2,x_3,...) $. $ T_nx=x_n\xrightarrow{n\to\infty} 0 $. $ T_n $ konvergiert punktweise gegen den $ 0- $Operator, aber $ \norm{T_n-0}=\norm{T_n}=1 $, da $ |T_nx|=|x_n|\leq\norm{x}_\infty $ und $ |T_ne_n|=1 $ und somit keine Konvergenz in der Operatornorm.
 	\end{enumerate}
+\end{bemerkung*}
+\begin{satz}
+	Ist $ D $ ein dichter Unterraum des normierten Raumes $ X $, $ Y $ sei ein Banachraum und $ T\in L(D,Y) $, so existiert genau eine stetige Fortsetzung $ \hat T\in L(X,Y) $, d.h. $ \hat T|_D=T $. Zus\"atzlich: $ \norm{T}=\norm{\hat T} $.
+\end{satz}
+\begin{beweis}
+	\begin{description}
+		\item[Eindeutigkeit:] Seien $ T_j $, $ j=1,2 $, zwei stetige lineare Fortsetzungen von $ T $ und $ x\in X\setminus D $. Es existiert eine Folge $ (x_n)_n\subseteq D $ mit $ x_n\rightarrow x $. Also ist \[ T_1 x=T_1(\lim_{n\to\infty}x_n)=\lim_{n\to\infty}T_1(x_n)=\lim_{n\to\infty}Tx=\lim_{n\to\infty}T_2 x=T_2(\lim_{n\to\infty}x_n)=T_2x \]
+		\item[Existenz:] Sei $ x\in X\setminus D $. Es existiert wieder eine Folge $ (x_n)_n\subseteq D $ mit $ x_n\rightarrow x $. $ (x_n)_n $ ist eine Cauchyfolge in $ D $. Da $ T\colon D\rightarrow Y$ stetig ist, folgt: $ (Tx_n)_n $ ist eine Cauchyfolge in $ Y $. Da $ Y $ vollst\"andig ist, existiert ein $ y\in Y $ so dass $ Tx_n\xrightarrow{n\to\infty} y $. Setze $ Tx\coloneqq y $. Es gilt:
+		\begin{enumerate}
+			\item $\hat T $ ist wohldefiniert. Sei $ x\in X $ mit $ x_n\rightarrow x $, $ y_n\rightarrow y $, $ x_n,y_n\in D $. F\"ur $ z_n\coloneqq \begin{cases}
+			x_k&n=2k\\y_k&n=2k+1
+			\end{cases} $ ($ z_n=(x_0,y_0,x_1,y_1,x_2,y_2,...) $) gilt $ z_n\rightarrow x $ und $ z_n\in D $. Also existiert $ \lim T z_n $ und somit $ \lim Tx_n=\lim Ty_n $.
+			\item $ \hat T|_D=T\surd $. Sei $ x\in D $, w\"ahle $ x_n=x\forall n\in\N $.
+			\item $ \hat T $ ist linear. Seien $ x,y\in X $ und $ \alpha\in\K $ mit $ x_n\rightarrow x $, $ y_n\rightarrow y $ mit $ x_n,y_n\in D $. Dann gilt $ \alpha x_n+y_n\in D\rightarrow \alpha x+y $.
+			\[ \hat T(\alpha x+y)=\lim_{n\to\infty}T(\alpha x_n+y_n)=\alpha\lim_{n\to\infty}T x_n+\lim_{n\to\infty}Ty_n=\alpha\hat Tx+\hat Ty \]
+			\item $ \hat T $ ist stetig. Sei $ x\in X $. Es existiert eine Folge $ (x_n)\subseteq D $ mit $ x_n\rightarrow x $.
+			\[ \norm{\hat Tx}=\norm{\lim_{n\to\infty}Tx_n}=\lim_{n\to\infty}\norm{Tx_n}\leq\lim_{n\to\infty}\norm{T}\norm{x_n}=\norm{T}(\lim_{n\to\infty}\norm{x_n})=\norm{T}\norm{x} \]
+			Also: $ \norm{\hat T}\leq\norm{T} $. $ \norm{\hat T}\geq\norm{T}\surd $ da $ \hat T $ Fortsetzung. Somit insgesamt: $ \norm{\hat T}=\norm{T} $
+ 		\end{enumerate}
+	\end{description}\vspace{-22pt}
+\end{beweis}
+\newpage
+\begin{lemma}
+	F\"ur $ S\in L(X,Y) $ und $ T\in L(Y,Z) $ gilt $ TS\in L(X,Z) $ mit $ \norm{TS}\leq\norm{T}\norm{S} $.
+\end{lemma}
+\begin{beweis}
+	Die Linearit\"at von $ TS $ ist klar und die Stetigkeit folgt aus
+	\[ \norm{(TS)x}=\norm{T(Sx)}\leq\norm{T}\norm{Sx}\leq\norm{T}\norm{S}\norm{x}\forall x\in X \]
+\end{beweis}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Ist $ X=Y $ und $ T=I $ der identische operator, d.h. $ Ix=x $, so gilt $ \norm{T}=1 $.
+		\item Ist $ X $ endlichdimensional und $ Y $ ein beliebiger normierter Raum, so ist jede lineare Abbildung $ T\colon X\rightarrow Y $ stetig.
+		\begin{beweis}
+			Die Stetigkeit bleibt erhalten, wenn man zu einer \"aquivalenten Norm auf $ X $ und $ Y $ \"ubergeht (die Gr\"o\ss e der Zahl $ \norm{T} $ h\"angt aber von der kokreten Wahl der Norm ab). Auf $ X $ sind alle Normen \"aquivalent, da $ \dim X<\infty $. Wir nehmen an, dass $ X $ mit der Norm \[ \norm{\sum_{i=1}^{n}\alpha_i e_i}=\sum_{i=1}^n |\alpha_i| \]
+			versehen ist. 
+			\[ \norm{T\left(\sum_{i=1}^n\alpha_i e_i\right)}=\norm{\sum_{i=1}^n\alpha_i Te_i}\leq\sum_{i=1}^{n}|\alpha_i|\norm{Te_i}=\left(\max_{i=1}^n\norm{Te_i}\right)\sum_{i=1}^{n}|\alpha_i|=\left(\max_{i=1}^n\norm{Te_i}\right)\sum_{i=1}^{n}\alpha_ie_i \]
+		\end{beweis}
+		\item Setze $ T\colon C[0,1]\rightarrow\K $, $ Tx=x(0) $. Wir versehen $ C[0,1] $ mit der Supremumsnorm. $ T\in L(C[0,1],\K) $ mit $ \norm{T}=1 $. Denn:
+		\[ |Tx|=|x(0)|\leq\sup_{t\in[0,1]}|x(t)|=\norm{x}_\infty\forall x\in C[0,1] \]
+		Also: $ \norm{x}\leq 1 $. Andererseits gilt f\"ur die konstante Funktion 1, d.h. $ x(t)=1\forall t\in[0,1] $: $ \norm{x}_\infty=1=|Tx| $, also $ \norm{T}=1 $.
+		\item $ T_g\colon C[0,1]\rightarrow\K $, $ T_g(x)=\int_0^1 x(t)d(t)\dd t $. Hierbei ist $ g\in C[0,1] $ eine gegebene Funktion. Dann gilt:
+		\[ \norm{T_g}=\int_0^1|g(t)|\dd t \]
+		Denn:
+		\[ |T_g(x)|=\left|\int_0^1 x(t)g(t)\dd t\right|\leq\int_0^1|x(t)||g(t)|\dd t\leq\int_0^1|g(t)|\dd t\norm{x}_\infty \]
+		Sei $ \e>0 $, $ x_\e\coloneqq\frac{\overline{g(t)}}{|g(t)|+\e} $. Es folgt direkt: $ x_\e\in C[0,1] $, $ \norm{x_\e}\leq 1 $.
+		\[ |T_gx_\e|=\int_0^1\frac{|g(t)|^2}{|g(t)|+\e}\dd t\geq\int_0^1\frac{|g(t)|^2-\e^2}{|g(t)|+\e}\dd t=\int_0^1|g(t)|-\e\dd t=\int_0^1|g(t)\dd t-\e  \]
+		\[ \norm{T_g}=\sup_{\norm{x}=\leq 1}|T_gx|\geq \sup_{\e>0}|T_gx_\e|\geq\int_0^1|g(t)|\dd t \]
+	\end{enumerate}
+\end{beispiel*}
+\begin{definition}
+	Sei $ X, Y $ normierte R\"aume. Eine lineare Abbildung $ T\colon X\rightarrow Y $ hei\ss t \deftxt{Quotientenabbildung}, wenn $ T $ die offene Kugel $ \lbrace x\in X\mid\norm{x}<1\rbrace $ auf die offene Kugel $ \lbrace y\in Y\mid\norm{y}<1\rbrace $ abbildet, d.h.
+	\[ T(\lbrace x\in X\mid\norm{x}<1\rbrace)=\lbrace y\in Y\mid\norm{y}<1\rbrace\qquad(\ast) \]
+\end{definition}
+\begin{bemerkung*}
+	Eine Quotientenabbildung ist surjektiv und stetig mit $ \norm{T}=1 $.
+	\begin{beweis}
+		$ (\ast) $ und $ T $ linear$ \Rightarrow T $ surjektiv.
+		\[ \norm{Tx}=(1+\e)\norm{x}\norm{T\left(\frac{x}{(1+\e)\norm{x}}\right)}<(1+\e)\norm{x} \]
+		Dann folgt: $ T $ ist stetig und $ \norm{T}\leq 1 $. Aus
+		\[ \norm{T}=\sup_{\norm{x}\leq 1}\norm{Tx}\geq\sup_{\norm{x}=1}\norm{Tx}=1 \]
+		Hieraus folgt $ \norm{T}=1 $.
+	\end{beweis}
+\end{bemerkung*}
+\begin{satz}
+	Sei $ U $ ein abgeschlossener Unterraum des normierten Raumes $ X $. Dann ist die Abbildung $ \omega\colon X\rightarrow X/U $, $ x\mapsto [x] $, eine Quotientenabbildung. 
+\end{satz}
+\begin{beweis}
+	$ \omega $ ist sicherlich linear. Es ist zu zeigen:
+	\[ \omega(\lbrace x\in X\mid\norm{x}<1\rbrace)=\lbrace x\in X/U\mid\norm{y}<1\rbrace \]
+	\begin{description}
+		\item['$ \subseteq $':] Folgt aus:
+		\[ \norm{\omega(x)}=\norm{[x]}=d(x,U)\leq\norm{x}<1 \]
+		falls $ \norm{x}<1 $.
+		\item['$ \supseteq $':] Sei $ [x]\in X/U $ mit $ \norm{[x]}<1 $. Dann existiert ein $ u\in U $ so dass $ \norm{x-u}<1 $.
+		\[ \omega(x-u)=[x-u]=[x] \]
+	\end{description}
+\end{beweis}
+\begin{bemerkung*}
+	Seien $ X $ und $ Y $ normierte R\"aume und $ T\colon X\rightarrow Y $ eine lineare, stetige und bijektive Abbildung. Dann existiert $ T^{-1}\colon Y\rightarrow X $ linear. $ T^{-1} $ muss aber nicht stetig sein.
+	\begin{beispiel*}
+		Identit\"at $ I\colon (C[0,1],\norm{\cdot}_\infty)\rightarrow (C[0,1],\norm{\cdot}_1) $ mit $ \norm{x}_1=\int_0^1 |x(t)|\dd t $. Die Identit\"at ist bijektiv, linear und stetig, da:
+		\[ \norm{Ix}_1=\int_0^1 |x(t)|\dd t\leq \sup_{t\in[0,1]}|x(t)|=\norm{x}_\infty \]
+		Aber: $ I^{-1} $ ist nicht stetig, da f\"ur $ x_n(t)=t^n $ gilt:
+		\[ \norm{x_n}_\infty=1,\quad \norm{x_n}_1=\frac{1}{n+1}\xrightarrow{n\to\infty}0 \]
+	\end{beispiel*}
+\end{bemerkung*}
+\begin{bemerkung*}
+	Die Stetigkeit von $ T^{-1} $ ist w\"unschenswert. Ist etwa $ x_1 $ L\"osung von $ Tx_1=y_1 $ und $ x_2 $ L\"osung von $ Tx_2=y_2 $, so wird in Anwendung h\"aufig ben\"otigt:
+	\[ y_1\approx y_2\Rightarrow x_1\approx x_2 \]
+	(stetige Abh\"angigkeit der L\"osung von den Daten) Dies ist gerade die Stetigkeit von $ T^{-1} $.
+\end{bemerkung*}
+\begin{definition}
+	Ein stetiger linearer Operator $ T\colon X\rightarrow Y $ hei\ss t \deftxt{Isomorphismus}, falls $ T $ bijektiv und $ T^{-1} $ stetig ist.\\
+	Ein linearer Operator hei\ss t \deftxt{isometrisch}, falls $ \norm{Tx}=\norm{x}\forall x\in X $.\\
+	Normierte R\"aume zwischen denen ein (isometrischer) Isomorphismus existiert, hei\ss en \deftxt{(isometrisch) isomorph}. In Zeichen $ X\simeq Y $ (bzw. $ X\cong Y $).
+\end{definition}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item 	Isomorphismen sind lineare Surjektionen, die der Bedingung $ \exists m,M>0: m\norm{x}\leq\norm{Tx}\leq M\norm{x}\forall x\in X $ gen\"ugen.
+		\item Isometrien sind stetig mit Norm $ 1 $ und injektiv.
+	\end{enumerate}
+\end{bemerkung*}
+\begin{satz}
+	$ c\simeq c_0 $.
+\end{satz}
+\begin{beweis}
+	Wir definieren $ \ell\colon x\rightarrow \K $ durch
+	\[ \ell x=\ell(x_n)_n\coloneqq\lim_{n\to\infty}x_n \]
+	$ \ell $ linear$ \surd $.
+	\[ |\ell x|=|\lim_{n\to\infty} x_n|\leq\sup_{n\in\N}|x_n|=\norm{x}_\infty, x\in c \]
+	und f\"ur konstante Folgen $ x $ gilt $ |\ell x|=\norm{x}_\infty \Rightarrow\norm{\ell}=1$.\\
+	Wir definieren $ T\colon c\rightarrow c_0 $ durch
+	\[ (Tx)_n\coloneqq \begin{cases}
+	\ell(x)&n=1\\x_{n-1}-\ell(x)&n\geq 2
+	\end{cases}, x=(x_n)_n\in c,n\in\N \]
+	Es gilt:
+	\[ \norm{Tx}_\infty=\max\left\lbrace|\ell(x)|,\sup_{n\geq 2}|x_{n-1}-\ell(x)|\right\rbrace\leq|\ell(x)|+\sup_{n\geq 1}|x_n|\leq 2\norm{x}_\infty \]
+	D.h. $ T $ stetig und linear.\\
+	Umgekehrt definieren wir $ S\colon c_0\rightarrow c $ durch
+	\[ (Sx)_n\coloneqq x_{n+1}+x_1, n\in\N \]
+	\[ \norm{Sx}_\infty=\sup_{n\in\N}|x_{n+1}+x_1|\leq 2\norm{x}_\infty \]
+	Also sind $ S $ und $ T $ linear und stetig. Weiter gilt:
+	\[ ST=I_c,\qquad TS=I_{c_0} \]
+	D.h. $ S=T^{-1} $ und $ T $ ist ein Isomorphismus.
+\end{beweis}
+\begin{bemerkung*}
+	F\"ur eine Quotientenabbildung $ T\colon X\rightarrow Y $ ist $ X/\ker(T)\cong Y $. 
+\end{bemerkung*}
+\begin{satz}
+	Sei $ X $ ein normierter Raum und $ T\in L(X) $. Konvergiert $ \sum_{n=0}^{\infty}T^n $ in $ L(X) $, so ist $ I-T $ invertierbar mit
+	\[ (I-T)^{-1}=\sum_{n=0}^{\infty}T^n \] (\deftxt{Neumannsche Reihe}). Speziell ist die Voraussetzung $ \sum T^n $ konvergent erf\"ullt, wenn $ X $ ein Banachraum ist und $ \norm{T}<1 $. in diesem Fall ist
+	\[ \norm{(I-T)^{-1}}\leq (1-\norm{T})^{-1} \]
+\end{satz}
+\begin{beweis}
+	Setze $ S_m\coloneqq\sum_{n=0}^m T^n $.
+	\[ (I-T)S_m=S_m(I-T)=I-T^{n+1} \]
+	In jedem normierten Raum bilden die Glieder einer konvergenten Reihe eine Nullfolge (Beweis wie in $ \K $). Also gilt $ T^n\rightarrow 0 $ bez\"uglich der Operatornorm, d.h. $ \lim_{n\to\infty}\norm{T^n}=0 $. Die Abbildungen $ S\mapsto RS $ und $ S\mapsto SR $, $ R\in L(X) $ fest, sind stetig auf $ L(X) $, denn: $ \sL\colon L(X)\rightarrow L(X) $, $ S\mapsto RS $.
+	\[ \norm{\sL S}=\norm{RS}\leq\norm{R}\norm{S} \]
+	Daraus folgt:
+	\[ I=\lim_{m\to\infty}(I-T^{m+1})=\lim_{m\to\infty}(I-T)S_m=(I-T)\lim_{m\to\infty}S_m \]
+	Analog:
+	\[ I=\left(\lim_{m\to\infty} S_m\right)(I-T)\]
+	Also:
+	\[ (i-T)^{-1}=\sum_{n=0}^\infty T^n\]
+	F\"ur $ \norm{T}<1 $ gilt:
+	\[ \sum_{n=0}^{\infty}\norm{T^n}\leq\sum_{n=0}^{\infty}\norm{T}^n<\infty \]
+	$ \sum T^n $ ist also absolut konvergent. Da $ X $ vollst\"andig ist und mit \ref{lemma1.11} konvergiert dann $ \sum T^n $ und
+	\[ \norm{\sum_{n=0}^\infty T^n}\leq\sum_{n=0}^\infty\norm{T^n}\leq\sum_{n=0}^\infty\norm{T}^n=(1-\norm{T})^{-1} \]
 \end{beweis}
