@@ -1,0 +1,166 @@
+\chapter{Kompakte Operatoren}
+\begin{definition}
+	Eine lineare Abbildung $ T $ zwischen normierten R\"aumen $ X $ und $ Y $ hei\ss t \deftxt{kompakt}, wenn $ T(B_x) $ relativ kompakt ist (d.h. $ \overline{T(B_x)} $ ist kompakt).\\
+	Die Gesamtheit der kompakten Operatoren wird mit $ K(X,Y) $ bezeichnet ($ K(X)=K(X,X) $).
+\end{definition}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[]
+		\item Sei $ T\colon X\rightarrow Y $ linear. Dann gilt:
+		\begin{align*} &T\text{ kompakt}\\\Leftrightarrow&T\text{ bildet beschr\"ankte Mengen auf relativ kompakte Mengen an}\\
+		\Leftrightarrow&\text{F\"ur jede beschr\"ankt Folge }(x_n)_{n\in\N}\subseteq X\text{ enth\"alt die Folge }(Tx_n)_n\subseteq Y\text{ eine konvergente Teilfolge} \end{align*}
+		\item Da kompakte Mengen beschr\"ankt sind, sind kompakte Abbildungen stetig, d.h. $ K(X,Y)\subseteq L(X,Y) $.
+	\end{enumerate}
+\end{bemerkung*}
+\begin{satz}
+	Seien $ X,Y,Z $ Banachr\"aume.
+	\begin{enumerate}
+		\item Dann ist $ K(X,Y) $ ein abgeschlossener Untervektorraum von $ L(X,Y) $, d.h. $ K(X,Y) $ ist ein Banachraum.
+		\item Sind $ T\in L(X,Y) $ und $ S\in L(Y,Z) $ und ist $ S $ oder $ T $ kompakt, so ist auch $ ST $ kompakt.
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item Es ist sicherlich klar, dass mit $ T $ auch $ \lambda T $ kompakt ist ($ \lambda\in\K $). Seien nun $ S,T\in K(X,Y) $. Zeige: $ S+T\in K(X,Y) $. Sei dazu $ (x_n)_{n\in\N} $ eine beschr\"ankt Folge in $ X $. W\"ahle eine Teilfolge $ (x_{n_k})_k $, so dass $ (Sx_{n_k})_k $ in $ Y $ konvergiert. $ (x_{n_k}) $ ist eine Folge in $ X $ und wir w\"ahlen eine Teilfolge $ (x_{n_{k_l}})_{l\in\N} $ von $ (x_{n_k})_k $, die wir kurz mit $ (y_n)_n $ bezeichnen, so dass $ (Ty_{n})_n $ in $ Y $ konvergiert. Dann konvergiert auch $ (Sy_n+Ty_n)_n $ in $ Y $, also gilt $ S+T\in K(X,Y) $. Somit ist $ K(X,Y) $ ein Untervektorraum von $ L(X,Y) $.\\
+		Zeige: $ K(X,Y) $ ist abgeschlossen. Seien $ T_n\in K(X,Y) $ und $ T\in L(X,Y) $ mit $ \norm{T_n-T}\rightarrow 0 $ f\"ur $ n\rightarrow\infty $.\\
+		Zu zeigen: $ T\in K(X,Y) $. Sei weiter $ (x_n)_n $ eine beschr\"ankte Folge in $ X $.\\
+		Zu zeigen: $ \exists $Teilfolge $ (x_{n_k})_k $ mit $ Tx_{n_k} $ konvergiert. Da $ T_1 $ kompakt ist, existiert eine konvergente Teilfolge $ (T_1x_{n_k})_k $. Wir schreiben $ x_k^{(1)}=x_{n_k} $. Da auch $ T_2 $ kompakt ist, existiert eine Teilfolge von $ (x_i^{(1)})_i $, welche wir mit $ (x_i^{(2)})_i $ bezeichnen; $ (T_2x_i^{(2)})_i $ konvergiert. Dies f\"uhren wir nun induktiv weiter: $ (x_i^{(j)})_i $ ist eine Teilfolge von $ (x_i^{(j-1)})_i $ und $ (T_jx_i^{(j)}) $ konvergiert.\\
+		Wir betrachten nun die Diagonalfolge $ y=(y_n)_n=(x_n^{(n)})_n $. $ (T_jy_n)_n $ konvergiert dann f\"ur alle $ j\in\N $.
+		Zu zeigen: $ (Ty_n)_n $ konvergiert. Dazu gen\"ugt es zu zeigen:$ (Ty_n)_n $ ist eine Cauchyfolge (da $ Y $ vollst\"andig). Sei $ \e>0 $ beliebig. O.B.d.A. $ \norm{x_n}\leq 1\forall n\in\N $. Dann auch $ \norm{y_n}\leq 1\forall n\in\N $. W\"ahle $ n_0\in\N $ mit $ \norm{T_{n_0}-T}\leq\e $ und $ i_0\in\N $ mit
+		\[ \norm{T_{n_0}y_i-T_{n_0}y_j}\leq\e,\quad i,j\geq i_0 \]
+		Dann gilt f\"ur $ i,j\geq i_0 $:
+		\[ \norm{Ty_i-Ty_j}\leq\norm{Ty_i-T_{n_0}y_i}+\norm{T_{n_0}y_i-Ty_j}\leq 2\norm{T-T_{n_0}}+\e\leq 3\e \]
+		Hieraus folgt i).
+		\item Ist $ (x_n)_n\subseteq X $ eine beschr\"ankte Folge und $ S $ kompakt, so ist $ T(x_n)_n $ beschr\"ankt und $ (STx_n)_n $ besitzt eine konvergente Teilfolge. Ist $ T $ kompakt, und $ (Tx_{n_k})_k $ konvergent, so ist auch $ (STx_{n_k})_k $ konvergent.
+	\end{enumerate}
+\end{beweis}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Ist $ X $ endlichdimensional, so ist jede lineare Abbildung $ T\colon X\rightarrow Y $ kompakt. $ T $ ist n\"amlich stetig und bildet deshalb die kompakte Menge $ B_x $ auf eine kompakte Menge ab.
+		\item Ist $ \dim X=\infty $, so ist $ I\colon X\rightarrow X $, $ Ix=x $, nicht kompakt ($ I\in L(x) $, aber $ I\notin K(X) $).\\
+		Angenommen, $ I $ ist kompakt. Dann:
+		\[ \overline{I(B_x)}=\overline{B_x}=B_x \]
+		$ B_x $ ist kompakt. Dies ist ein Widerspruch zu $ \dim X=\infty $.
+		\item Ist $ T\in L(X,Y) $ und ist der Bildraum $ T(X) $ endlichdimensional, so ist $ T $ kompakt.
+		\begin{beweis}
+			$ T(B_x) $ ist beschr\"ankt (da $ T $ stetig) und somit ist $ \overline{T(B_x)} $ beschr\"ankt und abgeschlossen. Da $ \dim T(X)<\infty $ und $ T(X)=\overline{T(X)} $ folgt, dass $ \overline{T(B_x)} $ kompakt ist.
+		\end{beweis}
+	\end{enumerate}
+\end{beispiel*}
+\begin{bemerkung*}
+	In \ref{satz4.2} wird nicht ben\"otigt, dass $ X $ und $ Z $ Banachr\"aume sind.
+\end{bemerkung*}
+\begin{korollar}
+	Seien $ X $ und $ Y $ Banachr\"aume und sei $ T\in L(X,Y) $. Falls eine Folge $ (T_n) $ linear stetiger Operatoren mit endlichdimensionalem Bild existiert und $ \norm{T_n-T}\rightarrow 0 $ f\"ur $ n\rightarrow\infty $, so ist $ T $ kompakt.
+\end{korollar}
+\begin{beweis}
+	$ T_n\in L(X,Y)\Rightarrow T_n$ kompakt, $ n\in\N\Rightarrow T$ ist kompakt.
+\end{beweis}
+\newpage
+\begin{satz}[Arzela-Ascoli]
+	Sei $ (X,d) $ ein kompakter metrischer Raum. $ C(X)=\lbrace f\colon X\rightarrow\K\mid f\text{ stetig}\rbrace $ versehen mit $ \norm{f}_\infty=\sup_{x\in X}|f(x)| $. Sei $ M\subseteq C(X) $. $ M $ ist genau dann relativ kompakt (d.h. $ \bar M $ ist kompakt), wenn
+	\begin{enumerate}
+		\item \[ \sup_{f\in M}\sup_{x\in X}|f(x)|<\infty \]
+		($ M $ ist beschr\"ankt).
+		\item $ \forall x\in X\forall\e>0\exists $Umgebung $ U $ von $ x $: $ \forall y\in U\forall f\in M: |f(x)-f(y)|<\e $. ($ f $ ist gleichgradig stetig in jedem $ x\in X $).
+	\end{enumerate} 
+\end{satz}
+\begin{beweis}
+	\begin{description}
+		\item['$ \Rightarrow $':] O.B.d.A. $ M $ ist kompakt. Da $ \norm{\cdot}_\infty\colon C(X)\rightarrow\R $ stetig ist, folgt, dass $ \lbrace \norm{f}_\infty\mid f\in M\rbrace $ kompakt, also beschr\"ankt ist. Hieraus folgt i).
+		\item[zu ii):] Sei $ x\in X $ und $ \e>0 $ beliebig. In einer Umgebung $ U $ von $ x $ setze \[ M(U,\e)\coloneqq\lbrace f\in M\mid |f(x)-f(y)|<\e\forall y\in U\rbrace \]
+		Es folgt:
+		\[ M\left(U,\frac{\e}{2}\right)\subseteq M(\mathring U,\e)\subseteq M(U,\e) \]
+		und da die Elemente von $ M $ stetig sind:
+		\[ M\subseteq\bigcup_{U\text{ Umgebung von }x} M\left(U,\frac{\e}{2}\right)\subset\bigcup_{U\text{ Umgebung von }x}M(\mathring U,\e) \]
+		$ M $ ist auch kompakt, also:
+		\[ M\subseteq\bigcup_{j=1}^n M(\mathring U_j,\e)\subseteq\bigcup_{j=1}^n M(U_j,\e) \]
+		Mit $ U\coloneqq\bigcap_{j=1}^n U_j $ folgt: $ U $ ist Umgebung von $ x $ und $ M\subseteq M(U,\e) $. Damit folgt ii).
+		\item['$ \Leftarrow $':] Wegen ii) gilt: $ \forall x\in X\forall n\in\N $ ist
+		\[ W_x^n\coloneqq\left\lbrace y\in X\middle| |f(x)-f(y)|<\frac{1}{n}\forall f\in M\right\rbrace \]
+		eine Umgebung von $ x $. Da $ X $ kompakt ist, existiert eine endliche Menge $ X_n\subseteq X $ mit $ X=\bigcup_{x\in X_n}W_x^n $. $ X_\infty=\bigcup_{n\in\N} X_n $ ist abz\"ahlbar.\\
+		Sei $ X_\infty\coloneqq\lbrace\xi_1,\xi_2,....\rbrace $ und $ (f_n)_n $ sei eine Folge in $ M $. Wir zeigen: $ (f_n) $ besitzt eine Cauchy-Teilfolge. Da $ C(X) $ vollst\"andig ist folgt dann die Behauptung.\\
+		Wegen i) gibt es eine Teilfolge $ (f_{1,m})_m $ von $ (f_n) $, so dass $ (f_{1,m}(\xi_1))_m $ konvergiert. Dann eine Teilfolge $ (f_{2,m})_m $ von $ (f_{1,m})_m $, so dass $ (f_{2,m}(\xi_2))_m $ konvergiert, usw. Dann ist $ (g_m)\coloneqq(f_{m,m})_m $ eine Teilfolge von $ (f_m)_m $ mit der Eigenschaft $ (\ast)\forall\xi\in X_\infty $: $ (g_m(\xi))_m $ konvergiert. Zeige nun: $ (g_m) $ ist eine Cauchy-Folge.\\
+		Sei dazu $ x\in X $, $ n\in\N $ beliebig (aber zun\"achst fest). $ \exists \xi_x\in X_n\subseteq X_\infty $ mit $ x\in W^n_{\xi_n} $. Es folgt:
+		\[ |g_m(x)-g_l(x)|\leq|g_m(x)-g_m(\xi_x)|+|g_m(\xi_x)-g_l(\xi_x)|+|g_l(\xi_x)-g_l(x)|\leq\frac{2}{n}+\sup_{\xi\in X_n}|g_m(\xi)-g_l(\xi)| \]
+		Da $ x $ beliebig, folgt:
+		\[ \norm{g_m-g_l}_\infty\leq\frac{2}{n}+\sup_{\xi\in X_n}|g_m(\xi)-g_l(\xi)| \]
+		Da $ X_n\subseteq X_\infty $ endlich und wegen $ (\ast) $ gilt: $ (g_m)_m $ ist eine Cauchy-Folge.
+	\end{description}
+\end{beweis}
+\begin{beispiel*}
+	Wir betrachten den \deftxt{Fredholmschen Integraloperator} $ T_k\colon C[0,1]\rightarrow C[0,1] $
+	\[ (T_kf)(s)=\int_0^1 k(s,t)f(t)\dd t \]
+	mit $ k\in C([0,1]^2) $. Aus der gleichm\"assigen Stetigkeit von $ k $ folgt $ T_kf\in C[0,1] $. 
+\end{beispiel*}
+%
+%
+%
+%
+%
+%Nachtragen
+%
+%
+%
+%
+%
+\begin{bemerkung*}
+	Sei
+	\[ F(X,Y)\coloneqq\lbrace T\in L(X,Y)\mid T\text{ hat endlichdimensionales Bild}\rbrace \]
+	Sind $ X $ und $ Y $ Banachr\"aume. so gilt
+	\[ \overline{F(X,Y)}\subseteq K(X,Y) \]
+\end{bemerkung*}
+\begin{satz}
+	Seien $ X $ und $ Y $ Banachr\"aume und es gelte: Es existiert eine beschr\"ankte Folge $ (S_n)_n $ in $ F(Y) $ mit
+	\[ \lim_{n\to\infty}S_ny=y\forall y\in Y \]
+	Dann gilt:
+	\[ \overline{F(X,Y)}=K(X,Y) \]
+\end{satz}
+\begin{beweis}
+	Sei $ T\in K(X,Y) $ beliebig. Dann ist $ S_nT\in F(X,Y) $. Wir zeigen:
+	\[ \norm{S_nT-T}\xrightarrow{n\to\infty}0 \]
+	Sei dazu $ \e>0 $ beliebig. Setze
+	\[ K\coloneqq\sup_n\norm{S_n}<\infty \]
+	Da $ T $ kompakt ist, existieren endlich viele $ y_1,...,y_r\in Y $ und es gilt:
+	\[ \overline{T(B_x)}\subseteq\bigcup_{i=1}^r\lbrace y\in Y\mid\norm{y-y_i}<\e\rbrace \]
+	Wegen der Voraussetzung in \ref{satz4.5} gibt es ein $ N\in\N\forall n\geq N $:
+	\[ \norm{S_ny_i-y_i}<\e,\quad i=1,...,r \]
+	Sei nun $ x\in B_x $. Es existiert ein $ j\in\lbrace 1,...,r\rbrace $ so dass gilt:
+	\[ \norm{Tx-y_j}<\e \]
+	Dann gilt f\"ur $ n\geq N $:
+	\begin{align*} \norm{S_nTx-Tx}&\leq\norm{S_n(Tx-y_j)}+\norm{S_ny_j-y_j}+\norm{y_j-Tx}\\&\leq\norm{S_n}\norm{Tx-y_j}+\norm{S_ny_j-y_j}+\norm{y_j-Tx}\\&\leq K\e+\e+\e\\&=(K+2)\e \end{align*}
+	Mit
+	\[ \norm{S_nT-T}=\sup_{\substack{x\in X\\\norm{x}\leq 1}}\norm{S_nTx-Tx}\leq (K+2)\e\forall n\geq N \]
+	folgt nun die Behauptung.
+\end{beweis}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[]
+		\item Ein Banachraum $ Y $, der die Eigenschaft aus \ref{satz4.5} besitzt ist separabel.
+		\begin{beweis}
+			$ S_nY $ ist endlichdimensional, also separabel, d.h. $ S_nY=\bar{A_n} $ mit $ A_n $ abz\"ahlbar.\\
+			Setze $ A=\bigcup_{n\in\N} A_n $ abz\"ahlbar und es gilt $ \bar A=Y $.
+		\end{beweis}
+		\item Die Eigenschaft aus \ref{satz4.5} ist schw\"acher also $ \norm{S_n-I}\rightarrow 0 $ f\"ur $ n\rightarrow\infty $. Aus $ \norm{S_n-I}\rightarrow 0 $ folgt sogar $ \dim Y<\infty $.
+		\begin{beweis}
+			$ K(Y) $ ist ein Banachraum und somit ist $ I $ kompakt. 
+			\[ B_y=\lbrace y\in Y\mid \norm{y}\leq 1 \]
+			ist kompakt, und somit $ \dim Y<\infty $.
+		\end{beweis}
+	\end{enumerate}
+\end{bemerkung*}
+\begin{korollar}
+	Sei $ X $ ein beliebiger Banachraum und $ Y $ einer der separablen Banachr\"aume $ c_0 $, $ \ell^p $, $ C[0,1] $ ($ 1\leq p<\infty $). Dann gilt:
+	\[ \overline{F(X,Y)}=K(X,Y) \]
+\end{korollar}
+\begin{beweis}
+	Wir m\"ussen jeweils zeigen, dass die Eigenschaft aus \ref{satz4.5} erf\"ullt ist.
+	\begin{description}
+		\item[$ Y=c_0 $ oder $ \ell^p $:] Setze 
+		\[ S_nx=S_n(x_1,x_2,x_3,...)=(x_1,x_2,...,x_n,0,0,...) \]
+		\item[$ Y=C[0,1\rbrack $:] 
+		\[ (S_ny)(t)=\sum_{i=0}^{n}\binom{n}{i}t^i(1-t)^{n-i}y\left(\frac{i}{n}\right) \]
+		$ S_n $ ordnet $ y $ also das $ n-te $ Bernsteinpolynom zu (siehe Beweis des Weierstra\ss schen Approximationssatzes). Dort wurde auch $ S_ny\rightarrow y $ gezeigt.
+	\end{description}
+\end{beweis}

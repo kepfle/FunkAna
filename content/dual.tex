@@ -1,0 +1,95 @@
+\chapter{Dualr\"aume und ihre Darstellungen}
+\begin{definition}
+	Der Raum $ L(X,\K) $ der stetigen linearen Funktionale auf einem normierten Raum $ X $ hei\ss t der \deftxt{Dualraum von $ X $} und wird mit $ X' $ bezeichnet.
+\end{definition}
+\begin{bemerkung*}
+	Der Dualraum eines normierten Raumes versehen mit der Operatornorm $ \norm{x'}=\sup_{\norm{x}\leq 1} |x'(x)|$, $ x'\in X' $, ist stets ein Banachraum.
+\end{bemerkung*}
+\begin{satz}
+	\bullshit
+	\begin{enumerate}
+		\item Sei $ 1\leq p<\infty $ und $ \frac{1}{p}+\frac{1}{q}=1 $. Dann ist die Abbildung $ T\colon\ell^q\rightarrow(\ell^p)' $ mit
+		\[ (Tx)(y)=\sum_{n=1}^{\infty}x_nyy_n,\quad x=(x_n)\in\ell^q,y=(y_n)\in\ell^p \]
+		ein isometrischer Isomorphismus.
+		\item Dieselbe Abbildungsvorschrift liefert einen isometrischen Isomorphismus zwischen $ \ell^1 $ und $ (c_0)' $. 
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	Sei $ 1\leq p<\infty $ und $ \frac{1}{p}+\frac{1}{q}=1 $. Sei $ x=(x_n)\in\ell^q $ und $ y=(y_n)\in\ell^p $. Nach der H\"olderschen Ungleichung ist dann $ \sum_{n=1}^{\infty}x_ny_n $ absolut konvergent mit
+	\[ |(Tx)(y)|=\left|\sum_{n=1}^{\infty}x_ny_n\right|\leq\norm{xy}_1\leq\norm{x}_q\norm{y}_p \]
+	Da $ T $ auch linear ist, folgt die Wohldefiniertheit und die Stetigkeit von $ T $ mit $ \norm{Tx}\leq\norm{x}_q $.
+	\begin{description}
+		\item[$ T $ ist injektiv:] Aus $ Tx=0 $ folgt $ (Tx)(e_n)=x_n $ und somit $ x=0 $.
+		\item[$ T $ ist surjektiv und eine Isometrie:] Sei $ 1<p<\infty $. Sei $ y'\in(\ell^p)' $. Es ist zu zeigen: $ \exists x\in\ell^q $, $ Tx=y' $ und $ \norm{x}_q\leq\norm{y'} $. Zu $ n\in\N $ setzen wir $ x_n\coloneqq y'(e_n) $ und $ x=(x_n)_n $. Setze
+		\[ y_n= \begin{cases}
+		\frac{|x_n|^q}{x_n}&x_n\neq 0\\ 0&x_n=0
+		\end{cases} \]
+		F\"ur $ N\in\N $ gilt nun
+		\[ \sum_{n=1}^{N}|y_n|^p=\sum_{n=1}^{N}|x_n|^{qp-p}=\sum_{n=1}^{N}|x_n|^q \]
+		und 
+		\begin{align*} \sum_{n=1}^{N}|x_n|^q&=\sum_{n=1}^{N}x_ny_n\\&=\sum_{n=1}^{N}y_ny'(e_n)\\&=y'\left(\sum_{n=1}^{N}y_ne_n\right)\\&\leq\norm{y'}\norm{\sum_{n=1}^{N}y_ne_n}_p\\&=\norm{y'}\left(\sum_{n=1}^{N}|y_n|^p\right)^\frac{1}{p}\\&=\norm{y'}\left(\sum_{n=1}^{N}|x_n|^q\right)^\frac{1}{p} \end{align*}
+		Also:
+		\[ \left(\sum_{n=1}^{N}|x_n|^q\right)^\frac{1}{q}\leq\norm{y'}\forall N\in\N \]
+		Und somit: $ x\in\ell^q $ und $ \norm{x}_q\leq\norm{y'} $. Es gilt auch $ Tx=y' $, da
+		\[ (Tx)(e_n)=x_n\coloneqq y'(e_n)\forall n\in\N \]
+		Da $ Tx $ und $ y $ linear sind folgt: $ Tx $ und $ y' $ stimmen auf $ d=\text{lin}\lbrace e_n\mid n\in\N\rbrace $ \"uberein. Da $ Tx $ und $ y' $ stetig auf $ \ell^p $, d.h. $ \in(\ell^p)' $, stimmen $ Tx $ und $ y' $ auch auf $ \bar d=\ell^p $ \"uberein.
+		\item[$ p=1 $:] Zu $ n\in\N $ setze $ x_n=y'(e_n) $ und $ x=(x_n)_n $ f\"ur $ y'\in(\ell^1)' $. Es gilt
+		\[ |x_n|=|y'(e_n)|\leq\norm{y'}\norm{e_n}_1=\norm{y'} \]
+		Also ist $ x\in\ell^\infty $ und $ \norm{x}_\infty\leq\norm{y'} $. $ Tx=y' $ folgt analog zum Fall $ 1<p<\infty $.
+		\item[zu ii):] Sei $ y'\in c_0' $. Zu $ n\in\N $ setzen wir $ x_n=y'(e_n) $ und $ x=(x_n)_n $. Es ist zu zeigen: $ x\in\ell^1 $, $ Tx=y' $ und $ \norm{x}_1\leq\norm{y'} $. Setze
+		\[ y_n= \begin{cases}
+		\frac{|x_n|}{x_n}&x_n\neq 0\\0&x_n=0
+		\end{cases} \]
+		Dann gilt f\"ur $ N\in\N $
+		\[ \sum_{n=1}^{N}|x_n|=\sum_{n=1}^{N}x_ny_n=\sum_{n=1}^{N}y_ny'(e_n)=y'\left(\sum_{n=1}^{N}y_ne_n\right)\leq\norm{y'}\sup_{n\in\N}|y_n|=\norm{y'} \]
+		Also: $ x\in\ell^1 $ und $ \norm{x}_1\leq\norm{y'} $. $ Tx=y' $ in $ c_0' $ analog zum Fall $ 1<p<\infty $, da $ \bar d=c_0 $ bez\"uglich $ \norm{\cdot}_\infty $.
+	\end{description}
+\end{beweis}
+\begin{bemerkung*}
+	Es gilt: $ (\ell^p)'\cong\ell^q $ und $ (c_0)'\cong\ell^1 $.
+\end{bemerkung*}
+Als n\"achstes betrachten wir die R\"aume $ L^p[a,b] $. Dazu ben\"otigen wir den folgenden Satz.
+\begin{satz}[Satz von Radon-Nikodym]
+	$ \Sigma $ sei die $ \sigma- $Algebra der Borelmengen aus $ [a,b] $, $ \lambda $ sei das Lebesgue-Ma\ss\ auf $ [a,b] $ und $ \mu\colon\Sigma\rightarrow\K $ sei $ \sigma- $additiv. Dann sind die folgenden Aussagen \"aquivalent:
+	\begin{enumerate}
+		\item Ist $ E\in\Sigma $ mit $ \lambda(E)=0 $, so ist auch $ \mu(E)=0 $.
+		\item es existiert eine integrierbare Funktion $ g\colon[a,b]\rightarrow\K $ ($ g\in L^1[a,b] $):
+		\[ \mu(E)=\int_E g\dd\lambda\forall E\in\Sigma \]
+	\end{enumerate} 
+\end{satz}
+\begin{satz}
+	Sei $ 1\leq p<\infty $ und $ \frac{1}{p}+\frac{1}{q}=1 $. Dann definiert $ T\colon L^q[a,b]\rightarrow (L^p[a,b])' $ mit
+	\[ (Tg)(f)=\int_a^b fg\dd\lambda \] einen isometrischen Isomorphismus.
+\end{satz}
+\newpage
+\begin{beweis}
+	Die H\"oldersche Ungleichung zeigt, dass f\"ur $ g\in L^q[a,b] $ $ Tg $ ein stetiges Funktional auf $ L^p[a,b] $ mit $ \norm{Tg}\leq\norm{g}_{L^q} $ ist. Es gilt sogar: $ \norm{Tg}=\norm{g}_{L^q} $, denn:
+	\begin{description}
+		\item[$ p>1 $:] F\"ur \[ f=\frac{\bar g}{|g|}\left(\frac{|g|}{\norm{g}_{L^q}}\right)^\frac{q}{p} \]
+			gilt:
+			\[ \norm{f}_{L^p}^p=\int_a^b\frac{|g|^q}{\norm{g}_{L^q}^q}\dd\lambda=1 \]
+			und
+			\[ \int fg\dd\lambda=\left(\int |g|^{1+\sfrac{q}{p}}\dd\lambda\right)\frac{1}{\norm{g}_{L^q}^{\sfrac{q}{p}}}=\frac{\int|g|^q\dd\lambda}{\left(\int|g|^q\right)^{\sfrac{1}{p}}}=\norm{g}_{L^q} \]
+	\end{description}
+	F\"ur $ p=1 $ analog. Es bleibt zu zeigen: $ T $ ist surjektiv. Sei dazu $ y'\in (L^p[a,b])' $ beliebig. Wir definieren $ \mu\colon\Sigma\rightarrow\K $ durch $ \mu(E)\coloneqq y'(\chi_E) $. $ \mu $ ist wohldefiniert, da $ \chi_E\in L L^p[a,b] $. $ \mu $ ist auch $ \sigma- $additiv:
+	Seien $ (E_n)_n\subseteq\Sigma $ paarweise disjunkt. Dann gilt:
+	\begin{align*} \mu\left(\bigcup_{i=1}^\infty E_i\right)&=y'\left(\chi_{\bigcup_{i=1}^\infty E_i}\right)\\&=y'\left(\lim_{n\to\infty}\chi_{\bigcup_{i=1}^n E_i}\right)\\&=\lim_{n\to\infty}y'\left(\chi_{\bigcup_{i=1}^n E_i}\right)\\&=\lim_{n\to\infty}y'\left(\sum_{i=1}^{n}\chi_{E_i}\right)\\&=\lim_{n\to\infty}\sum_{i=1}^n y'(\chi_{E_i})\\&=\sum_{i=1}^{\infty}\mu(E_i) \end{align*}
+	Aus $ \lambda(E)=0 $ folgt $ \chi_E=0 $ fast \"uberall und sonst $ \mu(E)=y'(\chi_E)=0 $. Mit dem Satz von Radon-Nikodym existiert nun ein $ g\in L^1[a,b] $ mit
+	\[ y'(\chi_E)=\mu(E)=\int_E g\dd\lambda=\int_a^b\chi_E g\dd\lambda\forall E\in\Sigma \]
+	Zeige: $ y'(f)=\int_a^b fg\dd\lambda $ f\"ur $ f\in L^\infty[a,b] $. Dies gilt mindestens f\"ur charakteristische Funktionen und somit f\"ur Stufenfunktionen. Aus $ \norm{\cdot}_{L^p}\leq(b-a)^{\sfrac{1}{p}}\norm{\cdot}_\infty $ folgt $ y'\in (L^\infty[a,b])' $ und $ f\mapsto\int_a^b fg\dd\lambda $ ist in $ (L^\infty[a,b])' $, da $ g\in L^1[a,b] $. Also gilt die Behauptung auch auf dem $ \norm{\cdot}_{L^\infty}- $Abschluss der Stufenfunktionen, d.h. auf $ L^\infty[a,b] $ (Ma\ss theorie).\\
+	Zeige: $ g\in L^q[a,b] $. Sei $ q<\infty $. Setze $ f(x)=\frac{|g(x)|^q}{g(x)} $ mit $ \frac{0}{0}=0 $. $ f $ ist messbar und es gilt
+	\[ |g|^q=fg=|f|^p \]
+	Zu $ n\in\N $ sei
+	\[ E_n\lbrace x\in[a,b]\mid |g(x)|\leq n\rbrace \]
+	Dann ist $ \chi_{E_n}f $ in $ L^\infty[a,b] $ und es gilt
+	\[ \int_{E_n} |g|^q\dd\lambda=\int_a^b\chi_{E_n}fg\dd\lambda=y'(\chi_{E_n}f)\leq\norm{y'}\norm{\chi_{E_n}f}_{L^p}=\norm{y'}\left(\int_{E_n}|f|^p\dd\lambda\right)^\frac{1}{p}=\norm{y'}\left(\int_{E_n}|g|^q\right)^\frac{1}{p} \]
+	Da $ 1-\frac{1}{p}=\frac{1}{q} $ folgt hieraus:
+	\[ \left(\int_{E_n}|g|^q\right)^\frac{1}{q}\leq\norm{y'}\forall n\in\N \]
+	Mit dem Satz von Beppo-Levi folgt nun $ \norm{g}_{L^q}\leq\norm{y'} $. Also $ g\in L^q $.\\
+	Sei nun $ q=\infty $. Setze
+	\[ E\coloneqq\lbrace x\mid |g(x)|>\norm{y'}\rbrace \]
+	Angenommen $ \lambda(E)>0 $, $ f=\chi_E\frac{|g|}{g}\in L^\infty[a,b] $. Es folgt:
+	\[ \lambda(E)\norm{y'}=\int_E\norm{y'}\dd\lambda<\int_E|g|\dd\lambda=\int_E fg\dd\lambda=y'(f)\leq\norm{y'}\norm{f}_{L^1} \]
+	Also: $ \lambda(E)<\norm{f}_{L^1}\lightning $. Somit ist $ g\in L^\infty $.\\
+	$ y' $ und $ Tg $ sind Elemente aus $ (L^p[a,b])' $, welche auf den Stufenfunktionen \"übereinstimmen. Also stimmen $ y' $ und $ Tg $ auf $ L^p[a,b] $ \"uberein, da die Stufenfunktionen dicht in $ L^p $ liegen.
+\end{beweis}

@@ -1,0 +1,61 @@
+\chapter{Der Satz von Hahn-Banach}
+Wir werden insbesondere zeigen, dass auf jedem normierten Raum ein stetiges lineares Funktional $ \neq 0 $ existiert.
+\begin{definition}
+	Sei $ X $ ein Vektorraum. Eine Abbildung $ p\colon X\rightarrow\R $ hei\ss t\deftxt{sublinear}, falls
+	\begin{enumerate}
+		\item $ p(\lambda x)=\lambda p(x)\forall\lambda\geq 0, x\in X $
+		\item $ p(x+y)=p(x)+p(y)\forall x,y\in X $
+	\end{enumerate}
+\end{definition}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Jede Halbnorm ist sublinear.
+		\item Jede lineare Abbildung $ T\colon X\rightarrow\R $ auf einem reellen Vektorraum ist sublinear.
+		\item $ (x_n)_n\mapsto \limsup_{n\to\infty} x_n$ ist sublinear auf dem reellen $ \ell^\infty $ und $ (x_n)_n\mapsto\limsup_{n\to\infty} \Re x_n $ ist sublinear auf dem komplexen Raum $ \ell^\infty $.
+	\end{enumerate}
+\end{beispiel*}
+\begin{satz}[Satz von Hahn-Banach, Version der linearen Algebra]
+	Sei $ X $ ein reeller Vektorraum und sei $ U $ ein Untervektorraum von $ X $. Ferner seien $ p\colon X\rightarrow\R $ sublinear und $ l\colon U\rightarrow \R $ linear mit
+	\[ l(x)\leq p(x)\forall x\in U \]
+	Dann existiert eine lineare Fortsetzung $ L\colon X\rightarrow\R $, $ L|_U=l $ mit $ L(x)\leq p(x)\forall x\in X $.
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item Es gelte zus\"atzlich $ \dim X/U=1 $. Sei $ x_0\in X/U $ beliebig. Dann l\"asst sich jedes $ x\in X $ eindeutig schreiben als
+		\[ x=i+\lambda x_0,\quad u\in U,\lambda\in\R \]
+		Sei $ r $ ein freier Parameter. Wir w\"ahlen den Ansatz
+		\[ L_r(x)=l(u)+\lambda r \]
+		$ L_r $ ist eine lineare Abbildung, welches $ l $ fortsetzt. Zu zeigen: $ \exists r\in\R $: $ L_r\leq p $. Es gilt
+		\begin{align*}
+		&L_r\leq p\\
+		\Leftrightarrow&L_r(x)\leq p(x)\forall x\in X\\
+		\Leftrightarrow&l(u)+\lambda r\leq p(u+\lambda x_0)\forall u\in U\forall\lambda\in\R\qquad (\ast)
+		\end{align*}
+		Nach Voraussetzung gilt $ (\ast) $ f\"ur $ \lambda=0 $ und alle $ u\in U $. Sei $ \lambda>0 $. Dann gilt:
+		\begin{align*}
+		(\ast)&\Leftrightarrow\lambda r\leq p(u+\lambda x_0)-l(u)\forall u\\
+		&\Leftrightarrow r\leq p\left(\frac{u}{\lambda}+x_0\right)-l\left(\frac{u}{\lambda}\right)\forall u\\
+		&\Leftrightarrow r\leq\inf_{v\in U}\left(p\left(v+x_0\right)-l\left(v\right)\right)
+		\end{align*}
+		Analog f"ur $ \lambda<0 $:
+		\begin{align*}
+		(\ast)&\Leftrightarrow -r\leq p\left(\frac{u}{-\lambda}-x_0\right)-l\left(
+		\frac{u}{-\lambda}\right)\forall u\\
+		&\Leftrightarrow r\geq l\left(\frac{u}{-\lambda}\right)-p\left(\frac{u}{-\lambda}-x_0\right)\forall u\\
+		&\Leftrightarrow r\geq\sup_{w\in U}\left(l(w)-p(w-x_0)\right)
+		\end{align*}
+		Somit: $ \exists r\in\R $:
+		\[ L_r\leq p\Leftrightarrow l(w)-p(w-x_0)\leq p(v+x_0)-l(v)\forall v,w\in U\qquad(\ast\ast) \]
+		$ (\ast\ast) $ folgt aus: $ \forall v,w\in U $:
+		\[ l(w)+l(v)=l(w+v)\leq p(w+v)=p(w-x_0+x_0+v)\leq p(w-x_0)+p(v+x_0) \]
+		\item Um die allgemeine Aussage zu beweisen, ben\"otigen wir das \deftxt{Zornsche Lemma}: Sei $ (A,\leq) $ eine halbgeordnete nichtleere Menge (d.h. $ \leq $ ist transitiv, reflexiv und antisymmetrisch) in der jede Kette (dies ist eine total geordnete Menge, also eine Teilmenge, f\"ur deren Elemente stets $ x\leq y $ oder $ y\leq x $ gilt) eine obere Schranke besitzt. Dann liegt jedes Element von $ A $ unter einem maximalen Element von $ A $, also einem Element $ m $ mit $ m\leq a\Rightarrow a=m $ (Das Zornsche Lemma ist \"aquivalent zum Auswahlaxiom und zum Wohlordnungssatz).\\
+		Wir w\"ahlen
+		\[ A=\lbrace (V,L_V)\mid V\text{ ist ein Unterraum von }X\text{ mit }U\subseteq V\text{ und }L_V\colon V\rightarrow\R\text{ linear mit }L_V\leq p|_V\text{ und }L_V|_U=l\rbrace \]
+		Es gilt $ A\neq\emptyset $, da $ (U,l)\in A $. Wir w\"ahlen die Ordnung
+		\[ (V_1,L_{V_1})\leq(V_2,L_{V_2})\Leftrightarrow V_1\subseteq V_2\text{ und }L_{V_2}|_{V_1}=L_{V_1} \]
+		Ist $ ((V_i,L_{V_i})_{i\in I}) $ total geordnet, so ist $ (V,L_V) $ mit
+		\[ V=\bigcup V_i\qquad L_V(x)=L_{V_i}(x)\qquad x\in V_i \] 
+		als obere Schranke. Nach dem Zornschen Lemma gibt es also ein maximales Element. Sei nun $ m=(X_0,L_{X_0}) $ ein maximales Element. W\"are $ X_0\neq X $, so g\"abe es nach i) eine echte Majorante von $ m $, und $ m $ w\"are nicht maximal. Also ist $ X_0=X $ und $ L=L_{X_0} $ l\"ost unser Fortsetzungsproblem.
+	\end{enumerate}
+\end{beweis}
