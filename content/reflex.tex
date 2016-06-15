@@ -1,0 +1,51 @@
+\chapter{Schwache Konvergenz und Reflexivit\"at}
+Sei $ X $ ein normiert Raum, $ X' $ der Dualraum und $ X''=(X')' $ dessen Dualraum. Wir nennen $ X'' $ den \deftxt{Bidualraum} von $ X $.\\
+Sei $ x\in X $, so kann auf kanonische Weise eine Abbildung $ i(x)\colon X'\rightarrow\K $, $ (i(x))(x')=x'(x) $, definiert werden. $ i(x) $ ist sicher linear, $ i(x) $ ist stetig, da:
+\[ |(i(x))(x')|=|x'(x)|\leq\norm{x'}\norm{x}=\norm{x}\norm{x'}\forall x'\in X' \]
+mit $ \norm{i(x)}\leq\norm{x} $. Es gilt sogar $ \norm{i(x)}=\norm{x} $ (dies folgt aus dem Satz von Hahn-Banach).\\
+Also $ i(x)\in X'' $ und $ i $ Isometrie.\\
+\begin{satz}
+	Die Abbildung $ i\colon X\rightarrow X'' $, $ (i(x))(x')=x'(x) $, ist eine lineare Isometrie (im Allgemeinen nicht surjektiv).
+\end{satz}
+$ i $ hei\ss t auch \deftxt{kanonische Abbildung von $ X $ nach $ X'' $}. Wir schreiben auch $ i_X $. Auf diese Weise wird $ X $ mit einem Unterraum von $ X'' $ identifiziert. Da $ X'' $ vollst\"andig ist, gilt das folgende Korollar:\\
+\begin{korollar}
+	Jeder normierte Raum ist isometrisch isomorph zu einem dichten Unterraum eines Banachraumes.
+\end{korollar}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Sei $ X=c_0 $. Es 'gilt': $ X'\cong\ell^1 $ und $ X''\cong\ell^\infty $. Mit dieser Identifizierung gilt $ i_{c_0}(x)=x $, denn: Identifizieren wir $ (y_n)_n\in\ell^1 $ mit dem Funktional $ (x_n)_n\mapsto\sum y_nx_n $, so folgt:
+		\[ (i_{c_0}(x))(y)=y_(x)=\sum_n y_nx_n=z(y) \]
+		mit $ z\in\ell^\infty $ stellt das Funktional $ (y_n)\mapsto\sum_n x_n y_n $.\\
+		Somit $ z=x=i_{c_0}(x) $. Insbesondere $ i_{c_0} $ ist nicht surjektiv.
+		\item $ X=\ell^1 $. Es gilt $ X'=\ell^\infty $ und nach Kapitel 5 ist $ X''=(\ell^\infty)' $ nicht isometrisch isomorph zu $ \ell^1 $. Also ist $ i_{\ell^1} $ nicht surjektiv.
+		\item Analoge \"Uberlegungen zu i) zeigen: F\"ur $ 1<p1\infty $ stimmt die kanonische Einbettung $ i_{\ell^p} $ mit der Identit\"at $ I\colon \ell^p\rightarrow\ell^p $ \"uberein. Somit ist $ i_{\ell^p} $ surjektiv.\\
+		Die gleichen \"uberlegungen gelten f\"ur $ L^p $.
+	\end{enumerate}
+\end{beispiel*}
+\begin{definition}
+	Ein Banachraum $ X $ hei\ss t \deftxt{reflexiv}, wenn $ i_X $ surjektiv ist.
+\end{definition}
+F\"ur reflexive R\"aume gilt $ X\cong X'' $. Die Umkehrung hiervon gilt nicht (ein Beispiel wurde 1950 von James angegeben).\\
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item $ \ell^p $ und $ L^p $ sind reflexiv f\"ur $ 1<p<\infty $.
+		\item $ c_0 $, $ \ell^1 $ sind nicht reflexiv.
+		\item Endlich dimensionale R\"aume $ X $ sind reflexiv, da
+		\[ \dim X=\dim X'=\dim X'' \]
+	\end{enumerate}
+\end{beispiel*}
+\begin{satz}
+	\bullshit
+	\begin{enumerate}
+		\item Abgeschlossene Unterr\"aume reflexiver R\"aume sind reflexiv. 
+		\item Ein Banachraum $ X $ ist genau dann reflexiv, wenn $ X' $ reflexiv ist. 
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item $ X $ reflexiv, $ U\subseteq X $ abgeschlossen. Sei $ u''\in U'' $. $ x'\mapsto u''(x'|_U) $ liegt in $ X'' $, denn
+		\[ |u''(x'|_U)|\leq\norm{u''}\norm{x'|_U}\leq\norm{u''}\norm{x'} \]
+	\end{enumerate}
+\end{beweis}

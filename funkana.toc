@@ -5,3 +5,5 @@
 \contentsline {chapter}{\numberline {3}Dualr\"aume und ihre Darstellungen}{31}{chapter.3}
 \contentsline {chapter}{\numberline {4}Kompakte Operatoren}{37}{chapter.4}
 \contentsline {chapter}{\numberline {5}Der Satz von Hahn-Banach}{45}{chapter.5}
+\contentsline {paragraph}{Das Trennungsproblem.}{52}{paragraph*.2}
+\contentsline {chapter}{\numberline {6}Schwache Konvergenz und Reflexivit\"at}{57}{chapter.6}

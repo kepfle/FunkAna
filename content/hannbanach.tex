@@ -59,3 +59,231 @@ Wir werden insbesondere zeigen, dass auf jedem normierten Raum ein stetiges line
 		als obere Schranke. Nach dem Zornschen Lemma gibt es also ein maximales Element. Sei nun $ m=(X_0,L_{X_0}) $ ein maximales Element. W\"are $ X_0\neq X $, so g\"abe es nach i) eine echte Majorante von $ m $, und $ m $ w\"are nicht maximal. Also ist $ X_0=X $ und $ L=L_{X_0} $ l\"ost unser Fortsetzungsproblem.
 	\end{enumerate}
 \end{beweis}
+\begin{bemerkung*}
+	$ L $ ist im Allgemeinen nicht eindeutig bestimmt.
+\end{bemerkung*}
+\begin{lemma}
+	Sei $ X $ ein $ \C- $Vektorraum.
+	\begin{enumerate}
+		\item Ist $ l\colon X\rightarrow\R $ ein $ \R- $lineares Funktional, d.h.
+		\[ l(\lambda_1 x_1+\lambda_2 x_2)=\lambda_1 l(x_1)+\lambda_2(x_2)\forall\lambda_1,\lambda_2\in\R\forall x_1,x_2\in X \] und setze $ \tilde l(x)=l(x)-il(ix) $, so ist $ \tilde l\colon X\rightarrow\C $ ein $ \C- $lineares Funktional und $ l=\Re\tilde l $.
+		\item Ist $ h\colon X\rightarrow\C $ ein $ \C- $lineares Funktional, $ l=\Re h $ und $ \tilde l $ wie in i), so ist $ l $ ein $ \R- $lineares Funktional und $ h=\tilde l $.
+		\item Ist $ p\colon X\rightarrow\R $ eine Halbnorm und $ l\colon X\rightarrow\C $ $ C- $linear, so gilt die \"Aquivalenz
+		\[ |l(x)|\leq p(x)\forall x\in X\Leftrightarrow|\Re l(x)|\leq p(x)\forall x\in X \]
+		\item Ist $ X $ ein normierter Raum und $ l\colon X\rightarrow\C $ $ \C- $linear und stetig, so ist $ \norm{l}=\norm{\Re l} $.
+	\end{enumerate}
+\end{lemma}
+\newpage
+\begin{bemerkung*}
+	\ref{lemma5.3} besagt: $ l\mapsto\Re l $ ist eine bijektive $ \R- $lineare Abbildung zwischen dem Raum der $ \C- $linearen Funktionale und dem Raum der $ \R- $linearen Funktionale. Im normierten Fall ist sie isometrisch.
+\end{bemerkung*}
+\begin{beweis}
+	\begin{enumerate}
+		\item Aus der Konstruktion folgt: $ \tilde l $ $ \R- $linear und $ \Re\tilde l=l $. Es bleibt zu zeigen: $ \tilde l(ix)=i\tilde l(x) $. Dies folgt aus:
+		\[ \tilde l(ix)=l(ix)=-il(iix)=l(ix)=il(-x)=l(ix)+il(x)=i(l(x)-il(ix))=i\tilde l(x) \]
+		\item $ l=\Re h $ ist $ \R- $linear$ \surd $\\
+		F\"ur $ x\in X $ gilt:
+		\[ h(x)=\Re h(x)+i\Im h(x)=l(x)+i\Im h(x)=l(x)-i\Re ih(x)=l(x)-i\Re h(ix)=l(x)-il(ix)=\tilde l(x) \] 
+		\item Wegen $ |\Re z|\leq |z|\forall z\in\C $ gilt '$ \Rightarrow $'. F\"ur '$ \Leftarrow $' sei $ x\in X $. Es existiert ein $ \lambda\in\C $ mit $ |\lambda|=1 $ und $ l(x)=\lambda|l(x)| $.
+		\[ |l(x)|=\lambda^{-1}l(x)=l(\lambda^{-1}x)=|\Re l(\lambda^{-1}x)|\leq p(\lambda^{-1}x)=|\lambda^{-1}|p(x)=p(x) \]
+		\item folgt aus iii).
+	\end{enumerate}
+\end{beweis}
+\begin{satz}[Satz von Hahn-Banach, Version der linearen Algebra, Komplexe Variante]
+	Sei $ X $ ein komplexer Vektorraum und $ U\subseteq X $ ein Untervektorraum. $ p\colon X\rightarrow\R $ sei sublinear und $ l\colon U\rightarrow\C $ linear mit \[ \Re l(x)\leq  p(x)\forall x\in U \]
+	Dann existiert eine lineare Fortsetzung $ L\colon X\rightarrow\C $, $ L|_U=l $ mit
+	\[ \Re L(X)\leq p(x)\forall x\in X \] 
+\end{satz}
+\begin{beweis}
+	\ref{satz5.2} liefert ein $ \R- $lineares Funktional $ F\colon X\rightarrow\R $ mit $ F|_U=\Re l $ und $ F(X)\leq p(x)\forall x\in X $. Mit \ref{lemma5.3} ist $ F=\Re L $ f\"ur ein gewisses $ \C- $lineares Funktional $ L\colon X\rightarrow\C $. Es bleibt zu zeigen: $ L|_U=l $. Dies folgt aus $ \Re L|_U=\Re l $ und  ref{lemma5.3} ii). 
+\end{beweis}
+\begin{satz}[Satz von Hahn-Banach, Fortsetzungsversion]
+	Sei $ X $ ein normierter Raum und $ U\subseteq X $ ein Untervektorraum. Zu jedem stetigen (linearen) Funktional $ u'\colon U\rightarrow\K $ existiert ein stetig (lineares) Funktional $ x'\colon X\rightarrow\K $ mit $ x'|_U=u' $ und $ \norm{x'}=\norm{u'} $. Jedes stetig Funktional kann also normerhaltend fortgesetzt werden.
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item Sei zun\"achst $ \K=\R $. Setze $ p(x)=\norm{u'}\norm{x} $ f\"ur $ x\in X $. Es gilt:
+		\[ u'(x)=|u'(x)|\leq\norm{u'}\norm{x}=p(x)\forall x\in U \]
+		Mit \ref{satz5.2} existiert eine lineare Abbildung $ x'\colon X\rightarrow\R $ mit $ x'|_U=u' $ und $ x'(x)\leq p(x)\forall x\in X $. Es gilt auch \[ x'(-x)\leq p(-x)=p(x)\forall x\in X  \]
+		Also:
+		\[ |x'(x)|\leq p(x)=\norm{u'}\norm{x}\forall x\in X \]
+		Hieraus folgt die Behauptung.\\
+		Es gilt auch die Umkehrung:
+		\[ \norm{u'}=\sup_{\substack{u\in U\\\norm{u}\leq 1}}|u'(u)|=\sup_{\substack{u\in U\\\norm{u}\leq 1}}|x'(u)|\leq\sup_{\substack{x\in X\\\norm{x}\leq 1}}|x'(x)|=\norm{x'} \]
+		\item Sei nun $ \K=\C $. Kombination von Teil i) und \ref{satz5.4} liefert: $ \exists x'\colon X\rightarrow\C $ linear mit $ x'|_U=u' $ und $ \norm{\Re x'}=\norm{u'} $. Nach \ref{lemma5.3} iv) $ \norm{\Re x'}=\norm{x'} $ und somit $ \norm{u'}=\norm{x'} $.
+	\end{enumerate}
+\end{beweis}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[]
+		\item Die Fortsetzung $ x' $ ist im Allgemeinen nicht eindeutig.
+		\item Eine analoge Aussage f\"ur Operatoren ist falsch. So gibt es keinen stetigen Operator $ T\colon\ell_\infty\rightarrow c_0 $ der die Identit\"at $ I\colon c_0\rightarrow c_0 $ fortsetzt.
+	\end{enumerate}
+\end{bemerkung*}
+\begin{korollar}
+	In jedem normierten Raum $ X $ existiert zu jedem $ x\in X $, $ x\neq 0 $, ein Funktional $ x'\in X' $ mit $ \norm{x'}=1 $ und $ |x'(x)|=\norm{x} $. Insbesondere trennt $ X' $ die Punkte von $ X $, d .h. zu $ x_1,x_2\in X $, $ x_1\neq x_2 $, existiert ein $ x'\in X' $ mit $ x'(x_1)\neq x'(x_2) $. 
+\end{korollar}
+\begin{beweis}
+	Setze $u'\colon \text{lin}\lbrace x\rbrace\rightarrow\K $, $ u'(\lambda x)=\lambda\norm{x} $, normerhaltend auf $ X $ fort. Sei $ x' $ die Fortsetzung
+	\[ |x'(x)|=|u'(x)|=\norm{x} \]
+	$ \norm{x'}=\norm{u'}=1 $, da:
+	\[ |u'(\lambda x)|=|\lambda\norm{x}|=\norm{\lambda x}\Rightarrow\norm{u'}=1 \]
+	Zum Beweis des Zusatzes betrachte $ x=x_1-x_2 $
+\end{beweis}
+\begin{korollar}
+	In jedem normierten Raum gilt
+	\[  \norm{x}=\sup_{\substack{x'\in X'\\\norm{x'}\leq 1}}|x'(x)|=\max_{\substack{x'\in X'\\\norm{x'}\leq 1}}|x'(x)|\forall x\in X\qquad(\ast) \]
+\end{korollar}
+\begin{beweis}
+	\begin{description}
+		\item['$ \geq $':] folgt aus $ |x'(x)|\leq\norm{x'}\norm{x} $.
+		\item['$ \leq $':] folgt aus \ref{kor5.6} (der Fall $ x=0 $ ist trivial). 
+	\end{description}
+\end{beweis}
+\begin{bemerkung*}
+	Betrachte die Symmetrie von $ (\ast) $ zur Definition
+	\[ \norm{x'}=\sup_{\substack{x\in X\\\norm{x}\leq 1}}|x'(x)|\forall x'\in X' \]
+\end{bemerkung*}
+\begin{korollar}
+	Sei $ X $ ein normierter Raum und $ U $ ein abgeschlossener Untervektorraum und $ x\in X $, $ x\notin U $. Dann existiert $ x'\in X' $ mit $ x'|_U=0 $ und $ x'(x)\neq 0 $. 
+\end{korollar}
+\begin{beweis}
+	Sei $ \omega\colon X\rightarrow X/U $ die kanonische Quotientenabbildung. Dann ist $ \omega(u)=0 $ f\"ur $ u\in U $ und $ \omega(x)\neq 0 $. Wir w\"ahlen nach \ref{kor5.6} ein Funktional $ l\in(X/U)' $ mit $ l(\omega(x))\neq 0 $. Setze $ x'\coloneqq l\circ\omega $. $ x' $ leistet das Gew\"unschte.
+\end{beweis}
+\begin{korollar}
+	Ist $ X $ ein normierter Raum und $ U $ ein Untervektorraum, so sind \"aquivalent:
+	\begin{enumerate}
+		\item $ U $ ist dicht in $ X $.
+		\item $ x'\in X $ mit $ x'|_U=0\Rightarrow x'=0 $.
+	\end{enumerate}
+\end{korollar}
+\begin{beweis}
+	\"Ubungsaufgabe.
+\end{beweis}
+\begin{satz}
+	Die Abbildung $ T\colon\ell^1\rightarrow(\ell^\infty)' $ mit
+	\[ (Tx)(y)=\sum_{i=1}^{\infty}x_ny_n,\quad x=(x_n),y=(y_n) \]
+	ist isometrisch, aber nicht surjektiv.
+\end{satz}
+\begin{beweis}
+	Der Beweis der Isometrie ist einfach (analog zu $ \ell'\cong c_0' $). Es bleibt zu zeigen: $ T $ ist nicht surjektiv.\\
+	Wir betrachten das Funktional
+	\[ \lim\colon C=\lbrace (y_n)_n\mid y_n\in\K\wedge\exists\lim y_n\rbrace\rightarrow\K \]
+	\[ \lim (x_n)_n\coloneqq\lim_{n\to\infty}x_n \]
+	\[ |\lim(x_n)_n|\leq\norm{(x_n)_n}_\infty\Rightarrow\norm{\lim}=1 \]
+	Mit Hahn-Banach existiert ein $ x'\in(\ell^\infty)' $, so dass
+	\[ x'|_C=\lim,\qquad \norm{x'}=1 \]
+	H\"atte $ x' $ eine Darstellung
+	\[ x'(y)=\sum_{n=1}^{\infty}x_ny_n \]
+	f\"ur eine Folge $ (x_n)_n\in\ell^1 $, so w\"are 
+	\[ x_nx'(e_n)=\lim e_n=0\forall n\in\N \]
+	$ x'=0\lightning $. Also ist $ T $ nicht surjektiv.
+\end{beweis}
+\begin{satz}
+	Ein normierter Raum $ X $ ist separabel, falls der Dualraum $ X' $ separabel ist.
+\end{satz}
+\begin{bemerkung*}
+	$ \ell^1 $ ist separabel und $ \ell^\infty $ ist nicht separabel. D.h. es kann keinen Isomorphismus zwischen $ \ell^1 $ und $ (\ell^\infty)' $ geben.
+\end{bemerkung*}
+\begin{beweis}
+	Mit $ X' $ ist $ S_{X'}=\lbrace x'\in X'\mid\norm{x'}=1\rbrace $ separabel (dies war eine \"Ubungsaufgabe). Sei also die Menge $ \lbrace x'_n\rbrace_n $ dicht in $ S_[X'] $. W\"ahle $ x_i\in S_X $ mit $ |x_i'(x_i)|\geq\frac{1}{2} $. Wir setzen $ U=\text{lin}\lbrace x_i\rbrace_{i\in\N} $  und zeigen $ \bar U=X $ (dann ist $ X $ separabel). Mit \ref{kor5.9} gen\"ugt es zu zeigen: Aus $ x'\in X' $ mit $ x'|_U=0 $ folgt stets $ x'=0 $.\\
+	Sei also $ x'\in X' $ mit $ x'|_U=0 $. Angenommen $ x'\neq 0 $. O.B.d.A. $ \norm{x'}=1 $. Dann existiert ein $ i_0\in\N $ mit $ \norm{x'-x'_{i_0}}\leq\frac{1}{4} $.
+	Aber:
+	\[ \frac{1}{2}\leq|x_{i_0}'(x_{i_0})|=|x_{i_0}'(x_{i_0})-x'(x_{i_0})|=|(x_{i_0}'-x')(x_{i_0})|\leq\norm{x_{i_0}'-x'}\norm{x_{i_0}}=\frac{1}{4}\lightning \] 
+	Also $ x'=0 $, somit $ \overline{\text{lin}\lbrace x_i\rbrace_{i\in\N}}=X $ und $ X $ separabel.
+\end{beweis}
+\paragraph{Das Trennungsproblem.} Existiert zu konvexen Mengen $ U $ und $ V\subseteq X $ ein Funktional $ x'\in X' $, $ x'\neq 0 $, mit
+\[ \sup_{x\in U}x'(x)\leq\inf_{x\in V}x'(x)\qquad\K=\R \]
+bzw.
+\[ \sup_{x\in U}\Re x'(x)\leq\inf_{x\in V}\Re x'(x)\qquad \K=\C \]
+\begin{definition}
+	Sei $ X $ ein Vektorraum und $ A\subseteq X $ eine Teilmenge. Das \deftxt{Minkowski-Funktional} $ P_A\colon X\rightarrow[0,\infty] $ wird durch
+	\[ P_A(x)\coloneqq\inf\left\lbrace\lambda>0\middle|\frac{x}{\lambda}\in A\right\rbrace \]
+	definiert.\\
+	$ A $ hei\ss t \deftxt{absorbierend}, falls $ P_A(x)<\infty\forall x\in X $.\\
+	Ist $ X $ ein normierter Raum und $ A=\lbrace x\mid\norm{x}\leq 1\rbrace $, so folgt $ P_A(x)=\norm{x} $.
+\end{definition}
+\begin{lemma}
+	Sei $ X $ ein normierter Raum und $ U\subset X $ eine konvexe Teilmne mit $ 0\in\mathring U $. Dann gilt:
+	\begin{enumerate}
+		\item $ U $ ist absorbierend, genauer: Aus $ \lbrace x\mid\norm{x}<\e\rbrace\subset U $ folgt $ P_U(x)\leq\frac{1}{\e}\norm{x} $.
+		\item $ P_U $ ist sublinear.
+		\item Ist $ U $ offen, so gilt $ U=P_U^{-1}([0,1[) $.
+	\end{enumerate}
+\end{lemma}
+\begin{beweis}
+	\begin{enumerate}
+		\item Klar.
+		\item 
+		\begin{align*} P_U(\lambda x)&=\inf\left\lbrace\mu>0\middle|\frac{\lambda x}{\mu}\in U\right\rbrace\\
+		&=\lambda\inf\left\lbrace\mu>0\middle|\frac{x}{\mu}\in U\right\rbrace\\
+		&=\lambda P_U(x),\qquad \lambda>0 \end{align*}
+		Es bleibt zu zeigen:
+		\[ P_U(x+y)=P_U(x)+P_U(y) \]
+		Sei dazu $ \e>0 $. W\"ahle $ \lambda,\mu>0 $ mit
+		\[ \lambda\leq P_U(x)+\e,\quad\mu\leq P_U(y)+\e \]
+		so dass $ \frac{x}{\lambda}\in U $ und $ \frac{y}{\mu}\in U $. Da $ U $ konvex ist k\"onnen wir eine Konvexkombination w\"ahlen und es folgt:
+		\[ \frac{\lambda}{\lambda+\mu}\frac{x}{\lambda}+\frac{\mu}{\lambda+\mu}\frac{y}{\mu}=\frac{x+y}{\lambda+\mu}\in U \]
+		Also folgt:
+		\[ P_U(x+y)\leq\lambda+\mu\leq P_U(x)+P_U(y)+2\e \]
+		\item $ P_U(x)<1 $,  existiert $ \lambda<1 $ mit $ \frac{x}{\lambda}\in U $. Dann:
+		\[ x=\lambda\frac{x}{\lambda}+(1-\lambda)0\in U \]
+		Also ist $ P_U^{-1}([0,1[)\subseteq U $.\\
+		Ist $ P_U(x)\geq 1 $, so ist $ \frac{x}{\lambda}\notin U\forall 0<\lambda<1 $. Also $ \frac{x}{\lambda}\in X\setminus U\forall 0<\lambda<1 $. Da $ X\setminus U $ abgeschlossen ist, folgt
+		\[ x=\lim_{\lambda\to 1,\lambda<1}\frac{x}{\lambda}\in X\setminus U \] 
+	\end{enumerate}
+\end{beweis}
+\begin{lemma}
+	Ist $ X $ ein normierter Raum und $ V\subseteq X $ konvex und offen mit $ 0\notin V $, so existiert $ x'\in X' $ mit
+	\[ \Re x'(x)<0\forall x\in V \]
+\end{lemma}
+Im Beweis benutzen wir die Schreibweise
+\[ A\pm B\coloneqq\lbrace a\pm b\mid a\in A,b\in B\rbrace,\quad A,B\subseteq X \]
+Es gilt: $ A $ und $ B $ konvex$ \Rightarrow A\pm B $ konvex.
+\begin{beweis}
+	Sei zun\"achst $ \K=\R $. Sei $ x_0\in V $ beliebig. Setze $ y_0\coloneqq -x_0 $ und $ U=V-\lbrace x_0\rbrace $. $ U $ ist offen und konvex, $ 0\in U $, $ y_0\notin U $. $ P_U $ sei das Minkowskifunktional zu $ U $. Nach \ref{lemma5.13} ist dieses $ \R- $wertig, sublinear und es gilt $ P_U(y_0)\geq 1 $. Sei $ Y\coloneqq\text{lin}\lbrace y_0\rbrace$. Auf $ Y $ definieren wir
+	\[ y'(ty_0)=tP_U(y_0),\quad t\in\R \]
+	Dann ist $ y'(y)\leq P_U(y)\forall y\in Y $.\\
+	Mit \ref{satz5.2} w\"ahlen wir eine lineare Fortsetzung $ x' $ von $ y' $ mit $ x'\leq P_U $. \ref{lemma5.13} zeigt $ x'\in X' $, denn es gilt:
+	\[ |x'(x)|=\max\lbrace x'(x),-x'(x)\rbrace=\max\lbrace x'(x),x'(-x)\rbrace\leq\max\lbrace P_U(x), P_U(-x)\rbrace\leq\frac{1}{\e}\norm{x} \]
+	Weiter gilt:
+	\[ x'(y_0)=P_U(y_0)\geq 1 \]
+	und f\"ur $ x\in V $:
+	\[ x'(x)=x'(u-y_0)=x'(u)-x'(y_0)\leq y'(u)-1<P_U(u)-1<0 \]
+	Somit folgt die Behauptung f\"ur $ \K=\R $. Der Fall $ \K=\C $ folgt aus dem hier gezeigten und \ref{lemma5.3}.
+\end{beweis}
+\newpage
+\begin{bemerkung*}
+	Die Voraussetzung $ V $ offen ist nicht verzichtbar.
+	\begin{beispiel*}
+		Sei $ X=(d,\norm{\cdot}_\infty) $ und \[ V=\lbrace (x_n)_n\in d\setminus\lbrace 0\rbrace\mid x_N>0\text{ f\"ur }N\coloneqq\max\lbrace j\mid x_j\neq 0\rbrace\rbrace \]
+		Dann gilt: $ 0\notin V $, $ V $ konvex. Aber es gibt kein $ x'\in d' $ mit $ x'|_V<0 $.\\
+		Angenommen, es existiert ein $ x'\in d' $ mit $ x'|_V<0 $. Dann besitzt $ x' $ eine eindeutige Fortsetzung $ y'\in c_0' $. Da $ \ell^1\cong c_0' $ k\"onnen wir $ y' $ mit einer Folge in $ \ell^1 $ identifizieren, d.h. $ y'=(y_n)_n\in\ell^1 $, $ y'((x_n))=\sum_{n\in\N}^{} x_ny_n $.\\
+		Angenommen $ y_n\geq 0 $. Da $ e_n\in V $, ist $ x'(e_n)=y'(e_n)=y_n\geq 0 $. Also $ y_n<0\forall n\in\N $ und $ x=-\frac{y_2}{y_1}e_1+e_2\in V $ und
+		\[ y'(x)=y'\left(-\frac{y_2}{y_1}e_1+e_2\right)=-\frac{y_2}{y_1}y_1+y_2=0\lightning \] 
+	\end{beispiel*}
+\end{bemerkung*}
+\begin{theorem}[Satz von Hahn-Banach, Trennungsversion 1]
+	Sei $  X $ ein normierter Raum, $ V_1,V_2\subseteq X $ seien konvex und $ V_1 $ sei offen und es gelte $ V_1\cap V_2=\emptyset $. Dann existiert $ x'\in X' $:
+	\[ \Re x'(v_1)<\Re x'(v_2)\forall v_1\in V_1\forall v_2\in V_2 \] 
+\end{theorem}
+\begin{beweis}
+	Sei $ V=V_1-V_2 $. Als Differenzmengee konvexer Mengen ist $ V $ konvex. Aus $ V_1\cap V_2=\emptyset $ folgt $ 0\notin V $. Aus der Darstellung
+	\[ V=\bigcup_{x\in V_2}(V_1-\lbrace x\rbrace) \]
+	folgt $ V $ offen. Nach \ref{lemma5.14} existiert $ x'\in X' $ mit
+	\[ \Re x'(v_1-v_2)<0\forall v_1\in V_1\forall v_2\in V_2 \]
+\end{beweis}
+\newpage
+\begin{theorem}[Satz von Hahn-Banach, Trennungsversion 2]
+	Sei $ X $ ein normierter Raum, $ V\subseteq X $ konvex und abgeschlossen und $ x\notin V $. Dann existiert $ x'\in X' $:
+	\[ \Re x'(x)<\inf\lbrace \Re x'(v)\mid v\in V\rbrace \]
+	Es existiert also ein $ \e>0 $:
+	\[ \Re x'(x)<\Re x'(x)+\e\leq\Re x'(v)\forall v\in V\]
+\end{theorem}
+\begin{beweis}
+	Da $ V $ abgeschlossen ist, existiert $ r>0 $:
+	\[ U_r(x)\cap V=\emptyset \]
+	Nach \ref{thm5.15} existiert $ x'\in X' $ mit 
+	\[ \Re x'(x+u)<\Re x'(v)\forall v\in V\forall u\in U_r(x) \]
+	\[ \Re x'(x)+\underbace{\norm{\Re x'}r}_{\eqqcolon\e}<\Re x'(v)\forall v\in V \]
+\end{beweis}
