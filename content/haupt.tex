@@ -1,0 +1,215 @@
+\chapter{Haupts\"atze f\"ur Operatoren auf Banachr\"aumen}
+\begin{satz}[Satz von Baire]
+	Sei $ (X,d) $ ein vollst\"andiger metrischer Raum und $ (\sO_n)_{n\in\N} $ eine Folge offener und dichter Teilmengen von $ X $. Dann ist auch $ \bigcap_{n\in\N}\sO_n $ dicht in $ X $.
+\end{satz}
+\begin{beweis}
+	Sei $ D\coloneqq\bigcap_{n\in\N}\sO_n $. Es ist zu zeigen: Jede $ \e- $Kugel in $ X $ enth\"alt ein Element von $ D $.\\
+	Sei
+	\[ B_{\e_0}(x_0)\coloneqq\lbrace x\in X\mid d(x,x_0)<\e_0\rbrace \]
+	eine dieser Mengen. Da $ \sO_1 $ offen und dicht ist, existiert ein $ x_1\in\sO_1 $, $ 0<\e_1<\frac{1}{2}\e_0 $ so dass
+	\[ b_{\e_1}(x_1)\subseteq\sO_1\cap B_{\e_0}(x_0) \]
+	Weiter induktiv:
+	\[ B_{\e_{n+1}}(x_{n+1})\subseteq \sO_n\cap B_{\e_n}(x_n) \]
+	mit $ 0<\e_{n+1}<\frac{1}{2}\e_n $.\\
+	Sei $ m>n $. Dann folgt:
+	\[ d(x_m,x_n)<\e_n<2^{-1}\e_{n-1}<...<2^{-n}\e_0 \]
+	$ (x_n)_{n\in\N} $ ist eine Cauchyfolge in $ X $.\\
+	Sei $ x\coloneqq\lim_{n\to\infty} x_n $.
+	\[ d(x_n,x)\leq d(x_n,x_m)+d(x_m,x)<e_n \]
+	f\"ur $ m $ hinreichend gro\ss. Also ist \[ x\in B_{\e_n}(x_n)\subseteq\sO_{n-1}\cap B_{\e_{n-1}}(x_{n-1})\subseteq\sO_{n-1}\cap...\cap\sO_1\cap B_{\e_0}(x_0)\forall n\in\N \]
+	Und somit $ x\in D\cap B_{\e_0}(x_0) $.
+\end{beweis}
+\begin{korollar}[Bairescher Kategoriensatz]
+	Sei $ (X,d) $ ein vollst\"andiger metrischer Raum und $ X=\bigcup_{n=1}^\infty A_n $ mit $ A_n $ abgeschlossen. Dann existiert ein $ n_0\in\N: \mathring A_{n_0}\neq\emptyset$.
+\end{korollar}
+\begin{beweis}
+	\"Ubungsaufgabe.
+\end{beweis}
+\begin{bemerkung*}
+	Der Bairesche Kategoriensatz liefert h\"aufig relativ einfache Beweise f\"ur Existenzaussagen, z.B.: Es gibt stetige Funktionen auf $ [0,1] $ die an keiner Stelle differenzierbar sind.
+\end{bemerkung*}
+\begin{theorem}[Satz von Banach-Steinhaus, Prinzip der gleichm\"assigen Beschr\"anktheit]
+	Seien $ X $ ein Banachraum und $ Y $ ein normierter Raum, $ I $ eine Indexmenge und $ T_i\in L(X,Y)  $, $ i\in I $. Falls
+	\[ \sup_{i\in I}\norm{T_ix}<\infty\forall x\in X \]
+	so folgt
+	\[ \sup_{i\in I}\norm{T_i}<\infty \]
+\end{theorem}
+\begin{beweis}
+	Zu $ n\in\N $:
+	\[ E_n\coloneqq\left\lbrace x\in X\middle|\sup_{i\in I}\norm{T_ix}\leq n\right\rbrace \]
+	Aus der Voraussetzung folgt: $ X=\bigcup_{n\in\N}E_n $. Da die $ T_i $s stetig sind, ist die Menge \[ E_n=\bigcap_{i\in I}\norm{T_i}^{-1}([0,n]) \] abgeschlossen. Nach dem Baireschen Kategoriensatz hat dann mindestens eine Menge $ E_n $ einen inneren Punkt. Also $ \exists N\in\N: \exists y\in E_N\exists\e>0 $:
+	\[ \norm{x-y}\leq\e\Rightarrow x\in E_N \]
+	Da $ E_N $ symmetrisch ist, d.h. $ z\in E_N\Rightarrow -z\in E_N $, hat $ -y $ dieselbe Eigenschaft. Da $ E_N $ konvex ist folgt:
+	\[ \norm{u}\leq\e,u\in X\Rightarrow u=\frac{1}{2}((u+y)+(u-y))\in\frac{1}{2}(E_n+E_n)=E_n \]
+	Somit gilt: Aus $ \norm{u}\leq\e $ folgt $ \norm{T_i u}\leq N\forall i\in I $.
+	\[ \sup_{i\in I}\norm{T_i}=\sup_{i\in I}\sup_{\substack{u\in X\\\norm{u}\leq 1}}\norm{T_iu}\leq\frac{N}{\e}<\infty \]
+\end{beweis}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[]
+		\item Der Satz von Banach-Steinhaus gibt keinen Aufschluss \"uber die Gr\"o\ss e von $ \sup_{i\in I}\norm{T_i} $.
+		\item Die Vollst\"andigkeit von $ X $ ist wesentlich f\"ur den Satz von Banach-Steinhaus.
+		\begin{beispiel*}
+			$ X=(d,\norm{\cdot}_\infty) $ und $ T_n\colon d\rightarrow\K $ mit $ T_n(x_m)_{m\in\N}=nx_n $. $ T_n $ ist linear.\\
+			Sei $ x=(x_m)_{m\in\N}\in d $ beliebig.
+			\[ x=(x_1,x_2,x_3,...,x_N,0,...0) \]
+			\[ \sup_{i\in\N}\norm{T_ix}=\sup_{i\in\N}|ix_i|=\sup_{i=1}^N|ix_i|<\infty \] 
+			Aber es gilt:
+			\[ \norm{T_i}=\sup_{\substack{x\in d\\\norm{x}_\infty\leq 1}}\norm{T_ix}=\sup_{\substack{x\in d\\\norm{x}_{\infty}\leq 1}}|ix_i|=i \]
+			Also $ T_i\in L(d,\K) $ und $ \sup\norm{T_i}=\infty $.
+		\end{beispiel*}
+	\end{enumerate}
+\end{bemerkung*}
+\begin{korollar}
+	F\"ur eine Teilmenge $ M $ eines normierten Raumes $ X $ sind \"aquivalent:
+	\begin{enumerate}
+		\item $ M $ ist beschr\"ankt, d.h. $ \exists c>0:\norm{x}\leq c\forall x\in M $.
+		\item $ \forall x'\in X' $ ist $ x'(M)\subseteq\K $ beschr\"ankt.
+	\end{enumerate}
+\end{korollar}
+\begin{beweis}
+	\begin{description}
+		\item[i)$ \Rightarrow $ii):] trivial, da $ x'\in X' $.
+		\item[ii)$ \Rightarrow $i):] Wir betrachten die Funktionale $ i_X(x) $ f\"ur $ x\in M $, welche auf dem Banachraum $ X' $ definiert sind. Nach Voraussetzung gilt:
+		\[ \sup_{x\in M}|x'(x)|=\sup_{x\in M}|i_X(x)(x')|<\infty\forall x'\in X' \]
+		Mit dem Satz von Banach-Steinhaus ($ I\coloneqq M $, f\"ur $ X $ w\"ahlen wir $ X' $, $ Y\coloneqq\K $, $ T_i\coloneqq i_X(x) $) folgt:
+		\[ \sup_{x\in M}\norm{x}=\sup_{x\in M}\norm{i_X(x)}<\infty \]
+	\end{description}
+\end{beweis}
+\begin{korollar}
+	Schwach konvergente Folgen sind beschr\"ankt.
+\end{korollar}
+\begin{beweis}
+	Konvergiert $ (x_n)_n $ schwach, so ist f\"ur $ x'\in X' $ die Folge $ (x'(x_n))_{n\in\N} $ beschr\"ankt, da konvergent. Mit \ref{kor7.4} folgt die Behauptung.
+\end{beweis}
+\begin{korollar}
+	Sei $ X $ ein Banachraum und $ M\subseteq X' $. Dann sind \"aquivalent:
+	\begin{enumerate}
+		\item $ M $ ist beschr\"ankt.
+		\item $ \forall x\in X $ ist $ \lbrace x'(x)\mid x'\in M\rbrace $ beschr\"ankt.
+	\end{enumerate}
+\end{korollar}
+\begin{beweis}
+	\begin{description}
+		\item[i)$ \Rightarrow $ii):] $ \surd $
+		\item[ii)$ \Rightarrow $i):] Dies ist ein Spezialfall vom Satz von Banach-Steinhaus.
+	\end{description}
+\end{beweis}
+\begin{korollar}
+	Sei $ X $ ein Banachraum und $ Y $ ein normierter Raum, sowie $ T_n\in L(X,Y) $, $ \forall n\in\N $. F\"ur $ x\in X $ existiere $ Tx\coloneqq\lim_{n\to\infty} T_nx $. Dann gilt $ T\in L(X,Y) $. 
+\end{korollar}
+\begin{beweis}
+	Die Linearit\"at von $ T $ ist klar, da '$ \lim $' linear ist. Es bleibt zu zeigen: $ T $ ist stetig. Da $ (T_nx)_{n\in\N} $ f\"ur alle $ x\in X $ konvergiert, ist stets $ \sup_{n\in\N}\norm{T_nx}<\infty\forall x\in X $. Mit dem Satz von Banach-Steinhaus folgt:
+	\[ \sup_{n\in\N}\norm{T_n}\eqqcolon M<\infty \]
+	Also:
+	\[ \norm{Tx}=\lim_{n\to\infty}\norm{T_nx}\leq M\norm{x}\forall x\in X \]
+\end{beweis}
+\begin{definition}
+	Eine Abbildung zwischen metrischen R\"aumen hei\ss t \deftxt{offen}, wenn sie offene Mengen  auf offene Mengen abbildet.
+\end{definition}
+\begin{bemerkung*}
+	Eine offene Abbildung muss abgeschlossene Mengen nicht auf abgeschlossene Mengen abbilden.
+	\begin{beispiel*}
+		$ p\colon\R^2\rightarrow\R $, $ p(s,t)=s $. $ p $ ist offen, aber die abgeschlossene Menge \[ \lbrace (s,t)\mid s\geq 0,st\geq 1\rbrace \] wird auf $ ]0,\infty[ $ abgebildet.
+	\end{beispiel*}
+\end{bemerkung*}
+\newpage
+\begin{lemma}
+	F\"ur eine lineare Abbildung $ T\colon X\rightarrow Y $ zwischen normierten R\"aumen sind \"aquivalent:
+	\begin{enumerate}
+		\item $ T $ ist offen.
+		\item $ T $ bildet offene Kugeln um $ 0 $ auf Nullumgebungen ab, d.h.
+		\[ \forall r>0\exists\e>0: B_\e(0)\subseteq T(B_r(0)) \]
+		\item \[ \exists\e>0: B_\e(0)\subseteq T(B_-1(0)) \]
+	\end{enumerate}
+\end{lemma}
+\begin{beweis}
+	\begin{description}
+		\item[ii)$ \Leftrightarrow $iii):] Klar, da $ T $ linear.
+		\item[i)$ \Rightarrow $ii):] $ B_r(0) $ offen. Da $ T $ offen gilt, dass $ T(B_r(0)) $ offen ist und $ 0\in T(B_r(0)) $. Daraus folgt, dass ein $ \e>0 $ mit der gew\"unschten Eigenschaft existiert.
+		\item[ii)$ \Rightarrow $i):] Sei $ O\subseteq X $ offen und $ x\in O $. Dann ist $ Tx\in T(O) $. Da $ O $ offen ist, existiert ein $ r>0 $ mit $ x+B_r(0)\subseteq O $. Dann folgt $ Tx+T(B_r(0))\subseteq T(O) $. Mit ii) folgt nun:
+		\[ Tx+B_\e(0)\subseteq Tx+T(B_r(0))\subseteq T(O) \]
+		Da $ x $ beliebig war, ist $ T(O) $ offen.
+	\end{description}
+\end{beweis}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Jede Quotientenabbildung ist offen ($ T $ Quotientenabbildung$ \Leftrightarrow T(B_1(0))=B_1(0) $).
+		\item Die Abbildung $ T\colon\ell^\infty\rightarrow c_0 $, $ (x_n)_n\mapsto\left(\frac{1}{n}x_n\right)_n $, ist nicht offen, denn:
+		\[ T(B_1(0))=\left\lbrace (y_n)_n\in c_0\middle| |y_n|<\frac{1}{n}\right\rbrace \]
+		ist keine Nullumgebung.
+		\item Jede offene lineare Abbildung ist surjektiv. In vollst\"andigen R\"aumen gilt auch die Umkehrung, wie der folgende Satz zeigt.
+	\end{enumerate}
+\end{beispiel*}
+\begin{theorem}[Satz von der offenen Abbildung]
+	Sind $ X $ und $ Y $ Banachr\"aume und $ T\in L(X,Y) $ ist surjektiv, dann ist $ T $ offen.
+\end{theorem}
+\begin{beweis}
+	Wir zeigen, dass \ref{lemma7.9} iii) gilt.
+	\begin{enumerate}
+		\item Zeige zun\"achst:
+		\[ \exists e_0>0:B_{\e_0}(0)\subseteq\overline{T(B_1(0))} \]
+		Da $ T $ surjektiv ist, gilt
+		\[ Y=\bigcup_{n\in\N} T(B_n(0))=\bigcup_{n\in\N}\overline{T(B_n(0))} \]
+		Mit dem Baireschen Kategoriensatz existiert dann ein $ N\in\N $ so dass $ \overline{T(B_n(0))}\neq\emptyset $, also existiert ein $ y_0\in\mathring{\overline{T(B_n(0))}} $ und $ \e>0 $:
+		\[ \norm{z-y_0}<\e\Rightarrow z\in T(B_N(0)) \]
+		Nun ist $ \mathring{\overline{T(B_N(0))}} $ symmetrisch, d.h. diese Menge enth\"alt mit $ z $ auch $ -z $ (denn $ T(B_n(0)) $ ist symmetrisch und damit auch der Abschluss und das Innere). Dann hat $ -y_0 $ dieselbe Eigenschaft, d.h.
+		\[ \norm{z+y_0}<\e\Rightarrow z\in\mathring{\overline{T(B_N(0))}} \]
+		Sei nun $ \norm{y}<\e $. Dann:
+		\[ \norm{(y_0+y)-y_0}<\e\quad\text{und}\quad\norm{(-y_0+y)+y_0}<\e \]
+		Somit gilt $ y_0+y, -y_0+y\in\overline{T(B_N(0))} $. Da $ \overline{T(B_N(0))} $ konvex ist, gilt:
+		T(\[ y=\frac{1}{2}(y_0+y)+\frac{1}{2}(-y_0+y)\in\overline{T(B_N(0))} \]
+		Also: $ B_\e(0)\subseteq\overline{T(B_N(0))} $ und $ B_{\frac{\e}{N}}(0)\subseteq\overline{T(B_1(0))} $.
+		\item Sei $ \e_0>0 $ wie in Teil i). Es bleibt zu zeigen:
+		\[ B_{\e_0}(0)\subseteq T(B_1(0)) \]
+		Sei dazu $ y\in Y $ mir $ \norm{y}<\e_0 $ beliebig. W\"ahle $ \e>0 $ mit $ \norm{y}<\e<\e_0 $ und setze $ \bar y\coloneqq\frac{\e_0}{\e}y $. Dann:
+		\[ \norm{\bar y}=\frac{\e_0}{\e}\norm{y}<\e_0 \]
+		und aus Teil i) folgt $ \bar y\in\overline{T(B_1(0))} $. Dann existiert ein $ y_0=Tx_0\in T(B_1(0)) $ mit $ \norm{\bar y-y_0}<\alpha\e_0 $. Hierbei ist $ \alpha\in]0,1[ $ so klein gew\"ahlt, so dass
+		\[ \frac{\e}{\e_0}\frac{1}{1-\alpha}<1\Rightarrow\frac{\bar y-y_0}{\alpha}\in B_{\e_0}(0)\Rightarrow\frac{\bar y-y_0}{\alpha}\in\overline{T(B_1(0))} \]
+		Dann existiert ein $ y_1=Tx_1\in T(B_1(0)) $ mit 
+		\[ \norm{\frac{\bar y-y_0}{\alpha}-y_1}<\alpha\e_0\Rightarrow\norm{\bar y-(y_0+\alpha y_1)}<\alpha^2\e_0\Rightarrow\frac{\bar y-(y_0+\alpha y_1)}{\alpha^2}\in B_{\e_0}(0) \]
+		Mit vollst\"andiger Induktion existiert nun eine Folge $ (x_n)_n\in B_1(0) $:
+		\[ \norm{\bar y-T\left(\sum_{i=0}^{n}\alpha^ix_i\right)}<\alpha^{n+1}\e_0 \]
+		Wegen $ \alpha\in]0,1[ $ konvergiert die Reihe
+		\[ \sum_{i=0}^\infty \alpha^i x_i \]
+		absolut. Da $ X $ vollst\"andig existiert der Grenzwert
+		\[ \bar x\coloneqq\sum_{i=0}^{\infty}\alpha^ix_i\in X \]
+		Nach Konstruktion ist $ T\bar x=\bar y $. Setze $ x\coloneqq\frac{\e}{\e_0}\bar x\Rightarrow Tx=y $ und \[ \norm{x}=\frac{\e}{\e_0}\norm{\bar x}=\frac{\e}{\e_0}\norm{\sum_{i=0}^{\infty}\alpha^ix_i}\leq\frac{\e}{\e_0}\frac{1}{1-\alpha}<1 \]
+		Also ist $ y\in T(B_1(0)) $ und somit folgt die Behauptung.
+	\end{enumerate}
+\end{beweis}
+\begin{korollar}
+	Sind $ X $ und $ Y $ Banachr\"aume und ist $ T\in L(X,Y) $ bijektiv, so ist die inverse Abbildung $ T^{-1} $ stetig.
+\end{korollar}
+\begin{definition}
+	Seien $ X $ und $ Y $ normierte R\"aume, $ D\subseteq X $ sei ein Untervektorraum, $ T\colon D\rightarrow Y $ sei eine lineare Abbildung. Dann hei\ss t $ T $ \deftxt{abgeschlossen}, falls: Konvergiert eine Folge $ (x_n)_n $, $ x_n\in D $, gegen $ x\in X $ und konvergiert $ (Tx_n)_n $, etwa gegen $ y\in Y $, so folgt $ x\in D $ und $ Tx=y $. Ist $ T $ auf $ D\subseteq X $ definiert, so schreibt man $ \dom(T)=D $ bzw. $ T\colon\dom(T)\subseteq X\rightarrow Y $. 
+\end{definition}
+\begin{bemerkung*}[Wie h\"angen Abgeschlossenheit und Stetigkeit zusammen?]
+	F\"ur den Spezialfall $ \dom(T)=X $ betrachten wir die Aussagen:
+	\begin{enumerate}
+		\item $ x_n\rightarrow x $ in $ X $.
+		\item $ (Tx_n) $ konvergiert, etwa $ Tx_n\rightarrow y $ in $ Y $.
+		\item $ Tx=y $.
+	\end{enumerate}
+	Dann gilt:\\
+	$ T $ stetig, falls i)$ \Rightarrow $ii) und iii).\\
+	$ T $ ist abgeschlossen: i) und ii)$ \Rightarrow $iii)\\
+	Somit: $ T $ stetig$ \Rightarrow T$ ist abgeschlossen.
+\end{bemerkung*}
+\begin{bemerkung*}
+	Abgeschlossene Operatoren bilden im Allgemeinen nicht abgeschlossene Mengen auf abgeschlossene Mengen ab. Abgeschlossenheit hei\ss t hier 'Graphen abgeschlossen'.\\
+	F\"ur eine lineare Abbildung $ T\colon D\subseteq X\rightarrow Y $ ist der \deftxt{Graph von $ T $} definiert als
+	\[ \gr(T)\coloneqq\lbrace (x,Tx)\mid x\in D\rbrace\subseteq X\times Y \] 
+\end{bemerkung*}
+\begin{lemma}
+	Seien $ X,Y $ normierte R\"aume, $ D\subseteq X $ ein Untervektorraum und $ T\colon D\rightarrow Y $ linear. Dann gilt:
+	\begin{enumerate}
+		\item $ \gr(T) $ ist ein Untervektorraum von $ X\times Y $.
+	\end{enumerate}
+\end{lemma}
+\begin{beweis}
+	\begin{enumerate}
+		\item Klar.
+	\end{enumerate}
+\end{beweis}

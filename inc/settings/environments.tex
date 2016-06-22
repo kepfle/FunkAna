@@ -1,8 +1,9 @@
 
 \definecolor{def_color}					{HTML}{194D6C}
 \definecolor{def_shade_color}		{HTML}{DFE9EF}
-\definecolor{thm_color}					{HTML}{2F2512}
-\definecolor{thm_shade_color}		{HTML}{FFF7D4}	
+\definecolor{thm_color}					{HTML}{000000}
+\definecolor{thm_shade_color}		{HTML}{FFF7D4}
+\definecolor{thm_color_2}					{HTML}{FF8080}	
 
 \newlength{\internalindent}
 \setlength{\internalindent}		% defines how much text and lists are intended
@@ -110,7 +111,7 @@
 	\setlist			{rightmargin=\internalindent}
 	\setitemize		{leftmargin=\leftmargin}
 	\setenumerate	{leftmargin=\leftmargin+\internalindent}
-	\definecolor{shadecolor}{named}{thm_shade_color}
+	\definecolor{shadecolor}{named}{thm_color_2}
 	\needspace{4\baselineskip}
 	\begin{shaded}\begin{tmp_thm}[#1]\refstepcounter{jacob}\customlabel{thm\arabic{chapter}.\arabic{jacob}}{Theorem \arabic{chapter}.\arabic{tmp_satz}}
 }{
