@@ -1,0 +1,36 @@
+\chapter{Projektionen auf Banachr\"aumen}
+\begin{definition}
+	Eine \deftxt{Projektion} auf einem Vektorraum ist eine Abbildung $ p $ mit $ p^2=p $.
+\end{definition}
+\begin{bemerkung*}
+	Aus der linearen Algebra folgt: Sei $ U $ ein Untervektorraum eines Vektorraumes $ X $, so existiert ein Komplement\"arraum $ V $ so dass $ X $ algebraisch isomorph zur direkten Summe $ U\oplus V $ ist ($ U+V $ mit $ U\cap V=\lbrace 0\rbrace $). Daraus folgt, dass Projektion von $ X $ auf $ U $ linear ist. All dies folgt aus dem Basiserg\"anzungssatz.
+\end{bemerkung*}
+In normierten R\"aumen sind wir an stetigen linearen Projektionen interessiert.
+\begin{bemerkung*}[Weitere Fragen]
+	Ist $ X $ auch topologisch isomorph zu $ U\oplus V $, d.h. $ U\oplus V\simeq X $ oder \"aquivalent: $ (u_n+v_n)_n\subseteq X $ konvergiert genau dann, wenn $ (u_n)_n $ und $ (v_n)_n $ konvergieren.\\
+	In diesem Fall reden wir auch von einer topologischen direkten zerlegung.
+\end{bemerkung*}
+\begin{lemma}
+	Sei $ p $ eine stetige lineare Projektion auf dem normierten Raum $ X $ . Dann gilt:
+	\begin{enumerate}
+		\item Entweder $ p=0 $ oder $ \norm{p}\geq 1 $.
+		\item Der Kern $ \ker p $ und das Bild $ \ran p $ sind abgeschlossene Untervektorr\"aume.
+		\item Es gilt $ X\cong\ker p\oplus\ran p $
+	\end{enumerate}
+\end{lemma}
+\begin{beweis}
+	\begin{enumerate}
+		\item Aus $ \norm{p}=\norm{p^2}\leq\norm{p}^2 $ folgt $ p=0 $ oder $ 1\leq\norm{p} $.
+		\item $ \ker p $ und $ \ran p $ sind Unterr\"aume, da $ p $ linear. Der Kern $ \ker p=p^{-1}(\lbrace 0\rbrace) $ ist abgeschlossen, da $ p $ stetig ist. Auch $ I-p $ ist eine stetige lineare Projektion\footnote{$ (I-p)^2=I-p-p+p^2=I-p $} und $ \ran p=\ker(I-p) $.\footnote{$ x\in\ker(I-p)\Rightarrow px=x\Rightarrow x\in\ran p $\\ $ x\in\ran p\Rightarrow\exists y\in X: py=x\Rightarrow x=py=p^2y=px\Rightarrow x\in\ker(I-p) $} Somit ist auch $ \ran p $ abgeschlossen.
+		\item Es ist klar, dass $ X $ algebraisch mit der direkten Summe $ \ker p\oplus\ker(I-p)$ identifiziert werden kann, denn es gilt:
+		\[ \forall x\in X: x=(I-p)x+px \]
+		Das die Summe auch topologisch direkt ist, folgt aus der Stetigkeit von $ p $. 
+	\end{enumerate}
+\end{beweis}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Aus $ \ell^p $, $ 1\leq p\leq\infty $, definiert $ (x_n)_n\mapsto (x_1,...,x_k,0,...,0) $ eine stetige lineare Projektion mit $ \norm{p}=1 $.
+		\item Es gibt keine stetige lineare Projektion von $ \ell^\infty $ auf $ c_0 $.  
+	\end{enumerate}
+\end{beispiel*}

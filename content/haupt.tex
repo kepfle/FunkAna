@@ -206,10 +206,59 @@
 	Seien $ X,Y $ normierte R\"aume, $ D\subseteq X $ ein Untervektorraum und $ T\colon D\rightarrow Y $ linear. Dann gilt:
 	\begin{enumerate}
 		\item $ \gr(T) $ ist ein Untervektorraum von $ X\times Y $.
+		\item $ T $ ist abgeschlosssen genau dann, wenn $ \gr(T) $ in $ X\times Y $ abgeschlossen is. (Hierbei sei $ X\times Y $ versehen mit der Norm $ \norm{(x,y)}_1\coloneqq\norm{x}+\norm{y} $) 
 	\end{enumerate}
 \end{lemma}
 \begin{beweis}
 	\begin{enumerate}
 		\item Klar.
+		\item $ \gr(T) $ ist abgeschlossen genau dann, wenn \[ (x_n,Tx_n)_{n\in\N}\rightarrow(x,y)\Rightarrow (x,y)\in\gr(T)\] Dies ist \"aquivalent zu \[ x_n\rightarrow x, Tx_n\rightarrow y\Rightarrow x\in D, y=Tx \]
+		d.h. zur Abgeschlossenheit von $ T $.
 	\end{enumerate}
+	\vspace{-22pt}
+\end{beweis}
+\newpage
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Sei $ X=Y=C[0,1] $ und $ D=C^1[0,1] $. Der Operator $ T\colon D\rightarrow Y $ sei definiert durch $ Tx=x' $. $ T $ ist abgeschlossen, denn: Sei $ (x_n)_n\subseteq C^1[0,1] $ eine Funktionenfolge, welche gleichm\"a\ss ig gegen $ x\in C[0,1] $ konvergiert. Zus\"atzlich konvergiere die Funktionenfolge $ (x'_n)_n $ gleichm\"a\ss ig gegen eine Funktion $ y\in C[0,1] $. Nach einem Satz aus Analysis: $ x\in C^1[0,1] $ und $ x'=y $.
+		\item Sei $ X=Y=\ell^2 $, $ D=d $ und $ T(x_n)_n=(nx_n)_n $. $ T $ ist linear. Dann ist $ T $ nicht abgeschlossen, denn: Sei
+		\[ x^k=\left(1,\frac{1}{2^2},\frac{1}{3^2},\frac{1}{4^2},...,\frac{1}{k^2},0,0,...\right)\in d \]
+		Dann konvergiert $ (x^k)_{k\in\N} $ gegen $ x=\left(\frac{1}{n^2}\right)_{n\in\N} $ in $ \ell^2 $ und \[ (Tx^k)_{k\in\N}=\left(\left(1,\frac{1}{2},\frac{1}{3},\frac{1}{4},...,\frac{1}{k},0,0,...\right)\right)_{k\in\N} \]
+		gegen $ y=\left(\frac{1}{n}\right)_{n\in\N} $ in $ \ell^2 $, jedoch $ x\notin D=d $.
+	\end{enumerate}
+\end{beispiel*}
+\begin{lemma}
+	Seien $ X $ und $ Y $ Banachr\"aume, $ D\subseteq X $ Untervektorraum und $ T\colon D\subseteq X\rightarrow Y $ sei abgeschlossen. Dann gelten:
+	\begin{enumerate}
+		\item $ D $ versehen mit der Norm
+		\[ \vertiii{x}\coloneqq\norm{x}+\norm{Tx} \]
+		ist ein Banachraum.
+		\item $ T $ ist als Abbildung von $ (D,\vertiii{\cdot}) $ nach $ Y $ stetig.
+	\end{enumerate}
+\end{lemma}
+\begin{beweis}
+	\begin{enumerate}
+		\item $ \vertiii{\cdot} $ Norm folgt direkt.\\
+		Ist $ (x_n)_n\subseteq D $ eine $ \vertiii{\cdot}- $Cauchyfolge, so sind $ (x_n)_n $ und $ (Tx_n)_n $ jeweils $ \norm{\cdot}- $Cauchyfolgen und die Limiten $ x=\lim x_n $ und $ y=\lim Tx_n $ existieren. Da $ T $ abgeschlossen, folgt $ x\in D $ und $ y=Tx $. Das hei\ss t
+		\[ \vertiii{x_n-x}=\norm{x_n-x}+\norm{Tx_n-y}\xrightarrow{n\to\infty}0 \]
+		Also ist $ (D,\vertiii{\cdot}) $ vollst\"andig.
+		\item Dies folgt aus
+		\[ \norm{Tx}\leq\norm{x}+\norm{Tx}=\vertiii{x},\quad x\in D \]
+	\end{enumerate}\vspace{-22pt}
+\end{beweis}
+\newpage
+\begin{satz}
+	Seien $ X $ und $ Y $ Banachr\"aume, $ D\subseteq X $ Untervektorraum und $ T\colon D\subseteq X\rightarrow Y $ abgeschlossen und surjektiv. Dann ist $ T $ offen.\\
+	Ist $ T $ zus\"atzlich injektiv, so ist $ T^{-1}  $ stetig.
+\end{satz}
+\begin{beweis}
+	\ref{lemma7.14} zeigt: $ T\colon(D,\vertiii{\cdot})\rightarrow Y $ ist stetig. Der Satz von der offenen Abbildung zeigt: $ T\colon (D,\vertiii{\cdot})\rightarrow Y $ ist offen. Wegen $ \norm{x}\leq\vertiii{x} $ f\"ur alle $ x\in D $ ist jede $ \norm{\cdot}- $offene Menge von $ D $ auch $ \vertiii{\cdot}- $offen. Also ist $ T $ auch offen bez\"uglich der Originalnorm $ \norm{\cdot} $.\\
+	Der Zusatz ist klar.
+\end{beweis}
+\begin{theorem}[Satz vom abgeschlossenen Graphen]
+	Seien $ X $ und $ Y $ Banachr\"aume und $ T\colon X\rightarrow Y $ sei linear und abgeschlossen. Dann ist $ T $ stetig.
+\end{theorem}
+\begin{beweis}
+	\ref{lemma7.14} zeigt, dass $ T\colon(X,\vertiii{\cdot})\rightarrow Y $ stetig ist ($ D=Y $, $ \vertiii{x}\coloneqq\norm{x}+\norm{Tx} $). $ (X,\norm{\cdot}) $ und $ (X,\vertiii{\cdot}) $ sind Banachr\"aume und wegen $ \norm{\cdot}\leq\vertiii{\cdot} $ ist die Identit\"at $ I\colon(X,\vertiii{\cdot})\rightarrow(X,\norm{\cdot}) $ stetig. Nach \ref{kor7.11} ist $ I^{-1} $ stetig. Also sind die Normen $ \norm{\cdot} $ und $ \vertiii{\cdot} $ \"aquivalent. Also ist $ T $ stetig bez\"uglich der Originalnorm.
 \end{beweis}

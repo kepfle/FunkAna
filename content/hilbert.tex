@@ -1,0 +1,306 @@
+\chapter{Hilbertr\"aume}
+\begin{satz}[Parallelogrammgleichung]
+	Ein normierter Raum  $ X $ ist genau dann ein Pr\"ahilbertraum, wenn
+	\[ \norm{x+y}^2+\norm{x-y}^2=2(\norm{x}^2+\norm{y}^2)\forall x,y\in X \]
+	gilt.
+\end{satz}
+\begin{beweis}
+	\begin{description}
+		\item['$ \Rightarrow $':] \begin{align*}
+		\norm{x+y}^2+\norm{x-y}^2&=\langle x+y,x+y\rangle+\langle x-y,x-y\rangle\\&=\norm{x}^2+\langle x,y\rangle+\langle y,x\rangle+\norm{y}^2+\norm{x}^2-\langle y,x\rangle-\langle x,y\rangle+\norm{y}^2\\&=2(\norm{x}^2+\norm{y}^2)
+		\end{align*}
+		\item['$ \Leftarrow $':] Sei zun\"achst $ \K=\R $. Wir definieren:
+		\[ \langle x,y\rangle\coloneqq\frac{1}{4}(\norm{x+y}^2-\norm{x-y}^2)\Rightarrow\norm{x}=\langle x,x\rangle^{\sfrac{1}{2}} \]
+		Wir m\"ussen noch die Eigenschaften des Skalarproduktes nachweisen:
+		\begin{enumerate}
+			\item $ \forall x_1,x_2,y\in X $ folgt aus der Parallelogrammgleichung
+			\[ \norm{x_1+x_2+y}^2=2\norm{x_1+y}^2+2\norm{x_2}^2-\norm{x_1+y-x_2}^2\eqqcolon\alpha \]
+			\[ \norm{x_1+x_2+y}^2=2\norm{x_2+y}^2+2\norm{x_1}^2-\norm{-x_1+x_2+y}^2\eqqcolon\beta \]
+			Also:
+			\[ \norm{x_1+x_2+y}^2=\frac{\alpha+\beta}{2}=\norm{x_1+y}^2+\norm{x_2}^2+\norm{x_2+y}^2+\norm{x_1}^2-\frac{1}{2}(\norm{x_1+y-x_2}^2+\norm{-x_1+x_2+y}^2) \]
+			Analog gilt:
+			\[ \norm{x_1+x_2-y}^2=\norm{x_1-y}^2+\norm{x_2}^2+\norm{x_2-y}^2+\norm{x_1}^2-\frac{1}{2}(\norm{x_1-y-x_2}^2+\norm{-x_1+x_2-y}^2) \]
+			\begin{align*} \langle x_1+x_2,y\rangle&=\frac{1}{4}(\norm{x_1+x_2+y}^2-\norm{x_1+x_2-y}^2)\\&=\frac{1}{4}(\norm{x_1+y}^2-\norm{x_1-y}^2+\norm{x_2+y}^2-\norm{x_2-y}^2)\\&=\langle x_1,y\rangle+\langle x_2,y\rangle \end{align*}
+			\item Nach i) gilt ii) f\"ur $ \lambda\in\N $ und nach Konstruktion auch f\"ur $ \lambda=0 $ und $ \lambda=-1 $. Somit gilt ii) f\"ur $ \lambda\in\Z $.\\
+			Sei $ \lambda=\frac{m}{n}\in\Q $.
+			\[ n\langle\lambda x,y\rangle=n\langle m\frac{x}{n},y\rangle=\langle mx,y\rangle=m\langle x,y\rangle=n\lambda\langle x,y\rangle  \]
+			Also gilt ii) f\"ur $ \lambda\in\Q $.\\
+			Die stetigen Funktionen ($ \norm{\cdot} $ ist stetig) $ \lambda\mapsto\langle\lambda x,y\rangle $ und $ \lambda\mapsto\lambda\langle x,y\rangle $ stimmen auf $ \Q $ \"uberein und sind daher gleich. Dies zeigt ii).
+			\item $ \surd $
+			\item und v) folgt aus $ \langle x,x\rangle=\norm{x}^2 $.
+		\end{enumerate}
+		F\"ur $ \K=\C $ ist die Argumentation \"ahnlich.
+		\[ \langle x,y\rangle=\frac{1}{4}(\norm{x+y}^2-\norm{x-y}^2+i\norm{x+iy}^2-y\norm{x-iy}^2) \]
+	\end{description}
+\end{beweis}
+\begin{definition}
+	Sei $ X $ ein Pr\"ahilbertraum. Zwei Vektoren $ x,y\in X $ hei\ss en \deftxt{orthogonal}, in Zeichen $ x\perp y $, falls $ \langle x,y\rangle=0 $ gilt.\\
+	zwei Teilmengen $ A,B\subseteq X $ hei\ss en \deftxt{orthogonal}, in Zeichen $ A\perp B $, falls $ x\perp y $ f\"ur alle $ x\in A $ und $ y\in B $ gilt.\\
+	Die Menge $ A^\perp\coloneqq\lbrace y\in X\mid x\perp y\forall x\in A\rbrace $ hei\ss t \deftxt{orthogonales Komplement von $ A $}.
+\end{definition}
+\begin{beispiel*}
+	$ \R^2 $, $ x=\binom{1}{0} $, $ y=\binom{0}{1} $. $ \langle x,y\rangle=0\Rightarrow x\perp y $.
+\end{beispiel*}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[]
+		\item $ x\perp y\Rightarrow\norm{x+y}^2=\norm{x}^2+\norm{y}^2 $ (Satz von Pythagoras).
+		\item $ A^\perp $ ist stets ein abgeschlossener Untervektorraum von $ X $.
+		\item $ A\subseteq (A^\perp)^\perp $.
+		\item $ A^\perp= (\overline{\text{lin}A})^\perp$.
+	\end{enumerate}
+\end{bemerkung*}
+\begin{satz}[Projektionssatz]
+	Sei $ H $ ein Hilbertraum, $ K\subseteq H $ sei abgeschlossen, nichtleer und konvex und es sei $ x_0\in H $. Dann existiert genau ein $ x\in K $ mit
+	\[ \norm{x-x_0}=\inf_{y\in K}\norm{y-x_0} \]
+\end{satz}
+\begin{beweis}
+	F\"ur $ x_0\in K $ w\"ahle $ x=x_0 $. Sei also $ x_0\notin K $ und o.B.d.A. $ x_0=0 $.
+	\begin{description}
+		\item[Existenz:] Setze $ d\coloneqq\inf_{y\in K}\norm{y} $. Es existiert $ (y_n)_n\subset K $ mit $ \norm{y_n}\rightarrow d $. Wir zeigen zun\"achst: $ (y_n)_n $ ist eine Cauchyfolge. Aus der Parallelogrammgleichung folgt:
+		\[ \underbrace{\norm{\frac{y_n+y_m}{2}}^2}_{\geq d^2}+\underbrace{\norm{\frac{y_n-y_m}{2}}^2}_{\rightarrow 0}=\underbrace{\frac{1}{2}(\norm{y_n}^2+\norm{y_m}^2)}_{\geq d^2}\rightarrow d^2 \]
+		Also ist $ (y_n)_n $ eine Cauchyfolge. Da $ H $ vollst\"andig, existiert ein $ x\in H $ mit $ x=\lim y_n $. Da $ K $ abgeschlossen, ist $ x\in K $.
+		Aus $ \norm{y_n}\rightarrow d $  folgt $ \norm{x}=d $. Hieraus folgt die Existenz.
+		\item[Eindeutigkeit:] Seien $ x,\tilde x\in K $, $ x\neq\tilde x $ mit \[ \norm{x}=\norm{\tilde x}=\inf_{y\in K}\norm{y}=d \]
+		Dann folgt:
+		\[ \underbrace{\norm{\frac{x+\tilde x}{2}}^2}_{\in K}<\norm{\frac{x+\tilde x}{2}}^2+\norm{\frac{x-\tilde x}{2}}^2=\frac{1}{2}(\norm{x}^2+\norm{\tilde x}^2)=d^2\lightning \]
+	\end{description}
+\end{beweis}
+\begin{lemma}
+	Sei $ K $ eine abgeschlossene konvexe Teilmenge des Hilbertraumes $ H $ und $ x_0\in H $. Dann sind f\"ur ein $ x\in K $ \"aquivalent:
+	\begin{enumerate}
+		\item
+		\[ \norm{x_0-x}=\inf_{y\in K}\norm{x_0-y} \]
+		\item \[ \Re\langle x_0-x,y-x\rangle\leq 0\forall y\in K \]
+	\end{enumerate}
+\end{lemma}
+\begin{beweis}
+	\begin{description}
+		\item[ii)$ \Rightarrow $i):] Folgt aus
+		\[ \norm{x_0-y}^2=\norm{x_0-x+x-y}^2=\norm{x_0-x}^2+2\underbrace{\Re\langle x_0-x,x-y\rangle}_{\geq 0}+\norm{x-y}^2\leq\norm{x_0-x}^2 \]
+		\item[i)$ \Rightarrow $ii):] Zu $ t\in[0,1] $ setze
+		\[ y_t=(1-t)x+ty\in K\text{ falls }y\in K \]
+		Dann folgt aus i):
+		\[ \norm{x_0-x}^2\leq\norm{x_0-y_t}^2=\langle x_0-x+t(x-y),x_0-x+t(x-y)\rangle=\norm{x_0-x}^2+2\Re\langle x_0-x,t(x-y)\rangle+t^2\norm{x-y}^2 \]
+		Also:
+		\[ \Re\langle x_0-x,y-x\rangle\leq \frac{t}{2}\norm{x-y}^2\forall t\in[0,1] \]
+	\end{description}
+\end{beweis}
+\begin{theorem}[Satz von der Orthogonalprojektion]
+	Sei $ U\neq\lbrace 0\rbrace $ ein abgeschlossener Unterraum des Hilbertraumes $ H $. Dann existiert eine lineare stetige Projektion $ p_U $ von $ H $ auf $ U $ mit $ \norm{p_U}=1 $ und $ \ker p_U=U^\perp $.\\
+	$ I-p_U $ ist eine Projektion von $ H $ auf $U^\perp  $ mit $ \norm{I-p_U}=1 $ (es sei denn $ U=H $) und es gilt $ H=U\oplus_2 U^\perp $.\\
+	$ p_U $ wird \deftxt{Orthogonalprojektion} genannt,
+\end{theorem}
+\begin{beweis}
+	Zu $ x_0\in H $ bezeichne $ p_Ux_0\in U $ das eindeutig bestimmte Element aus \ref{satz9.8}. Mit \ref{lemma9.9}:
+	\[ \Re\langle x_0-p_U,y-p_Ux_0\rangle\leq 0\forall y\in U \]
+	Da mit $ y $ auch $ y-p_Ux_0 $ den Unterraum $ U $ durchl\"auft, gilt
+	\[ \Re\langle x_0-p_Ux_0,y\rangle\leq0\forall y\in U \]
+	Betrachte $ -y $ und gegebenenfalls $ iy $ (falls $ \K=\C $). Dann folgt
+	\[ \langle x_0-p_Ux_0,y\rangle=0\forall y\in U\qquad(\ast) \]
+	$ (\ast) $ ist sogar \"aquivalent zu ii) aus \ref{lemma9.9}. Somit ist $ p_Ux_0 $ das eindeutig bestimmte Element $ x\in U $mit
+	\[ x_0-x\in U^\perp\qquad(\ast\ast) \]
+	Da $ U^\perp $ ein Unterraum ist, folgt
+	\[ \lambda_1x_1-\lambda_1p_Ux_1+(\lambda_2x_2-\lambda_2p_Ux_2)\in U^\perp\forall x_1,x_2\in H\forall\lambda_1,\lambda_2\in\K \]
+	und
+	\[ p_U(\lambda_1x_1+\lambda_2x_2)=\lambda_1p_Ux_1+\lambda_2p_Ux_2 \]
+	Also is $ p_U $ linear.\\
+	Nach Konstruktion ist $\ran p_U=U $ und es gilt $ \ker p_U=U^\perp $, denn
+	\[ p_Ux_0=0\Leftrightarrow x_0\in U^\perp \]
+	$ I-p_U $ ist eine Projektion mit $ \ran I-p_U=U^\perp $ und $ \ker I-p_U=U $. Aus dem Satz von Pythagoras folgt
+	\[ \norm{x_0}^2=\norm{p_Ux_0+(x_0-p_Ux_0)}^2=\norm{p_Ux_0}^2+\norm{(I-p_U)x_0}^2 \]
+	Also ist $ H=U\oplus_2 U^\perp $ und $ \norm{p_U}\leq 1 $ (da $ \norm{x_0}^2\geq\norm{p_Ux_0}^2 $), $ \norm{I-p_U}\leq 1 $. Da f\"ur Projektionen $ p $ $ \norm{p}\geq 1 $ gilt, folgt
+	\[ \norm{p_U}=1=\norm{I-p_u} \]
+	(falls $ U\neq\lbrace 0\rbrace $ und $ U\neq H $).
+\end{beweis}
+\begin{korollar}
+	F\"ur einen Unterraum $ U $ eines Hilbertraumes $ H $ gilt
+	\[ \bar U=(U^\perp)^\perp \]
+\end{korollar}
+\begin{beweis}
+	Aus \ref{thm9.10} folgt $ I-p_V $ f\"ur beliebige abgeschlossene Unterr\"aume $ V $. Sei $ V=\bar U $. Dann ist $ U^\perp=V^\perp $ sowie $ I-p_{V^\perp}=p_{(V^\perp)^\perp} $. Also $ p_V=p_{(V^\perp)^\perp} $ und somit $ \bar U=V=(V^\perp)^\perp $.
+\end{beweis}
+\begin{theorem}[Darstellungssatz von Fr\'echet-Riesz]
+	Sei $ H $ ein Hilbertraum. Dann ist die Abbildung $ \Phi\colon H\rightarrow H' $, $ y\mapsto \langle\cdot,y\rangle $ bijektiv, isometrisch und konjugiert linear (d.h. $ \Phi(\lambda y)=\bar{\lambda}\Phi(y) $). D.h. zu $ x'\in H' $ existiert genau ein $ y\in H $ mit
+	\[ x'(x)=\langle x,y\rangle\forall x\in H \]
+	mit $ \norm{x'}=\norm{y} $.
+\end{theorem}
+\begin{beweis}
+	Offensichtlich ist $ \Phi $ konjugiert linear. Aus der Cauchy-Schwarz-Ungleichung folgt
+	\[ \norm{\Phi y}=\sup_{\substack{x\in H\\\norm{x}=1}}|\langle x,y\rangle|\leq\norm{y} \]
+	und f\"ur $ x=\frac{y}{\norm{y}} $ ($ y=0 $ ist trivial) ist
+	\[ \Phi(y)(x)=\frac{\langle y,y\rangle}{\norm{y}}=\norm{y} \]
+	$ \Phi $ ist also isometrisch und folglich injektiv.\\
+	Es bleibt zu zeigen: $ \Phi $ ist surjektiv. Sei also $ x'\in H' $. O.B.d.A. $ \norm{x'}=1 $. Sei $ U=\ker x' $. Nach \ref{thm9.10} ist dann $ H=U\oplus U^\perp  $, wobei $ U^\perp $ eindimensional ist. Dann existiert ein $ y\in H $ mit $ U^\perp=\text{lin}\lbrace y\rbrace $ und $ x'(y)=1 $.\\
+	F\"ur $ x=u+\lambda y\in U\oplus_2 U^\perp $ gilt
+	\[ x'(x)=x'(u)+\lambda x'(y)=\lambda \]
+	sowie
+	\[ \lbrace x,y\rbrace=\lambda\langle y,y\rangle=\lambda\norm{y}^2 \]
+	\[ \Phi\left(\frac{y}{\norm{y}^2}\right)(x)=\left\langle x,\frac{y}{\norm{y}^2}\right\rangle=\lambda=x'(x)\forall x\in H \]
+	Also $ \Phi\left(\frac{y}{\norm{y}^2}\right)=x' $ und somit ist $ \Phi $ surjektiv.
+\end{beweis}
+\begin{korollar}
+	Sei $ H $ ein Hilbertraum.
+	\begin{enumerate}
+		\item Eine Folge $ (x_n)_n $ konvergiert in $ H $ schwach gegen $ x $ genau dann wenn
+		\[ \langle x_n-x,y\rangle\rightarrow 0\forall y\in H \]
+		\item $ H $ ist reflexiv.
+		\item Jede beschr\"ankte Folge in $ H $ besitzt eine schwach konvergente Teilfolge.
+	\end{enumerate}
+\end{korollar}
+\begin{beweis}
+	\begin{enumerate}
+		\item Folgt aus dem Darstellungssatz von Fr\'echet-Riesz.
+		\item[iii)] Folgt aus ii), da in reflexiven R\"aumen jede beschr\"ankte Folge eine schwach konvergente Teilfolge besitzt.
+		\item[ii)] Sei $ \Phi\colon H\rightarrow H' $ die Abbildung aus \ref{thm9.12}. Insbesondere ist $ \Phi $ bijektiv und isometrisch. Es gilt: $ H' $ mit dem Skalarprodukt
+		\[ \langle\Phi(x),\Phi(y)\rangle_{H'}\coloneqq\langle y,x\rangle_H \]
+		ist ein Hilbertraum. Wir wenden nun Fr\'echet-Riesz auf $ H' $ an und bezeichnen die kanonische Abbildung von $ H' $ nach $ H'' $ mit $ \psi $. $ \psi\circ\Phi\colon H\rightarrow H'' $ ist dann bijektiv.
+		\[ ((\psi\circ\Phi)(x))(x')=\langle x',\Phi(x)\rangle_{H'}=\langle\Phi(y),\Phi(x)\rangle_{H'}=\langle x,y\rangle_H=(Pgi(y))(x)=x'(x)=(i_H(x))(x') \]
+		Also $ i_H=\psi\circ\Phi $ und $ i_H $ ist surjektiv. 
+	\end{enumerate}
+\end{beweis}
+Im Folgenden sei $ H $ ein Hilbertraum.
+\begin{definition}
+	Eine Teilmenge $ S\subseteq H $ hei\ss t \deftxt{Orthonormalsystem}, falls $ \norm{e}=1 $ und $ \langle e,f\rangle=0\forall e,f\in S $ mit $ e\neq f $.\\
+	Ein Orthonormalsystem $ S $ hei\ss t \deftxt{Orthonormalbasis}, falls gilt: $ S\subseteq T $ und $ T $ Orthonormalsystem$ \Rightarrow T=S $.
+\end{definition}
+\begin{beispiel*}
+	$ H=\ell^2 $ und $ S=\lbrace e_n\rbrace_{n\in\N} $ Menge der Einheitsvektoren. $ S $ ist eine Orthonomalbasis.
+\end{beispiel*}
+\begin{satz}[Gram-Schmidt-Verfahren]
+	Sei $ \lbrace x_n\rbrace_n $ eine linear unabh\"angige Teilmenge von $ H $. Dann existiert ein Orthonormalsystem $ S $ mit
+	\[ \overline{\text{lin}\lbrace x_n\rbrace_n}=\overline{\text{lin }S}\]
+\end{satz}
+\begin{beweis}
+	Setze $ e_1=\frac{x_1}{\norm{x_1}}$. Betrachte
+	\[ f_2\coloneqq x_2-\langle x_2,e_1\rangle e_1,\quad e_2\coloneqq\frac{f_2}{\norm{f_2}} \]
+	Es gilt: $ f_2\neq 0 $, da $ \lbrace x_1,x_2\rbrace $ linear unabh\"angig und 
+	\[ \langle e_1,e_2\rangle=\frac{1}{\norm{x_1}}\frac{1}{\norm{f_2}}\left\langle x_1,x_2-\left\langle x_2,\frac{x_1}{\norm{x_1}}\right\rangle\frac{x_1}{\norm{x_1}}\right\rangle=\frac{1}{\norm{x_1}\norm{f_2}}\left(\langle x_1,x_2\rangle-\overline{\langle x_2,x_2\rangle}\frac{\norm{x_1}^2}{\norm{x_1}^2}\right)=0 \]
+	d.h. $ e_1\perp e_2 $.\\
+	Durch die Vorschrift
+	\[ f_{k+1}\coloneqq x_{k+1}-\sum_{i=1}^{k}\langle x_{k+1},e_i\rangle e_i \]
+	und $ e_{k+1}\coloneqq\frac{f_{k+1}}{\norm{f_{k+1}}} $ wird so eine Folge $ \lbrace e_k\rbrace_{k\in\N} $ definiert. Nach Konstruktion ist $ S=\lbrace e_k\rbrace_{k\in\N} $ ein Orthonormalsystem mit $ x_n\in\text{lin }S $ und $ e_n\in\text{lin}\lbrace x_k\rbrace_k $ f\"ur alle $ k\in\N $.
+\end{beweis}
+\begin{satz}[Besselsche Ungleichung]
+	Ist $ \lbrace e_n\rbrace_{n\in\N} $ ein Orthonormalsystem und $ x\in H $, so ist
+	\[ \sum_{n=1}^{\infty}|\langle x,e_n\rangle|^2\leq\norm{x}^2 \]
+\end{satz}
+\begin{beweis}
+	Sei $ N\in\N $ beliebig. Setze
+	\[ x_N=x-\sum_{n=1}^N \langle x,e_n\rangle e_n \]
+	Dann ist $ e_N\perp x_k $ f\"ur $ k=1,...,N $, da
+	\[ \langle x_N,e_k\rangle=\langle x,e_k\rangle-\sum_{n=1}^{N}\langle x,e_n\rangle\underbrace{\langle e_n,e_k\rangle}_{\delta_{nk}}=0 \]
+	Aus dem Satz von Pythagoras:
+	\[ \norm{x}^2+\norm{\sum_{n=1}^{N}\langle x,e_n\rangle e_n}^2=\norm{x_N}^2\sum_{n=1}^{N}|\langle x,e_n\rangle|^2\geq\sum_{n=1}^{N}|\langle x,e_n\rangle|^2 \]
+\end{beweis}
+\begin{lemma}
+	Sei $ \lbrace e_n\rbrace $ ein Orthonormalsystem, $ x,y\in H $. Dann gilt:
+	\[ \sum_{n=1}^\infty|\langle x,e_n\rangle\langle e_n,y\rangle|<\infty \]
+\end{lemma}
+\begin{beweis}
+	H\"oldersche Ungleichung f\"ur Folgen $ \lbrace\langle x,e_n\rangle\rbrace_n $, $ \lbrace\langle e_n,y\rbrace\rangle_n $.
+\end{beweis}
+\begin{lemma}
+	Sei $ S\subseteq H $ ein Orthonormalsystem und sei $ x\in H $. Dann ist
+	\[ S_x\coloneqq\lbrace e\in S\mid \langle x,e\rangle\neq 0\rbrace \]
+	h\"ochstens abz\"ahlbar.
+\end{lemma}
+\begin{beweis}
+	Besselsche Ungleichung besagt, dass
+	\[ S_{x,n}\coloneqq\left\lbrace e\in S\middle| |\langle x,e\rangle\geq\frac{1}{n}\right\rbrace \]
+	endlich ist und daher ist
+	\[ S_x=\bigcup_{n\in\N} S_{x,n} \]
+	abz\"ahlbar oder endlich.
+\end{beweis}
+\begin{definition}
+	Sei $ X $ ein normierter Raum, $ I $ Indexmenge, $ x_i\in X $, $ i\in I $. Die Reihe $ \sum_{i\in I} x_i $ \deftxt{konvergiert unbedingt gegen $ x\in X $}, falls 
+	\begin{enumerate}
+		\item $ I_0=\lbrace i\in I\mid x_i\neq 0\rbrace $ h\"ochstens abz\"ahlbar.
+		\item F\"ur jede Aufz\"ahlung $ I_0=\lbrace i_1,i_2,...\rbrace $ gilt die Gleichung
+		\[ \sum_{n=1}^\infty x_{i_n}=x \]
+		(Der Wert der Reihe $ \sum x_{i_n} $ h\"angt also nicht von der Reihenfolge der $ x_{i_n} $s ab).
+		Schreibweise:
+		\[ x=\sum_{i\in I} x_i \]
+	\end{enumerate}
+\end{definition}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[] 
+		\item In diesem Abschnitt unterscheiden wir zwischen $ \sum_{n\in\N} $ und $ \sum_{n=1}^\infty $.
+		\item Ist $ X=\K^n $, so gilt: Absolute und unbedingt Konvergenz sind \"aquivalent.
+		\item Allgemein gilt der Satz von Dvoretzky-Rogers: In jedem unendlichdimensionalen Banachraum existiert eine unbedingt konvergente Reihe, die nicht absolut konvergiert.
+	\end{enumerate}
+\end{bemerkung*}
+\begin{korollar}[Allgemeine Besselsche Ungleichung f\"ur Orthonormalsysteme]
+Ist $ S\subseteq H $ ein Orthonormalsystem und $ x\in H $, so ist
+\[ \sum_{e\in S} |\langle x,e\rangle|^2\leq\norm{x}^2 \]	
+\end{korollar}
+\begin{satz}
+	Sei $ S\subseteq H $ ein Orthonormalsystem.
+	\begin{enumerate}
+		\item F\"ur alle $ x\in H $ konvergiert $ \sum_{e\in S}\langle x,e\rangle e$ unbedingt.
+		\item 
+		\[ p\colon x\mapsto\sum_{e\in S}\langle x,e\rangle e \] ist eine Orthonomalprojektion aus $ \text{lin }S $.
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item Sei $ \lbrace e_1,e_2,...\rbrace $ eine Aufz\"ahlung von $ \lbrace e\in S\mid \langle x,e\rangle\neq 0\rbrace $. Wir zeigen, dass $ \sum\langle x,e_n\rangle e_n $ eine Cauchyreihe ist. Aus dem Satz von Pythagoras folgt:
+		\[ \norm{\sum_{n=N}^{M}\langle x,e\rangle e_n}^2=\sum_{n=N}^M|\langle x,e_n\rangle|^2\xrightarrow{N,M\to\infty}0 \]
+		Dann existiert $ y\coloneqq\sum\langle x,e_n\rangle e_n $ in $ H $ und analog konvergiert f\"ur eine Permutation $ \pi\colon\N\rightarrow\N $ die umgeordnete Reihe $ y_\pi=\sum \langle x,e_{\pi(n)}\rangle e_{\pi(n)} $. Es bleibt zu zeigen: $ y=y_\pi $. Sei $ z\in H $ beliebig. Aus
+		\[ \langle y,z\rangle=\sum_{n=1}^\infty \langle x,e_n\rangle\langle e_n,z\rangle=\sum_{n=1}^\infty\langle x,e_{\pi(n)}\rangle\langle e_{\pi(n)}, y\rangle=\langle y_\pi, z\rangle \]
+		folgt $ y-y_\pi\in H^\perp=\lbrace 0\rbrace $. 
+		\item Wegen \ref{thm9.10} (insbesondere $ (\ast\ast) $) gen\"ugt es zu zeigen, dass
+		\[ \left\langle x-\sum_{n=1}^\infty\langle x,e_n\rangle e_n,e\right\rangle=0\forall x\in S \]
+		F\"ur $ \langle x,e\rangle=0\forall e\in S $ ist dies klar. Sei also $ \langle x,e\rangle\neq 0 $ f\"ur ein $ e\in S $. Dann ist $ e=e_{n_0} $ f\"ur ein $ n_0\in\N $. Hieraus folgt die Behauptung.
+	\end{enumerate}
+\end{beweis}
+\begin{satz}
+	Sei $ S\subseteq H $ ein Orthonormalsystem.
+	\begin{enumerate}
+		\item Es existiert eine Orthonormalbasis $ S' $ mit $ S\subseteq S' $.
+		\item Folgende Aussagen sind \"aquivalent:
+		\begin{enumerate}
+			\item $ S $ ist eine Orthonormalbasis.
+			\item Ist $ x\in H $ und $ x\perp S $, so ist $ x=0 $.
+			\item Es gilt $ H=\overline{\text{lin }S} $.
+			\item \[ x=\sum_{e\in S}\langle x,e\rangle e\forall x\in H \]
+			\item \[ \langle x,y\rangle=\sum_{e\in S}\langle x,e\rangle\langle e,x\rangle\forall x,y\in H \]
+			\item Parsevalsche Gleichung:
+			\[ \norm{x}^2=\sum_{e\in S}|\langle x,e\rangle|^2\forall x\in H \]
+		\end{enumerate}
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item Folgt aus dem Zornschen Lemma.
+		\item
+		\begin{description}
+			\item[a)$ \Rightarrow $b):] W\"are $ x\neq 0 $, $ x\perp S $, so w\"are $ S\cup\left\lbrace\frac{x}{\norm{x}}\right\rbrace $ ein Orthonormalsystem. $ \lightning $
+			\item[b)$ \Rightarrow $c):] Folgt aus $ \bar U=(U^\perp)^\perp $.
+			\item[c)$ \Rightarrow $d):] Dies ist \ref{satz9.21}.
+			\item[d)$ \Rightarrow $e):] Einsetzen unter Beachtung von \ref{kor9.20} und \ref{lemma9.17}.
+			\item[e)$ \Rightarrow $f):] Setze $ x=y $.
+			\item[f)$ \Rightarrow $a):] Angenommen, es g\"abe $ x $ mit $ \norm{x}=1 $, so dass $ S\cup\lbrace x\rbrace $ ein Orthonomalsystem ist.
+			\[ \norm{x}^2=\sum_{e\in S} |\langle x,e\rangle|^2=0\lightning \]
+		\end{description}
+	\end{enumerate}
+\end{beweis}
+\begin{satz}
+	Ist $ S $ eine Orthonormalbasis von $ H $,  so ist $ H\cong\ell^2(S) $. Hierbei ist
+	\[ \ell^2(S)\coloneqq\left\lbrace f\colon S\rightarrow\K\middle|\sum_{i\in S} |f(i)|^2<\infty\right\rbrace \]
+	ein Hilbertraum mit Skalarprodukt
+	\[ \langle f,g\rangle=\sum_{i\in S} f(i)\overline{g(i)} \]
+\end{satz}
+\begin{beweis}
+	Zu $ x\in H $ definiere $ Tx\in\ell^2(S) $ durch
+	\[ (Tx)(e)=\lbrace x,e\rbrace \]
+	$ Tx\in\ell^2(S) $ (folgt aus der Besselschen Ungleichung). $ T\colon H\rightarrow\ell^2(S) $ ist linear und mit der Parsevalschen Gleichung isometrisch.\\
+	Ist umgekehrt $ (f_e)_e\in\ell^2(S) $, so definiert $ x=\sum_{e\in S} f_e e $ ein Element von $ H $ (siehe Beweis von \ref{satz9.21}i)). Es gilt: $ Tx=(f_e)_{e\in S} $. hieraus folgt die Behauptung. 
+\end{beweis}
+\begin{korollar}
+	Ist $ H $ separabel und $ \dim H=\infty $, so ist $ H\cong\ell^2 $. 
+\end{korollar}
+\begin{beweis}
+	Sei $ S $ eine Orthonormalbasis von $ H $. Aus $ \norm{e-f}=\sqrt{2} $ ($ \forall e,f\in S $, $ e\neq f $) folgt: $ S $ kann nicht \"uberabz\"ahlbar sein (vergleiche Beweis der Inseparabilit\"at von $ \ell^2 $). \ref{satz9.23} liefert die Behauptung.
+\end{beweis}

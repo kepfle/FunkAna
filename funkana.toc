@@ -8,3 +8,5 @@
 \contentsline {paragraph}{Das Trennungsproblem.}{52}{paragraph*.2}
 \contentsline {chapter}{\numberline {6}Schwache Konvergenz und Reflexivit\"at}{57}{chapter.6}
 \contentsline {chapter}{\numberline {7}Haupts\"atze f\"ur Operatoren auf Banachr\"aumen}{61}{chapter.7}
+\contentsline {chapter}{\numberline {8}Projektionen auf Banachr\"aumen}{73}{chapter.8}
+\contentsline {chapter}{\numberline {9}Hilbertr\"aume}{75}{chapter.9}
