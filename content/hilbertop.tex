@@ -1,0 +1,164 @@
+\chapter{Operatoren auf Hilbertr\"aumen}
+Sei stets $ H $ (bzw. $ (H_1,H_2) $) ein Hilbertraum.
+\begin{definition}
+	Sei $ T\in L(H_1,H_2) $. Die Abbildung $ T^\ast\in L(H_2,H_1) $ hei\ss t \deftxt{adjungiert zu $ T $}, falls
+	\[ \langle Tx,y\rangle_{H_2}=\langle x,T1^\ast y\rangle_{H_1}\forall x\in H_1,y\in H_2 \] 
+\end{definition}
+\begin{satz}
+	Zu jedem Operator $ T\in L(H_1,H_2) $ existiert ein eindeutig bestimmter adjungierter Operator $ T^\ast $ und es gilt
+	\[ \norm{T} = \norm{T^\ast} \]
+\end{satz}
+\begin{beweis}
+	\begin{description}
+		\item[Eindeutigkeit:] Seien $ S_1 $ und $ S_2 $ adjungiert zu $ T $.
+		\[ \langle x,(S_1-S_2)y\rangle_{H_1}=\langle Tx,y\rangle_{H_2}-\langle Tx,y\rangle_{H-2}=0 \]
+		f\"ur alle $ x\in H_1 $, $ y\in H_2 $. Alsi gilt $ S_1=S_2 $
+		\item[Existenz:] F\"ur $ y\in H_2 $ ist die Abbildung $ x\mapsto \langle Tx,y\rangle_{H_2} $ stetig und linear. Nach dem Darstellungssatz von Fr\'echet-Riesz existiert ein $ y^\ast\in H_1 $ so dass
+		\[ \langle Tx,y\rangle_{H_2}=\langle x,y^\ast\rangle_{H_1}\forall x\in H_1 \]
+		Die Zuordnung $ T^\ast\colon y\mapsto y^\ast $ ist linear und wegen 
+		\[ \norm{T^\ast}=\sup_{\substack{y\in H_2\\\norm{y}\leq 1}}\norm{y^\ast}=\sup_{\substack{y\in H_2\\\norm{y}\leq 1}}\sup_{\substack{x\in H_1\\\norm{x}\leq 1}}|\langle x,y^\ast\rangle_{H_1}|=\norm{T} \]
+		auch stetig. Hieraus folgt die Behauptung.
+	\end{description}\vspace{-22pt}
+\end{beweis}
+\newpage
+\begin{satz}
+	Seien $ S,T\in L(H_1,H_2) $, $ R\in L(H_2,H_3) $, $ \lambda\in\K $. Dann gilt:
+	\begin{enumerate}
+		\item $ (S+T)^\ast=S^\ast+T^\ast $.
+		\item $ (\lambda S)^\ast=\bar{\lambda}S^\ast $.
+		\item $ (RS)^\ast=S^\ast R^\ast $.
+		\item $ S^{\ast\ast}=S $.
+		\item $ \norm{SS^\ast}=\norm{S^\ast S}=\norm{S}^2 $.
+		\item $ \ker S=(\ran S^\ast)^\perp $ und $ \ker S^\ast=(\ran S)^\perp $. Insbesondere ist $ S $ genau dann injektiv, wenn $ \ran S^\ast $ dicht liegt.
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	i) bis iv) lassen sich einfach  nachrechnen. Wir zeigen v). Es gilt
+	\[ \norm{Sx}=\langle Sx,Sx\rangle_{H_2}=\langle x,S^\ast Sx\rangle\leq\norm{x}\norm{S^\ast S x} \]
+	\[ \norm{S}^2=\sup_{\norm{x}_{H_1}\leq 1}\norm{Sx}^2_{H_2}\leq\sup_{\norm{x}_{H_1}\leq 1}\norm{x}\norm{S^\ast Sx}\leq\norm{S^\ast}\norm{S}=\norm{S}^2 \]
+	Also $ \norm{S}^2=\norm{S^\ast S} $ und folglich
+	\[ \norm{S^2}=\norm{S^\ast}^2=\norm{S^{\ast\ast}S^\ast}=\norm{SS^\ast} \]
+	Zu vi): 
+	\begin{align*}
+	x\in\ker S&\Leftrightarrow Sx=0\\
+	&\Leftrightarrow\langle Sx,y\rangle_{H_2}=0\forall y\in H_2\\
+	&\Leftrightarrow\langle x,S^\ast y\rangle_{H_1}=0\forall y\in H_2\\
+	&\Leftrightarrow x\in (\ran S^\ast)^\perp
+	\end{align*}
+	und somit auch
+	\[ \ker S^\ast=(\ran S^{\ast\ast})^\perp=(\ran S)^\perp \]
+\end{beweis}
+\newpage
+\begin{definition}
+	Sei $ T\in L(H_1,H_2) $.
+	\begin{enumerate}
+		\item $ T $ hei\ss t \deftxt{unit\"ar}, falls $ T $ invertierbar ist mit $ TT^\ast=I_{H_2} $ und $ T^\ast T=I_{H_1} $.
+		\item Sei $ H_1=H_2 $. $ T^\ast $ hei\ss t \deftxt{selbstadjungiert} (oder \deftxt{hermitesch}), falls $ T=T^\ast $.
+		\item Sei $ H_1=H_2 $. $ T $ hei\ss t \deftxt{normal}, falls $ TT^\ast=T^\ast T $.  
+	\end{enumerate}
+\end{definition}
+\begin{bemerkung*}
+	\begin{enumerate}
+		\item[]
+		\item $ T $ unit\"ar$ \Leftrightarrow T$ surjektiv und
+		\[ \langle Tx,Ty\rangle_{H_2}=\langle x,y\rangle_{H_1}\forall x,y\in H_1 \]
+		\item $ T $ ist selbstadjungiert$ \Leftrightarrow\langle Tx,y\rangle_{H_1}=\langle x,Ty\rangle_{H_2} $.
+		\item $ T $ ist normal$ \Leftrightarrow\langle Tx,Ty\rangle_{H_1}=\langle T^\ast y,T^\ast y\rangle_{H_1} $.
+		\item $ T $ selbstadjungiert$ \Rightarrow T $ normal.
+		\item $ H_1=H_2 $, $ T $ unit\"ar$ \Rightarrow T $ normal. 
+	\end{enumerate}
+\end{bemerkung*}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item Sei $ H=\K^n $. Wird $ T\in L(H) $ durch die Matrix $ (a_{ij})_{ij} $ dargestellt, so wird $ T^\ast $  durch die Matrix $ (\bar a_{ji})_{ji} $ dargestellt.  
+		\item Sei $ T\colon\ell^2\rightarrow\ell^2 $ der Shiftoperator $ (x_1,x_2,...)\mapsto(x_2,x_3,...) $. Dann ist $ T^\ast(y_1,y_2,...)=(0,y_1,y_2,...) $. $ T $ ist nicht normal, da $ TT^\ast=I_{\ell^2} $ und $ T^\ast T=p_U $, $ U=\lbrace (x_n)_n\in\ell^2\mid x_1=0\rbrace $.
+		\item $ T^\ast T $ und $ TT^\ast $ sind stets selbstadjungiert.
+ 	\end{enumerate}
+\end{beispiel*}
+\begin{lemma}
+	F\"ur $ T\in L(H_1,H_2) $ sind \"aquivalent:
+	\begin{enumerate}
+		\item $ T $ ist eine Isometrie, d.h. $ \norm{Tx}=\norm{x}\forall x\in H $.
+		\item $ \langle Tx,Ty\rangle_{H_1}=\langle x,y\rangle_{H_1} \forall x,y\in H_1$.
+	\end{enumerate}
+\end{lemma}
+\newpage
+\begin{beweis}
+	\begin{description}
+		\item[ii)$ \Rightarrow $i):] Setze $ x=y $.
+		\item[i)$ \Rightarrow $] Sei $ \K=\R $. Dann folgt aus
+		\[ \langle x,y\rangle_{H_1}=\frac{1}{4}(\norm{x+y}^2-\norm{x-y}^2)=\frac{1}{4}(\norm{Tx+Ty}^2-\norm{Tx-Ty}^2)=\langle Tx,Ty\rangle \]
+		die Behauptung. Analog f\"ur $ \K=\C $.
+	\end{description}
+\end{beweis}
+\begin{satz}[Satz von Hellinger-Toeplitz]
+	Erf\"ullt eine lineare Abbildung $ T\colon H\rightarrow H $ die Symmetriebedingung
+	\[ \langle Tx,y\rangle=\langle x,Ty\rangle\forall x,y\in H \]
+	so ist $ T $ stetig, folglich selbstadjungiert.
+\end{satz}
+\begin{beweis}
+	Nach dem Satz vom abgeschlossenen Graphen ist zu zeigen: \[ x_n\rightarrow, Tx_n\rightarrow y\Rightarrow Tx=y\]
+	\begin{align*} \norm{Tx-y}^2&=\langle Tx-y,Tx-y\rangle\\&=\left\langle Tx-\lim_{n\to\infty} Tx_n,Tx-y\right\rangle\\&=\lim_{n\to\infty}\langle T(x-x_n),Tx-y\rangle\\&=\lim_{n\to\infty}\langle x-x_n,T^\ast(Tx-y)\rangle\\&=0 \end{align*}
+	Also ist $ Tx=y $.
+\end{beweis}
+\begin{satz}
+	Sei $ \K=\C $. Dann sind f\"ur $ T\in L(H) $ \"aquivalent:
+	\begin{enumerate}
+		\item $ T $ ist selbstadjungiert.
+	    \item $ \langle Tx,x\rangle\in\R\forall x\in H $
+	\end{enumerate}
+\end{satz}
+\newpage
+\begin{beweis}
+	\begin{description}
+		\item[i)$ \Rightarrow $ii):] Folgt aus $ \langle Tx,x\rangle=\langle x,Tx\rangle=\overline{\langle Tx,x\rangle}\in\R $.
+		\item[ii)$ \Rightarrow $i):] F\"ur $ \lambda\in\C $ betrachte die reelle Zahl
+		\[ \langle T(x+\lambda y),x+\lambda y\rangle=\langle Tx,x\rangle+\bar{\lambda}\langle Tx,y\rangle+\lambda\langle Ty,x\rangle+|\lambda|^2\langle Ty,y\rangle \]
+		Wir nehmen alle konjugiert komplex:
+		\[ \langle T(x+\lambda y),x+\lambda y\rangle=\langle Tx,x\rangle+ \lambda\langle y,Tx\rangle+\bar{\lambda}\langle x,Ty\rangle+|\lambda|^2\langle Ty,y\rangle \]
+		Also gilt:
+		\[ \bar{\lambda}\langle Tx,y\rangle+\lambda\langle Ty,x\rangle=\lambda\langle x,Tx\rangle+\bar{\langle x,Ty\rangle} \]
+		Wir w\"ahlen $ \lambda=1 $ und $ \lambda=-i $:
+		\[ \langle Tx,y\rangle+\langle Ty,x\rangle=\langle y,Tx\rangle+\langle x,Ty\rangle \]
+		\[ \langle Tx,y\rangle-\langle Ty,x\rangle=-\langle y,Tx\rangle+\langle x,Ty\rangle \]
+		Also folgt $ \langle Tx,y\rangle=\langle x,Ty\rangle $.
+	\end{description}
+\end{beweis}
+\begin{satz}
+	F\"ur selbstadjungierte operatoren $ T\in L(H) $ gilt
+	\[ \norm{T}=\sup_{\norm{x}\leq 1} |\langle Tx,x\rangle|\]
+\end{satz}
+\begin{beweis}
+	'$ \geq $' ist klar.\\
+	Setze 
+	\[ M\coloneqq\sup_{\norm{x}\leq 1}|\langle Tx,x\rangle| \]
+	Aus $ T=T^\ast $ folgt:
+	\[ \langle T(x+y),x+y\rangle-\langle T(x-y),x-y\rangle=2\langle Tx,y\rangle+2\langle Ty,x\rangle=2\langle Tx,y\rangle+2\overline{\langle Tx,y\rangle}=4\Re\langle Tx,y\rangle \]
+	Also:
+	\[ 4\Re\langle Tx,y\rangle\leq M(\norm{x+y}^2+\norm{x-y}^2)=2M(\norm{x}^2+\norm{y}^2) \]
+	Weiter gilt:
+	\[ \Re\langle Tx,y\rangle\leq M\forall\norm{x},\norm{y}\leq 1 \]
+	Multiplikation mit geeigneten $ \lambda $, $ |\lambda|=1 $ liefert:
+	\[ |\langle Tx,y\rangle|\leq M\forall\norm{x},\norm{y}\leq 1 \]
+    Also ist $ \norm{T}\leq M $.
+\end{beweis}
+\newpage
+\begin{korollar}
+	Ist $ T\in L(H) $ selbstadjungiert und es gilt $ \langle Tx,y\rangle=0 $, so ist $ T=0 $.
+\end{korollar}
+\begin{bemerkung*}
+	Die Aussage gilt nur f\"ur selbstadjungierte Operatoren: Sei $ H=\R^2 $ und $ T=\left(\begin{smallmatrix}
+	0&1\\-1&0
+	\end{smallmatrix}\right) $. Dann gilt:
+	\[ \langle Tx,x\rangle_{\R^2}=\left\langle\binom{x_2}{-x_1},\binom{x_1}{x_2}\right\rangle_{\R^2}=x_2x_2-x_1x_2=0 \]
+\end{bemerkung*}
+\begin{lemma}
+	Ist $ T\in L(H) $ ein normaler Operator, so gilt
+	\[ \norm{Tx}=\norm{T^\ast x} \]
+	Insbesondere $ \ker T=\ker T^\ast $.
+\end{lemma}
+\begin{beweis}
+	Es gilt:
+	\[ 0=\langle (TT^\ast-T^\ast T)x.x\rangle=\norm{T^\ast x}^2-\norm{Tx}^2\forall x\in H \]
+\end{beweis}
