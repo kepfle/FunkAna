@@ -162,3 +162,35 @@ Sei stets $ H $ (bzw. $ (H_1,H_2) $) ein Hilbertraum.
 	Es gilt:
 	\[ 0=\langle (TT^\ast-T^\ast T)x.x\rangle=\norm{T^\ast x}^2-\norm{Tx}^2\forall x\in H \]
 \end{beweis}
+\begin{satz}
+	Sei $ p\in L(H) $eine Projektion (d.h. $ p^2=p $) mit $ p\neq 0 $. Dann sind \"aquivalent:
+	\begin{enumerate}
+		\item $ p $ ist eine Orthogonalprojektion (d.h. $ \ran p\perp\ker p $).
+		\item $ \norm{p}=1 $.
+		\item $ p $ ist selbstadjungiert (d.h. $ p=p^\ast $).
+		\item $ p $  ist normal (d.h. $ pp^\ast=p^\ast p $).
+		\item $ \langle px,x\rangle\geq 0\forall x\in H $.
+	\end{enumerate}
+\end{satz}
+\newpage
+\begin{beweis}
+	\begin{description}
+		\item[i)$ \Rightarrow $ii):] Dies ist \ref{thm9.10}.
+		\item[ii)$ \Rightarrow $i):] Sei $ x\in\ker p $ und $ y\in\ran p $ und $ \lambda\in\K $.
+		\[ p(x+\lambda y)=\lambda y \]
+		\[ \norm{\lambda y}^2=\norm{p(x+\lambda y)}^2\leq\norm{x+\lambda y}^2=\norm{x^2}+2\Re\bar{\lambda}\langle x,y\rangle+\norm{\lambda y}^2 \]
+		\[ -\lambda\Re\langle x,y\rangle\leq\norm{x}^2\forall\lambda\in\R  \]
+		Es folgt: $ \Re\langle x,y\rangle=0 $. Analog f\"ur $ \lambda\in i\R $: $ \Im\langle x,y\rangle=0 $, also folgt i).
+		\item[i)$ \Rightarrow $iii):] Es ist \[ \langle Px,y\rangle=\langle px,py+(y-py)\rangle=\langle px,py\rangle \]
+		und
+		\[ \langle x,py\rangle=\langle px+(x-px),py\rangle=\langle px,py\rangle \]
+		\item[iii)$ \Rightarrow $iv):] $ \surd $
+		\item[iv)$ \Rightarrow $i):] \ref{lemma10.10}: $ T $ normal$ \Rightarrow \norm{Tx}=\norm{T^\ast x}\forall x\in H$. Mit \ref{lemma10.10}:
+		\[ \ker p=\ker p^\ast=(\ran p)^\perp \]
+		\item[iii)$ \Rightarrow $v):] \[ \langle px,x\rangle=\langle p^2x,x\rangle=\langle p(px),y\rangle=\langle px,p^\ast x\rangle=\langle px,px\rangle=\norm{px}^2\geq 0 \]\item[v)$ \Rightarrow $i):] F\"ur $  y\in\ker p $, $ y\in\ran p $, $ \lambda\in\R $ gilt:
+		\[ 0\leq\langle p(x+\lambda y), x+\lambda y\rangle=\langle\lambda y,x+\lambda y\rangle=\lambda\langle y,x\rangle+\lambda^2\norm{y}^2 \]
+		\[ \langle y,x\rangle\geq -\lambda\norm{y}^2\forall\lambda>0 \]
+		\[ \langle y,x\rangle\leq-\lambda\norm{y}^2\forall\lambda<0 \]
+		Also folgt: $ \lambda y,x\rangle=0 $.
+	\end{description}
+\end{beweis}

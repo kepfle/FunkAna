@@ -1,0 +1,130 @@
+\chapter{Das Spektrum eines beschr\"ankten Operators}
+$ X $ sei stets ein Banachraum und $ T\in L(X) $.
+\begin{definition}
+	Die \deftxt{Resolventenmenge von $ T $} ist gegeben durch
+	\[ \rho(T)=\langle\lambda\in\K\mid (\lambda I-T)^{-1}\text{ existiert in }L(X)\rbrace \]
+	Die Abbildung $ R(\cdot, T)\colon\K\rightarrow L(X) $, $ R(\lambda, T)=(\lambda I-T)^{-1} $, hei\ss t \deftxt{Resolventenabbildung}.\\
+	Das \deftxt{Spektrum von $ T $} ist gegeben durch
+	\[ \sigma(T)\coloneqq\K\setminus\rho(T) \]
+	Wir definieren die folgenden Teilmengen des Spektrums:
+	\[ \sigma_p(T)\coloneqq\lbrace \lambda\in\K\mid \lambda I-T\text{ ist nicht injektiv}\rbrace \]
+	(\deftxt{Punktspektrum})
+	\[ \sigma_c(T)\coloneqq\lbrace \lambda\in\K\mid\lambda I-T\text{ ist injektiv, nicht surjektiv aber hat dichtes Bild}\rbrace \]
+	(\deftxt{Stetiges Spektrum})
+	\[ \sigma_r(T)\coloneqq\lbrace \lambda\in\K\mid\lambda I-T\text{ ist injektiv, ohne dichtes Bild}\rbrace \]
+	(\deftxt{Restspektrum})
+\end{definition}
+\begin{bemerkung*}
+	Es gilt:
+	\[ \sigma(T)=\sigma_p(T)\cup\sigma_s(T)\cup\sigma_r(T) \]
+	da $ (\lambda I-T)^{-1} $ automatisch stetig ist, falls $ \lambda I-T $ bijektiv ist (folgt aus satz von der offenen Abbildung).\\
+	Die Elemente von $ \sigma_p(T) $ hei\ss en \deftxt{Eigenwerte}, ein $ x\neq 0 $ mit $ Tx=\lambda x $ hei\ss t \deftxt{Eigenvektor} (oder \deftxt{Eigenfunktion}, falls $ X $ ein Funktionenraum ist).
+\end{bemerkung*}
+\begin{satz}
+	Ist $ X $ ein Hilbertraum, so gilt:
+	\[ \sigma(T^\ast)=\lbrace \bar{\lambda}\mid\lambda\in\sigma(T)\rbrace, T\in L(X) \]
+\end{satz}
+\begin{beweis}
+	$ \lambda I-T $ Isomorphismus$ \Leftrightarrow(\lambda I-T)^\ast=\bar{\lambda}I-T^\ast $ Isomorphismus. Hieraus folgt direkt die Aussage.
+\end{beweis}
+\begin{beispiel*}
+	\begin{enumerate}
+		\item[]
+		\item $ \dim X<\infty $. Dann gilt
+		\[ \sigma(T)=\sigma_p(T)=\lbrace\text{Menge der Eigenwerte}\rbrace \]
+		$ \sigma(T) $ kann im Fall $ \K=\R $ leer sein.
+		\item $ X=C[0,1] $, $ T\in L(X) $ und \[ (Tx)(s)=\int_0^s x(t)\dd t \]
+		Zeige: $ \sigma(T)=\sigma_r(T)=\lbrace 0\rbrace $.
+	    \begin{beweis}
+		    Sei $ \lambda =0 $. Der Hauptsatz der Differential- und Integralrechnung impliziert: $ T $ ist injektiv. Aus $ (Tx)(0)=0 $ folgt: $ T $ hat kein dichtes Bild. Also ist $ 0\in\sigma_r(T) $.\\
+		    Sei nun $ \lambda\neq 0 $. Es ist zu zeigen: $ \forall y\in C[0,1] $ ist die Gleichung
+		    \[ \lambda x-Tx=y\qquad(\ast) \]
+		    eindeutig nach $ x $ aufl\"osbar ($ x\in C[0,1] $). Sei zun\"achst $ y\in C^1[0,1] $ mit $ y'\eqqcolon z $. Dann ist $ (\ast) $ \"aquivalent zu
+		    \[ x'(t)-\frac{1}{\lambda}x(t)=\frac{1}{\lambda} z(t), x(0)=\alpha\coloneqq\frac{1}{\lambda}y(0)\qquad(\ast\ast) \]
+		    Diese Gleichung hat die eindeutige L\"osung
+		    \[ x(t)=e^\frac{t}{\lambda}\left(\frac{1}{\lambda}\int_0^t e^{-\frac{s}{\lambda}}z(s)\dd s+\alpha\right)=\frac{1}{\lambda^2}\int_0^t e^\frac{t-s}{\lambda}y(s)\dd s+\frac{1}{\lambda}y(t) \]
+		    Eine einfache Rechnung zeigt, dass $ x $ auch f\"ur beliebiges $ y\in C[0,1] $ L\"osung von $ (\ast) $ ist. F\"ur $ y=0 $ hat die Gleichung $ (\ast) $ nur die triviale L\"osung. Also ist $ \lambda I-T $ bijektiv.
+	    \end{beweis}
+	    \item Wir betrachten den Operator aus ii) auf
+	    \[ X=\lbrace x\in C[0,1]\mid x(0)=0\rbrace \]
+	    Zeige: $ \sigma(T)=\sigma_c(T)=\lbrace 0\rbrace $.
+	    \begin{beweis}
+	    	Analog zu ii) gilt: $ \lambda\in\rho(T) $ f\"ur $ \lambda\neq 0 $ und wieder ist $ T $ injektiv. Wegen
+	    	\[ \ran T=\lbrace y\in C^1[0,1]\mid y(0)=y'(0)=0\rbrace \]
+	    	gilt:
+	    	\[ \ran T\neq\overline{\ran T}=X \]
+	    	Also ist $ 0\in\sigma_c(T) $.
+	    \end{beweis}
+	\end{enumerate}
+\end{beispiel*}
+\begin{satz}
+	Es gilt
+	\begin{enumerate}
+		\item $ \rho(T) $ ist offen.
+		\item Die Resolventenabbildunng ist analytisch, d.h. sie wird lokal durch eine Potenzreihe mit Koeffizienten in $ L(X) $ beschrieben.
+		\item $ \sigma(T) $ ist kompakt, genauer: $ |\lambda|\leq\norm{T} $ f\"ur $ \lambda\in\sigma(T) $.
+		\item Ist $ \K=\C $, so ist $ \sigma(T)\neq\emptyset $.
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+	\item Sei $ \lambda_0\in\rho(T) $ und \[ |\lambda-\lambda_0|\leq\norm{(\lambda_0 I-T)^{-1}}^{-1} \]
+	Dann folgt
+	\[ \lambda I-T=(\lambda_0 I-T)+(\lambda-\lambda_0)I=(\lambda_0 I-T)(I-(\lambda-\lambda_0)(\lambda_0 I-T)^{-1}) \]
+	Nach Wahl von $ \lambda $ konvergiert die Neumannsche Reihe
+	\[ \sum_{n=0}^{\infty}((\lambda-\lambda_0)(\lambda_0 I-T)^{-1})^n \]
+	und es gilt: $ (I-(\lambda-\lambda_0)(\lambda_0 I-T)^{-1}) $ ist invertierbar. Also ist $ \lambda I-T $ invertier(bar und $ \lambda\in\rho(T) $. Somit ist $ \rho(T) $ offen.
+	\item Mit Hilfe der Neumannschen Reihe folgt:
+	\begin{align*} R(\lambda,T)&=(\lambda I-T)^{-1}\\&=(I-(\lambda_0-\lambda)(\lambda_0 I-T)^{-1})^{-1}(\lambda_0 I-T)^{-1}\\&=\sum_{n=0}^{\infty}(\lambda_0-\lambda)^n(\lambda_0 I-T)^{-n}(\lambda_0 I-T)^{-1}\\&=\sum_{n=0}^{\infty}(\lambda_0 I-T)^{-(n+1)}(\lambda_0-\lambda)^n \end{align*}
+	\item Nach i) ist $ \sigma(T) $ abgeschlossen und f\"ur $ |\lambda|>\norm{T} $:
+	\[ (\lambda I-T)^{-1}=\lambda^{-1}\left(I-\frac{T}{\lambda}\right)^{-1}=\lambda^{-1}\sum_{n=0}^{\infty}\lambda^{-n}T^n\qquad(\ast) \]
+	ist konvergent (Neumannsche Reihe, $ \norm{\frac{T}{\lambda}}<1 $). Also folgt:
+	\[ \sigma(T)\subseteq\lbrace\lambda\in\K\mid |\lambda|\leq\norm{T}\rbrace \]
+	\item Angenommen, $ \sigma(T)=\emptyset $. Dann $ \rho(T)=\C $. Dann ist die Resolventenabbildung auf ganz $ \C $ analytisch und es gilt lokal:
+	\[ R(\lambda,T)=\sum_{n=0}^{\infty}(-1)^n R(\lambda_0,T)^{n+1}(\lambda-\lambda_0)^n \]
+	Sei nun $ l\in L(X)' $ beliebig.
+	\[ l(R(\lambda,T))=\sum_{n=0}^{\infty}(-1)^nl(R(\lambda_0,T)^{n+1})(\lambda-\lambda_0)^n \]
+	ist analytisch. $ l(R(\cdot, T)) $ ist auf ganz $ \C $ beschr\"ankt: F\"ur $ |\lambda|>2\norm{T} $ gilt n\"amlich
+	\begin{align*} |l(R(\lambda,T))|&=\left|\lambda^{-1}\sum_{n=0}^\infty\lambda^{-n} l(T^n)\right|\\&\leq|\lambda|^{-1}\sum_{n=0}^{\infty}|\lambda|^{-n}\norm{l}\norm{T^n}\\&\leq|\lambda|^{-1}\norm{l}\sum_{n=0}^{\infty}\left(\frac{\norm{T}}{|\lambda|}\right)^n\\&=|\lambda|^{-1}\norm{l}\frac{1}{1-\frac{\norm{T}}{|\lambda|}}\\&=|\lambda|^{-1}\norm{l}\frac{|\lambda|}{|\lambda|-\norm{T}}\\&=\frac{\norm{l}}{|\lambda|-\norm{T}}\\&\leq\frac{\norm{l}}{\norm{T}} \end{align*}
+	und auf der kompakten Menge $ \lbrace \lambda\in\C\mid|\lambda|\leq2\norm{T}\rbrace $ ist sie aus Stetigskeitsgr\"unden beschr\"ankt.
+	\paragraph{Satz von Lioville (Funktionentheorie)}
+		Eine auf ganz $ \C $ definierte beschr\"ankte analytische Funktion ist konstant.\\ \\
+	Mit dem Satz folgt: $ \lambda\mapsto l(R(\lambda,T)) $ ist konstant. Es gilt aber
+	\[ l(R(\lambda,T))=\sum_{n=0}^{\infty}(-1)^n l(R(0,T)^{n+1})\lambda^n \]
+	lokal um $ 0 $. Somit gilt:
+	\[ l(R(0,T)^{n+1}) =0\]
+	Insbesondere folgt $ l(T^{-2})=0 $. Die gilt f\"ur jedes $ l\in L(X)' $. Mit Hahn-Banach gilt dann $ T^{-2}=0 $. Der Nulloperator ist aber nicht invers zu $ T^2\lightning $. Also $ \sigma(T)\neq\emptyset $.
+\end{enumerate}
+\end{beweis}
+\begin{lemma}
+	Die reelle Zahlenfolge $ (a_n) $ erf\"ulle $ 0\leq a_{m+n}\leq a_na_m $ f\"ur alle $ n,m\in\N $. Dann konvergiert $ (\sqrt[n]{a_n})_n $ gegen $ a\coloneqq\inf\sqrt[n]{a_n} $.
+\end{lemma}
+\begin{definition}
+	\[ r(T)\coloneqq\inf\norm{T^n}^\frac{1}{n}=\lim_{n\to\infty}\norm{T^n}^\frac{1}{n} \]
+	wird \deftxt{Spektralradius} von $ T\in L(X) $ genannt.
+\end{definition}
+\ref{lemma11.4} garantiert, dass der limes existiert.
+\begin{satz}
+	\bullshit
+	\begin{enumerate}
+		\item $ \lambda\in\sigma(T)\Rightarrow|\lambda|\leq r(T) $
+		\item Falls $ \K=\C $, so existiert $ \lambda\in\sigma(T) $ mit $ |\lambda|=r(T) $, d.h. \[ r(T)=\max\lbrace |\lambda|\mid \lambda\in\sigma(T)\rbrace \]
+	\end{enumerate}
+\end{satz}
+\begin{satz}
+	Ist $ H $ ein Hilbertraum und $ T\in L(H) $ normal, so ist $ r(T)=\norm{T} $.
+\end{satz}
+\begin{satz}
+	Sei $ T\in K(X) $.
+	\begin{enumerate}
+		\item Ist $ \dim X=\infty $, so ist $ 0\in\sigma(T) $.
+		\item Die (eventuell leere) Menge $ \sigma(T)\setminus\lbrace 0\rbrace $ ist h\"ochstens abz\"ahlbar.
+		\item $ \sigma(T) $ besitzt keinen von $ 0 $ verschiedenen H\"aufungspunkt.
+		\item Jedes $ \lambda\in\sigma(T)\setminus\lbrace 0\rbrace $ ist ein Eigenwert von $ T $ mit $ \dim\ker(\lambda I-T)<\infty $.
+	\end{enumerate}
+\end{satz}
+\begin{beweis}
+	\begin{enumerate}
+		\item Angenommen $ 0\in\rho(T) $. Dann existiert $ T^{-1} $ in $ L(X) $. Also ist $ I=TT^{-1}\in K(X) $. Dann w\"are $ B(0,1) $ kompakt$ \lightning $.
+	\end{enumerate}
+\end{beweis}
